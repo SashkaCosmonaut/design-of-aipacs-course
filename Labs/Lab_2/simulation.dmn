@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="dinnerDecisions" name="Dinner Decisions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="Decision_09g8d52" name="Check customer&#39;s presence">
+    <extensionElements>
+      <biodi:bounds x="520" y="264" width="180" height="80" />
+      <biodi:edge source="InputData_1ckd6n2">
+        <biodi:waypoints x="741" y="333" />
+        <biodi:waypoints x="700" y="337" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_1ckd6n2" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0a6p5f7">
+      <input id="InputClause_1f2acd1" label="isCustomerInTheShop">
+        <inputExpression id="LiteralExpression_1ed57n4" typeRef="boolean">
+          <text>isCustomerInTheShop</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0it53mr" label="workersAction" name="workersAction" typeRef="string" />
+      <rule id="DecisionRule_0yhv6gq">
+        <description>Say "Hello" &amp; ask about customer's needs</description>
+        <inputEntry id="UnaryTests_15v2dhu">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hppj1y">
+          <text>"to Service"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1sfkz2l">
+        <description>Do smth in the shop for the shop</description>
+        <inputEntry id="UnaryTests_11f7643">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uwqh9v">
+          <text>"to Work"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1ybvjwh" name="Common work">
+    <extensionElements>
+      <biodi:bounds x="768" y="138" width="180" height="80" />
+      <biodi:edge source="Decision_09g8d52">
+        <biodi:waypoints x="686" y="264" />
+        <biodi:waypoints x="772" y="218" />
+      </biodi:edge>
+      <biodi:edge source="KnowledgeSource_1h5urf4">
+        <biodi:waypoints x="688" y="90" />
+        <biodi:waypoints x="792" y="138" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0fvxeis">
+        <biodi:waypoints x="920" y="253" />
+        <biodi:waypoints x="870" y="218" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Decision_09g8d52" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_0fvxeis" />
+    </informationRequirement>
+    <authorityRequirement>
+      <requiredAuthority href="#KnowledgeSource_1h5urf4" />
+    </authorityRequirement>
+    <decisionTable id="DecisionTable_1muz4pd">
+      <input id="InputClause_1ihmh0q" label="Time">
+        <inputExpression id="LiteralExpression_0z8ugzf" typeRef="integer">
+          <text>Time</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0y85xc3" label="Common Action" name="Common Action" typeRef="string" />
+      <rule id="DecisionRule_0cew7c5">
+        <inputEntry id="UnaryTests_0klfp3t">
+          <text>&lt;10</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qf3cel">
+          <text>"Check goods"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tnn875">
+        <inputEntry id="UnaryTests_0cbgh8z">
+          <text>8||16</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1q4m1x2">
+          <text>"Check you'r appearance"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_018fr8t">
+        <inputEntry id="UnaryTests_18x3t7s">
+          <text>12</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0hrv0ul">
+          <text>"Update showcase"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jqzveu">
+        <inputEntry id="UnaryTests_0f4n3pz">
+          <text>13</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1alrnjk">
+          <text>"Go to lunch"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ymezn3">
+        <description>sweep dust</description>
+        <inputEntry id="UnaryTests_0vzn2c7">
+          <text>14</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0z9wlz0">
+          <text>"Clean the shop"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1aogi92">
+        <inputEntry id="UnaryTests_1f3prxw">
+          <text>17</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1oxjqyd">
+          <text>"Think about communication with customers"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1lpjigb">
+        <inputEntry id="UnaryTests_0arwhly">
+          <text>18</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0neuv3a">
+          <text>"Chech cash &amp; close shop"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0c1qypz">
+        <description>default action</description>
+        <inputEntry id="UnaryTests_10eznkp">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_092nknx">
+          <text>"Check tips"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_0fvxeis" name="Time">
+    <extensionElements>
+      <biodi:bounds x="869" y="253" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_1ckd6n2" name="Customer...or not">
+    <extensionElements>
+      <biodi:bounds x="741" y="326" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="Decision_0tx0kwl" name="Service">
+    <extensionElements>
+      <biodi:bounds x="334" y="142" width="180" height="80" />
+      <biodi:edge source="Decision_09g8d52">
+        <biodi:waypoints x="566" y="264" />
+        <biodi:waypoints x="514" y="217" />
+      </biodi:edge>
+      <biodi:edge source="InputData_1wpeqrn">
+        <biodi:waypoints x="560" y="175" />
+        <biodi:waypoints x="514" y="176" />
+      </biodi:edge>
+      <biodi:edge source="InputData_11e19my">
+        <biodi:waypoints x="421" y="287" />
+        <biodi:waypoints x="423" y="222" />
+      </biodi:edge>
+      <biodi:edge source="KnowledgeSource_1h5urf4">
+        <biodi:waypoints x="588" y="86" />
+        <biodi:waypoints x="437" y="142" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Decision_09g8d52" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_1wpeqrn" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_11e19my" />
+    </informationRequirement>
+    <authorityRequirement>
+      <requiredAuthority href="#KnowledgeSource_1h5urf4" />
+    </authorityRequirement>
+    <decisionTable id="DecisionTable_0e8lpml">
+      <input id="InputClause_0iiafu7" label="customer&#39;sReaction">
+        <inputExpression id="LiteralExpression_0g2c777" typeRef="string">
+          <text>customer'sReaction</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1kkmg0h" label="situation">
+        <inputExpression id="LiteralExpression_0dxumpt" typeRef="string">
+          <text>situation</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_18znwxm" label="Worker&#39;sAction" name="Worker&#39;sAction" typeRef="string" />
+      <rule id="DecisionRule_1afq6wd">
+        <inputEntry id="UnaryTests_1vjhrpy">
+          <text>"just Watching"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kmtgqd">
+          <text>"you Have Another Customer"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mmt0pp">
+          <text>"assist To Another Customer"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1l25efg">
+        <inputEntry id="UnaryTests_17ijlpu">
+          <text>"just Watching"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cd6cg0">
+          <text>"you Haven't Another Customer"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00s2ke5">
+          <text>"tell About Discounts"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1q4rfca">
+        <inputEntry id="UnaryTests_1qt3879">
+          <text>"looking For Smth"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1d0m34j">
+          <text>"We have this thing"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1voua8v">
+          <text>"Sell it"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xtqdcj">
+        <inputEntry id="UnaryTests_0po8f5s">
+          <text>"looking For Smth"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nzj1ua">
+          <text>"We haven't this thing"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00pqsbe">
+          <text>"Make order for it"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0w2lht8">
+        <inputEntry id="UnaryTests_00u7452">
+          <text>"chose smth"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11ioxpo">
+          <text>""</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ln764t">
+          <text>"Sell it"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0mu27y2">
+        <inputEntry id="UnaryTests_0rzt1k3">
+          <text>""</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09t5t5c">
+          <text>"check tips"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1nkoe7g">
+          <text>"Do smth good"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1wpeqrn" name="situation">
+    <extensionElements>
+      <biodi:bounds x="560" y="151" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_11e19my" name="customer&#39;s reaction">
+    <extensionElements>
+      <biodi:bounds x="356" y="287" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <knowledgeSource id="KnowledgeSource_1h5urf4" name="Tips">
+    <extensionElements>
+      <biodi:bounds x="588" y="35" width="100" height="63" />
+    </extensionElements>
+  </knowledgeSource>
+</definitions>
