@@ -29,7 +29,6 @@
     <bpmn:messageFlow id="MessageFlow_18yuvmy" sourceRef="Task_0ljv84z" targetRef="Task_0jou1ow" />
   </bpmn:collaboration>
   <bpmn:process id="Process_0i4zq87">
-    <bpmn:sequenceFlow id="SequenceFlow_1q3vb89" sourceRef="StartEvent_1" targetRef="Task_05l849n" />
     <bpmn:task id="Task_05l849n" name="Обращение с оплатой товара с помощью микрозайма">
       <bpmn:incoming>SequenceFlow_1q3vb89</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0ljkvx8</bpmn:outgoing>
@@ -37,12 +36,6 @@
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>SequenceFlow_1q3vb89</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:task id="Task_0fjt6pg" name="Предоставить номер телефона">
-      <bpmn:incoming>SequenceFlow_0ljkvx8</bpmn:incoming>
-    </bpmn:task>
-    <bpmn:sequenceFlow id="SequenceFlow_0ljkvx8" sourceRef="Task_05l849n" targetRef="Task_0fjt6pg" />
-    <bpmn:sequenceFlow id="SequenceFlow_089gmar" sourceRef="Task_1ljmoej" targetRef="Task_0ts2y4g" />
-    <bpmn:sequenceFlow id="SequenceFlow_0mk63qx" sourceRef="Task_0ts2y4g" targetRef="EndEvent_1iv66jp" />
     <bpmn:endEvent id="EndEvent_1iv66jp">
       <bpmn:incoming>SequenceFlow_0mk63qx</bpmn:incoming>
     </bpmn:endEvent>
@@ -51,9 +44,23 @@
       <bpmn:outgoing>SequenceFlow_0mk63qx</bpmn:outgoing>
     </bpmn:task>
     <bpmn:task id="Task_1ljmoej" name="Передать кассиру информацию о товарах">
+      <bpmn:incoming>SequenceFlow_0ba58xf</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_089gmar</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:task id="Task_0w6p9tp" />
+    <bpmn:task id="Task_0w6p9tp" name="Предоставить паспорт">
+      <bpmn:incoming>SequenceFlow_12hgfpq</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ba58xf</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_0fjt6pg" name="Предоставить номер телефона">
+      <bpmn:incoming>SequenceFlow_0ljkvx8</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_12hgfpq</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="SequenceFlow_0mk63qx" sourceRef="Task_0ts2y4g" targetRef="EndEvent_1iv66jp" />
+    <bpmn:sequenceFlow id="SequenceFlow_089gmar" sourceRef="Task_1ljmoej" targetRef="Task_0ts2y4g" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ljkvx8" sourceRef="Task_05l849n" targetRef="Task_0fjt6pg" />
+    <bpmn:sequenceFlow id="SequenceFlow_1q3vb89" sourceRef="StartEvent_1" targetRef="Task_05l849n" />
+    <bpmn:sequenceFlow id="SequenceFlow_12hgfpq" sourceRef="Task_0fjt6pg" targetRef="Task_0w6p9tp" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ba58xf" sourceRef="Task_0w6p9tp" targetRef="Task_1ljmoej" />
   </bpmn:process>
   <bpmn:process id="Process_0aiidhw">
     <bpmn:startEvent id="StartEvent_0x8dd2i" name="Введён номер телефона">
@@ -156,7 +163,7 @@
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_04kyeh5">
       <bpmndi:BPMNShape id="Participant_0adc9qr_di" bpmnElement="Participant_0adc9qr">
-        <dc:Bounds x="115" y="-187" width="1333" height="266" />
+        <dc:Bounds x="115" y="-187" width="1334" height="270" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Participant_0xuzggj_di" bpmnElement="Participant_0xuzggj">
         <dc:Bounds x="115" y="735" width="1340" height="274" />
@@ -196,7 +203,7 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="MessageFlow_1ibv7wd_di" bpmnElement="MessageFlow_1ibv7wd">
         <di:waypoint x="315" y="-12" />
-        <di:waypoint x="315" y="292" />
+        <di:waypoint x="315" y="293" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="StartEvent_0nok2bs_di" bpmnElement="StartEvent_0c3i7hi">
         <dc:Bounds x="164" y="315" width="36" height="36" />
@@ -490,6 +497,14 @@
         <di:waypoint x="1164" y="224" />
         <di:waypoint x="1164" y="333" />
         <di:waypoint x="1407" y="333" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_12hgfpq_di" bpmnElement="SequenceFlow_12hgfpq">
+        <di:waypoint x="559" y="-52" />
+        <di:waypoint x="825" y="-52" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ba58xf_di" bpmnElement="SequenceFlow_0ba58xf">
+        <di:waypoint x="925" y="-52" />
+        <di:waypoint x="1083" y="-52" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
