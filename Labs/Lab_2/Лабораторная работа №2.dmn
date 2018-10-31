@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="definitions_0xkexg6" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="Decision_0bixzfz" name="Exoskeleton">
+    <extensionElements>
+      <biodi:bounds x="308" y="309" width="180" height="80" />
+      <biodi:edge source="purpose">
+        <biodi:waypoints x="314" y="460" />
+        <biodi:waypoints x="353" y="389" />
+      </biodi:edge>
+      <biodi:edge source="Decision_0cnedw1">
+        <biodi:waypoints x="507" y="464" />
+        <biodi:waypoints x="445" y="389" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0aql8ih">
+        <biodi:waypoints x="570" y="391" />
+        <biodi:waypoints x="488" y="372" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#purpose" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#Decision_0cnedw1" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_0aql8ih" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1cujsg0">
+      <input id="InputClause_0w4t5wb">
+        <inputExpression id="LiteralExpression_0kwl729" typeRef="string">
+          <text>Тип</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1btfd88">
+        <inputExpression id="LiteralExpression_09ywqge" typeRef="string">
+          <text>Специализация</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0o0vgcz">
+        <inputExpression id="LiteralExpression_0dm1kqg" typeRef="string">
+          <text>Использование</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0gsuf2j" name="Экзоскелет" typeRef="string" />
+      <rule id="DecisionRule_165g4hl">
+        <description></description>
+        <inputEntry id="UnaryTests_1so87q5">
+          <text>"Активный"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vkaiw7">
+          <text>"Верххние"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0norkrw">
+          <text>"Военное"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0an36rp">
+          <text>"Myomo"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wb5yws">
+        <description></description>
+        <inputEntry id="UnaryTests_1mb0a7j">
+          <text>"Пассивный"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07oe7ct">
+          <text>"Нижние"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0w5guft">
+          <text>"Промышленное"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fjssof">
+          <text>"ExoHeavy"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_034fz9x">
+        <description></description>
+        <inputEntry id="UnaryTests_084ae7j">
+          <text>"Активный"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jfxt52">
+          <text>"Все тело"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sx86zj">
+          <text>"Медицинское"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wfzx97">
+          <text>"Exhauss"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1bspfw6">
+        <description></description>
+        <inputEntry id="UnaryTests_0uejnqn">
+          <text>"Активный"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fwagnu">
+          <text>"Нижние"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zze1zl">
+          <text>"Медицинское"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qfww2f">
+          <text>"Hocoma"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0isn1aw">
+        <description></description>
+        <inputEntry id="UnaryTests_18aewk4">
+          <text>"Пассивный"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rleyz8">
+          <text>"Верхние"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03yukum">
+          <text>"Медицинское"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bagxe4">
+          <text>"Rehab Robotics"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18st1nz">
+        <description></description>
+        <inputEntry id="UnaryTests_04lyq9m">
+          <text>"Пассивный"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uamgzh">
+          <text>"Все тело"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00jwrnm">
+          <text>"Промышленное"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17pv2ju">
+          <text>"Noonee"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="purpose" name="Тип">
+    <extensionElements>
+      <biodi:bounds x="202" y="460" width="180" height="80" />
+      <biodi:edge source="Decision_002qhdy">
+        <biodi:waypoints x="216" y="582" />
+        <biodi:waypoints x="258" y="540" />
+      </biodi:edge>
+      <biodi:edge source="InputData_1pxenxk">
+        <biodi:waypoints x="336" y="573" />
+        <biodi:waypoints x="325" y="540" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Decision_002qhdy" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_1pxenxk" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0tepbx9">
+      <input id="InputClause_0a39gx8">
+        <inputExpression id="LiteralExpression_1utlp0b" typeRef="string">
+          <text>Цель</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1x2o1rk">
+        <inputExpression id="LiteralExpression_15ss3wl" typeRef="boolean">
+          <text>Мобильность</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_03vw0et" name="Тип" typeRef="string" />
+      <rule id="DecisionRule_1vxxsxo">
+        <inputEntry id="UnaryTests_0gio5sc">
+          <text>"Поддержание"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mdzphf">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19zm435">
+          <text>"пассивный"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12aevfr">
+        <inputEntry id="UnaryTests_1nwfaap">
+          <text>"Усиление"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sq4512">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lfxfsa">
+          <text>"смешаный"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0vg2v1d">
+        <inputEntry id="UnaryTests_1eni871">
+          <text>"Поддержание"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fp2spl">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hzcfci">
+          <text>"смешаный"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07uryhg">
+        <inputEntry id="UnaryTests_17mdm68">
+          <text>"Усиление"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04hvm80">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19qyk0f">
+          <text>"активный"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_0cnedw1" name="Специализация">
+    <extensionElements>
+      <biodi:bounds x="451" y="464" width="180" height="80" />
+      <biodi:edge source="InputData_0mwpq05">
+        <biodi:waypoints x="497" y="620" />
+        <biodi:waypoints x="524" y="544" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_0mwpq05" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0ri04x9">
+      <input id="InputClause_1nfwm6l">
+        <inputExpression id="LiteralExpression_1k49b4b" typeRef="string">
+          <text>Область приложения</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_14cokd1" name="Специализация" typeRef="string" />
+      <rule id="DecisionRule_04nzg25">
+        <inputEntry id="UnaryTests_1vk6yim">
+          <text>"Кисти"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sq664e">
+          <text>"Верхние"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_04anxn3">
+        <inputEntry id="UnaryTests_13dfjum">
+          <text>"Руки"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0dtzx0p">
+          <text>"Верхние"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xhvluy">
+        <inputEntry id="UnaryTests_15c6wea">
+          <text>"Голова"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13bjayg">
+          <text>"Верхние"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_08wjt58">
+        <inputEntry id="UnaryTests_0oikvyt">
+          <text>"Ноги"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04i6wo6">
+          <text>"Нижние"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bptdaq">
+        <inputEntry id="UnaryTests_112bsyt">
+          <text>"Бедра"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07ye9ok">
+          <text>"Нижние"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_038zuhh">
+        <inputEntry id="UnaryTests_0yove29">
+          <text>"Ступни"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pju2o6">
+          <text>"Нижние"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wws453">
+        <inputEntry id="UnaryTests_18ydlm5">
+          <text>"Спина"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0s1r65s">
+          <text>"Все тело"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0sx6way">
+        <inputEntry id="UnaryTests_1eirfjf">
+          <text>"Несколько"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09wr3h4">
+          <text>"Все тело"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_002qhdy" name="Мобильность">
+    <extensionElements>
+      <biodi:bounds x="86" y="582" width="180" height="80" />
+      <biodi:edge source="InputData_1h07c6x">
+        <biodi:waypoints x="57" y="706" />
+        <biodi:waypoints x="134" y="662" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0hxi7et">
+        <biodi:waypoints x="220" y="703" />
+        <biodi:waypoints x="212" y="662" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_1h07c6x" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_0hxi7et" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1ptgakr">
+      <input id="InputClause_10oan3g">
+        <inputExpression id="LiteralExpression_1yb594r" typeRef="string">
+          <text>Время работы</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1ekwots">
+        <inputExpression id="LiteralExpression_10gk0xk" typeRef="integer">
+          <text>Вес (кг)</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_07pyfko" name="Мобильность" typeRef="boolean" />
+      <rule id="DecisionRule_1ilgr3p">
+        <inputEntry id="UnaryTests_0uuceo0">
+          <text>"до 6 часов"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wpbxb2">
+          <text>[10-22]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0osep58">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0i0nvuv">
+        <inputEntry id="UnaryTests_0o7zyr4">
+          <text>"Зависит от человека"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rex3w2">
+          <text>[1-4]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1j3b7oj">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0iv3t5l">
+        <inputEntry id="UnaryTests_1jaycj8">
+          <text>"До 12 часов"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1k9i0st">
+          <text>[5-10]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0f7z08a">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1wk5e2n">
+        <inputEntry id="UnaryTests_11dyp3o">
+          <text>"Более 12 часов"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0atjbvs">
+          <text>&gt;22</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1bky9q6">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1h07c6x" name="Время работы">
+    <extensionElements>
+      <biodi:bounds x="-47" y="706" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_0hxi7et" name="Вес">
+    <extensionElements>
+      <biodi:bounds x="161" y="703" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_0mwpq05" name="Область приложения">
+    <extensionElements>
+      <biodi:bounds x="419" y="620" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_1pxenxk" name="Цель">
+    <extensionElements>
+      <biodi:bounds x="280" y="573" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_0aql8ih" name="Использование">
+    <extensionElements>
+      <biodi:bounds x="570" y="382" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+</definitions>
