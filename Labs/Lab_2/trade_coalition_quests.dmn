@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_12o1xas" name="DRD" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="Decision_13nychf" name="trade_a_05">
+    <extensionElements>
+      <biodi:bounds x="409" y="143" width="180" height="80" />
+      <biodi:edge source="Decision_0gsw8te">
+        <biodi:waypoints x="731" y="124" />
+        <biodi:waypoints x="652" y="124" />
+        <biodi:waypoints x="652" y="183" />
+        <biodi:waypoints x="589" y="183" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Decision_0gsw8te" />
+    </informationRequirement>
+    <decisionTable id="decisionTable_1">
+      <input id="input_1" label="is_alive(troy)">
+        <inputExpression id="inputExpression_1" typeRef="boolean">
+          <text>is_alive</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_172nao7" label="talk(troy)">
+        <inputExpression id="LiteralExpression_0my1pe3" typeRef="boolean">
+          <text>talk</text>
+        </inputExpression>
+      </input>
+      <output id="output_1" label="experience" name="experience" typeRef="integer" />
+      <output id="OutputClause_02vlrc4" label="give_items" name="give_items" typeRef="string" />
+      <output id="OutputClause_0w8upmv" label="aligments" name="aligments" typeRef="string" />
+      <rule id="DecisionRule_0kg931x">
+        <description>Поговорил? Молодец!</description>
+        <inputEntry id="UnaryTests_13mqdes">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17hdwdb">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0odh611">
+          <text>1500</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11ozt3i">
+          <text>"clover_normal"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kxd3zw">
+          <text>"trade_coalition,police,ENEMY"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0gg3qey">
+        <description>Что ж, теперь Торговая коалиция вместе с тобой. Мне давно не нравился этот ублюдок Трой, эта толстая противная морда!!! Наши люди помогут тебе добраться до лифта, находящегося в Городской управе. Вперед! Молодые драконы побеждают!!!</description>
+        <inputEntry id="UnaryTests_136xkav">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03y72ww">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19kccw9">
+          <text>100</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ymtqnq">
+          <text>"wolf2_normal"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_069oow9">
+          <text>"trade_coalition,police,ENEMY; trade_coalition,player,NEUTRAL"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ha6eep">
+        <description>Что ж, теперь Торговая коалиция вместе с тобой. Наши люди помогут тебе добраться до лифта, находящегося в Городской управе.</description>
+        <inputEntry id="UnaryTests_0xl5mev">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ir6x0w">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00skjbt">
+          <text>20</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zrh0ht">
+          <text>"add_18_high"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0x5ou9r">
+          <text>"trade_coalition,police,ENEMY"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0oxde2b">
+        <description>Мне давно не нравился этот ублюдок Трой, эта толстая противная морда!</description>
+        <inputEntry id="UnaryTests_1egxw0h">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1aki3b1">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15mnvh6">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0pkxpas">
+          <text>"-"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0piqbgv">
+          <text>"trade_coalition,player,NEUTRAL"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_0gsw8te" name="trade_a_04">
+    <extensionElements>
+      <biodi:bounds x="732" y="84" width="180" height="80" />
+      <biodi:edge source="Decision_0a6oyn4">
+        <biodi:waypoints x="819" y="-122" />
+        <biodi:waypoints x="822" y="83" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Decision_0a6oyn4" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0rudovo">
+      <input id="InputClause_1sakc6z" label="bring(armor_3)">
+        <inputExpression id="LiteralExpression_0kn1qh5" typeRef="boolean">
+          <text>bring</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1mwxwcu" label="experience" name="experience" typeRef="integer" />
+      <output id="OutputClause_0r7g2dm" label="give_items" name="give_items" typeRef="string" />
+      <rule id="DecisionRule_0x8ni44">
+        <inputEntry id="UnaryTests_03s3s8g">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_11idytk">
+          <text>600</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1o2x1hd">
+          <text>"add_16_high,add_16_high"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1u029he">
+        <inputEntry id="UnaryTests_15e0swl">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04u3qmc">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18paq95">
+          <text>"-"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1omfao7" name="trade_a_01">
+    <extensionElements>
+      <biodi:bounds x="69" y="-198" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="DecisionTable_1ia7j1v">
+      <input id="InputClause_1nu1jlh" label="toshi_case">
+        <inputExpression id="LiteralExpression_05l2kha" typeRef="boolean">
+          <text>bring</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0mdh7ac" label="soldier">
+        <inputExpression id="LiteralExpression_0o00cen" typeRef="boolean">
+          <text>kill</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1a0e4xa" label="experience" name="experience" typeRef="integer" />
+      <output id="OutputClause_13waz37" label="give_items" name="give_items" typeRef="string" />
+      <rule id="DecisionRule_0h2xl21">
+        <inputEntry id="UnaryTests_1cpez7j">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1a63age">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16s1inx">
+          <text>110</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1oyphij">
+          <text>"tray116_normal,grenade_1,rk12_normal,add_18_ultra,shield"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0otulsc">
+        <inputEntry id="UnaryTests_01rleh4">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08cm0tf">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ul2ym7">
+          <text>50</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10lrkum">
+          <text>"tray116_normal,grenade_1"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0kcbasa">
+        <inputEntry id="UnaryTests_1qbgcd6">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0g7cy33">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0opc9wr">
+          <text>60</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01cqcu0">
+          <text>"rk12_normal,add_18_ultra,shield"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1w101bb">
+        <inputEntry id="UnaryTests_0zp2k2h">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vn3cmx">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0g1n6pe">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1dzogct">
+          <text>"-"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_0r4bmzt" name="trade_a_02">
+    <extensionElements>
+      <biodi:bounds x="334" y="-197" width="180" height="80" />
+      <biodi:edge source="Decision_1omfao7">
+        <biodi:waypoints x="249" y="-157" />
+        <biodi:waypoints x="334" y="-157" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Decision_1omfao7" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_00ehjrm">
+      <input id="InputClause_0mpanoe" label="kill(bask)">
+        <inputExpression id="LiteralExpression_0i42elb" typeRef="boolean">
+          <text>kill</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0ymennz" name="experience" typeRef="integer" />
+      <output id="OutputClause_04i0r98" label="alignment" name="alignment" typeRef="string" />
+      <output id="OutputClause_069cejl" label="give_itms" name="give_itms" typeRef="string" />
+      <rule id="DecisionRule_03wlk35">
+        <description>Охрана публичного дома в Квартале "красных фонарей" была нашим союзником, ты же уничтожил их главу!!! Как мы можем после этого иметь дело с тобой?!</description>
+        <inputEntry id="UnaryTests_1f5ejr3">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0rbub0r">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14806qc">
+          <text>"player,trade_coalition,ENEMY"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hq1457">
+          <text>"-"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00c2f5n">
+        <description>Отлично! Отлично!</description>
+        <inputEntry id="UnaryTests_04qgxz5">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0m1vegw">
+          <text>40</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18ko7lm">
+          <text>"pub_security,player,NEUTRAL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hdpz5v">
+          <text>"penta6_normal"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_0a6oyn4" name="trade_a_03">
+    <extensionElements>
+      <biodi:bounds x="736" y="-202" width="180" height="80" />
+      <biodi:edge source="Decision_1l5mmvy">
+        <biodi:waypoints x="538" y="31" />
+        <biodi:waypoints x="612" y="31" />
+        <biodi:waypoints x="612" y="-143" />
+        <biodi:waypoints x="733" y="-143" />
+      </biodi:edge>
+      <biodi:edge source="Decision_0r4bmzt">
+        <biodi:waypoints x="514" y="-170" />
+        <biodi:waypoints x="735" y="-170" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Decision_1l5mmvy" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#Decision_0r4bmzt" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1yc6ngy">
+      <input id="InputClause_0lsns4q" label="dead(lor)">
+        <inputExpression id="LiteralExpression_1l8wp4j" typeRef="boolean">
+          <text>dead</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_15z7815" label="talk(doshi)">
+        <inputExpression id="LiteralExpression_1oful6a" typeRef="boolean">
+          <text>talk</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1e43s42" label="experience" name="experience" typeRef="boolean" />
+      <output id="OutputClause_1o15mrq" label="give_items" name="give_items" typeRef="string" />
+      <rule id="DecisionRule_03hcrhq">
+        <description>Эх Лор, Лор, жалкий Лор. Пришли мне письмецо из преисподней. Мне стало легче дышать!   Да…ты теперь просто ангел смерти.  Теперь мы горы свернем!</description>
+        <inputEntry id="UnaryTests_0nb15m3">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fh7if3">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1o01xz2">
+          <text>100</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0u14dnr">
+          <text>"macm_sniper"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_099ar74">
+        <description>Ты немножко опоздал, только что закончилась увлекательнейшая трансляция похорон главы охраны Синдиката. Да, да, Лора! Знаешь, я сейчас так счастлив, что мне ничего пока не нужно. Может, позже...</description>
+        <inputEntry id="UnaryTests_0gj75pq">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cr146m">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1g5r9ie">
+          <text>300</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03mll1f">
+          <text>"-"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0un4oez">
+        <inputEntry id="UnaryTests_0311ef1">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gwsayn">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_097piwr">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0bn9t43">
+          <text>"-"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hbk25e">
+        <inputEntry id="UnaryTests_1br8ktt">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0u1lv6n">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pro197">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08h0b5w">
+          <text>"-"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1l5mmvy" name="trade_a_02a">
+    <extensionElements>
+      <biodi:bounds x="358" y="-9" width="180" height="80" />
+      <biodi:edge source="Decision_0r4bmzt">
+        <biodi:waypoints x="439" y="-117" />
+        <biodi:waypoints x="439" y="-9" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Decision_0r4bmzt" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0ifp3hz">
+      <input id="InputClause_055myl7" label="talk(gill)">
+        <inputExpression id="LiteralExpression_0aaaoxs" typeRef="boolean">
+          <text>talk</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0vudj2f" label="kill(gill)">
+        <inputExpression id="LiteralExpression_0pmrivz" typeRef="boolean">
+          <text>kill</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0fwuq70" label="experience" name="experience" typeRef="integer" />
+      <output id="OutputClause_1ufm5ln" label="give_money" name="give_money" typeRef="integer" />
+      <rule id="DecisionRule_1orp9uv">
+        <description>Я так и знал, что этот злобный пес не успокоится. Ну ничего, я успокою его. Раз и навсегда.  Хорошо, что предупредил меня.</description>
+        <inputEntry id="UnaryTests_15eo6wm">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ebbgg4">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0101pvw">
+          <text>200</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fdxvci">
+          <text>49</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0mnmeg1">
+        <description>Кто-то порешил Гилла сегодня, завтра кто-нибудь захочет меня отправить к праотцам. А все из-за таких головорезов, как ты. Им все равно кого прикончить, лишь бы платили. Ну что, правду я говорю? В глаза, в глаза смотри! Ладно, ступай, у меня нет пока работы для тебя.</description>
+        <inputEntry id="UnaryTests_0knl1d0">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1w52vkw">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01pwask">
+          <text>50</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jwsduk">
+          <text>100</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1p3w5hm">
+        <description>Что там у вас случилось? Это ты ТАК с ним ПОГОВОРИЛ? Интересные у тебя методы. А вдруг Гилл уже успел послать убийцу ко мне, а я ничего об этом не знаю? И НЕ УЗНАЮ. Трупы чертовски молчаливы!!! Да-а-а, тебя просить - себе дороже.</description>
+        <inputEntry id="UnaryTests_1ayouab">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1igtlxf">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vnnjog">
+          <text>500</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rfmdyl">
+          <text>23</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1htm120">
+        <description>Ты что, забыл, куда надо идти? Время идет... А ты стоишь… Ты что, не понимаешь намека?</description>
+        <inputEntry id="UnaryTests_1u41cj2">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dekqx4">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00xj9mo">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rozqby">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
