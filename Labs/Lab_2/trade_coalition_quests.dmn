@@ -302,7 +302,7 @@
           <text>talk</text>
         </inputExpression>
       </input>
-      <output id="OutputClause_1e43s42" label="experience" name="experience" typeRef="boolean" />
+      <output id="OutputClause_1e43s42" label="experience" name="experience" typeRef="integer" />
       <output id="OutputClause_1o15mrq" label="give_items" name="give_items" typeRef="string" />
       <rule id="DecisionRule_03hcrhq">
         <description>Эх Лор, Лор, жалкий Лор. Пришли мне письмецо из преисподней. Мне стало легче дышать!   Да…ты теперь просто ангел смерти.  Теперь мы горы свернем!</description>
