@@ -34,6 +34,7 @@
       <bpmn:outgoing>SequenceFlow_1oi6qmn</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_05d721h</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_0itayef</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_1vrnaaw</bpmn:outgoing>
     </bpmn:task>
     <bpmn:task id="Task_0i2wzbh" name="Подписать отчет у Авдеюк О. А.">
       <bpmn:incoming>SequenceFlow_05d721h</bpmn:incoming>
@@ -51,6 +52,7 @@
       <bpmn:incoming>SequenceFlow_0hym846</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_1shf9tu</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_1sfs269</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0mo90pi</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0on1u5l</bpmn:outgoing>
     </bpmn:task>
     <bpmn:dataStoreReference id="DataStoreReference_0bscdzl" />
@@ -77,6 +79,12 @@
     <bpmn:sequenceFlow id="SequenceFlow_0hm81hz" sourceRef="Task_1k6eo0t" targetRef="EndEvent_0953em8" />
     <bpmn:sequenceFlow id="SequenceFlow_0qpe4rr" sourceRef="StartEvent_1" targetRef="Task_1l6ypi1" />
     <bpmn:dataStoreReference id="DataStoreReference_04ngo1a" />
+    <bpmn:sequenceFlow id="SequenceFlow_1vrnaaw" sourceRef="Task_0zhqysg" targetRef="Task_16uvfw2" />
+    <bpmn:sequenceFlow id="SequenceFlow_0mo90pi" sourceRef="Task_16uvfw2" targetRef="Task_1pi7tw9" />
+    <bpmn:task id="Task_16uvfw2" name="Подписать у Щербакова М. В">
+      <bpmn:incoming>SequenceFlow_1vrnaaw</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0mo90pi</bpmn:outgoing>
+    </bpmn:task>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0evjn1g">
@@ -87,7 +95,7 @@
         <dc:Bounds x="170" y="583" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Participant_1u8k0yg_di" bpmnElement="Participant_1u8k0yg">
-        <dc:Bounds x="117" y="469" width="1229" height="293" />
+        <dc:Bounds x="117" y="469" width="1250" height="518" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_0xewmwc_di" bpmnElement="Task_0xewmwc">
         <dc:Bounds x="394" y="561" width="100" height="80" />
@@ -202,6 +210,21 @@
       <bpmndi:BPMNEdge id="DataOutputAssociation_08vdmwv_di" bpmnElement="DataOutputAssociation_08vdmwv">
         <di:waypoint x="1183" y="641" />
         <di:waypoint x="1183" y="692" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_16uvfw2_di" bpmnElement="Task_16uvfw2">
+        <dc:Bounds x="835" y="750" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1vrnaaw_di" bpmnElement="SequenceFlow_1vrnaaw">
+        <di:waypoint x="787" y="601" />
+        <di:waypoint x="811" y="601" />
+        <di:waypoint x="811" y="790" />
+        <di:waypoint x="835" y="790" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0mo90pi_di" bpmnElement="SequenceFlow_0mo90pi">
+        <di:waypoint x="935" y="790" />
+        <di:waypoint x="960" y="790" />
+        <di:waypoint x="960" y="601" />
+        <di:waypoint x="984" y="601" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

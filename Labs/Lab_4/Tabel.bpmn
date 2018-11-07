@@ -18,7 +18,7 @@
       <bpmn:incoming>SequenceFlow_09p4ltj</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1ylcr4q</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:task id="Task_0dksmo7" name="Подписать у Щербакова">
+    <bpmn:task id="Task_0dksmo7" name="Подписать у Щербакова М. В.">
       <bpmn:incoming>SequenceFlow_0sr8hw6</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_18pka6z</bpmn:outgoing>
     </bpmn:task>
@@ -58,7 +58,7 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Participant_0yrygk3_di" bpmnElement="Participant_0yrygk3">
-        <dc:Bounds x="123" y="343" width="1347" height="263" />
+        <dc:Bounds x="123" y="343" width="931" height="278" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_1f8qlg6_di" bpmnElement="Task_1f8qlg6">
         <dc:Bounds x="463" y="400" width="100" height="80" />
