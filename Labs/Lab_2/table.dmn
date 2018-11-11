@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Control" name="ServiceControl" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="Control_the_number_of_free_buyers" name="The store is a customer">
+    <extensionElements>
+      <biodi:bounds x="520" y="264" width="180" height="80" />
+      <biodi:edge source="InputData_1ckd6n2">
+        <biodi:waypoints x="617" y="419" />
+        <biodi:waypoints x="610" y="344" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_1ckd6n2" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0a6p5f7">
+      <input id="InputClause_1f2acd1" label="Number of customers in the store">
+        <inputExpression id="LiteralExpression_1ed57n4" typeRef="integer">
+          <text>Number of customers in the store</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0it53mr" label="number of free buyers" name="number of free buyers" typeRef="string" />
+      <rule id="DecisionRule_0yhv6gq">
+        <description></description>
+        <inputEntry id="UnaryTests_15v2dhu">
+          <text>&lt;0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hppj1y">
+          <text>no free buyers</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1sfkz2l">
+        <description></description>
+        <inputEntry id="UnaryTests_11f7643">
+          <text>&gt;0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uwqh9v">
+          <text>free buyers are in the store</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Service" name="Service of the arrived client">
+    <extensionElements>
+      <biodi:bounds x="768" y="138" width="180" height="80" />
+      <biodi:edge source="KnowledgeSource_1h5urf4">
+        <biodi:waypoints x="1073" y="195" />
+        <biodi:waypoints x="950" y="178" />
+      </biodi:edge>
+      <biodi:edge source="Control_the_number_of_free_buyers">
+        <biodi:waypoints x="686" y="264" />
+        <biodi:waypoints x="767" y="178" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0fvxeis">
+        <biodi:waypoints x="872" y="265" />
+        <biodi:waypoints x="870" y="218" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Control_the_number_of_free_buyers" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_0fvxeis" />
+    </informationRequirement>
+    <authorityRequirement>
+      <requiredAuthority href="#KnowledgeSource_1h5urf4" />
+    </authorityRequirement>
+    <decisionTable id="DecisionTable_1muz4pd">
+      <input id="InputClause_1ihmh0q" label="customer response">
+        <inputExpression id="LiteralExpression_0z8ugzf" typeRef="integer">
+          <text>customer response</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_06gl56d" label="customer response">
+        <inputExpression id="LiteralExpression_0gv8yx4" typeRef="string">
+          <text>situation</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0y85xc3" label="Common Action" name="Common Action" typeRef="string" />
+      <rule id="DecisionRule_0cew7c5">
+        <inputEntry id="UnaryTests_0klfp3t">
+          <text>Buyers wishes</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wlmir7">
+          <text>The buyer is saying the wishes of the product</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qf3cel">
+          <text>Providing a list of products on request</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tnn875">
+        <inputEntry id="UnaryTests_0cbgh8z">
+          <text>The buyer is looking for goods</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14p0wek">
+          <text>The seller will tell the location of the goods</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1q4m1x2">
+          <text>The buyer will be at the desired product</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_018fr8t">
+        <inputEntry id="UnaryTests_18x3t7s">
+          <text>The buyer wants to test the product</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rvohjq">
+          <text>The store employee sets up\finds the desired product for testing</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0hrv0ul">
+          <text>Buyer is testing product</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jqzveu">
+        <inputEntry id="UnaryTests_0f4n3pz">
+          <text>The buyer asks to configure the purchased good</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lyr86d">
+          <text>Store employee customizes product</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1alrnjk">
+          <text>Consumer leaves with customized product</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_0fvxeis" name="customer response">
+    <extensionElements>
+      <biodi:bounds x="809" y="265" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_1ckd6n2" name="VideoImage from camera">
+    <extensionElements>
+      <biodi:bounds x="554" y="419" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="Job_store_employee" name="Work on accouting goods">
+    <extensionElements>
+      <biodi:bounds x="334" y="142" width="180" height="80" />
+      <biodi:edge source="KnowledgeSource_1a0263e">
+        <biodi:waypoints x="287" y="264" />
+        <biodi:waypoints x="409" y="222" />
+      </biodi:edge>
+      <biodi:edge source="Control_the_number_of_free_buyers">
+        <biodi:waypoints x="566" y="264" />
+        <biodi:waypoints x="515" y="182" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Control_the_number_of_free_buyers" />
+    </informationRequirement>
+    <authorityRequirement>
+      <requiredAuthority href="#KnowledgeSource_1a0263e" />
+    </authorityRequirement>
+    <decisionTable id="DecisionTable_0e8lpml">
+      <input id="InputClause_0iiafu7" label="job for accounting">
+        <inputExpression id="LiteralExpression_0g2c777" typeRef="string">
+          <text>job for accounting</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_18znwxm" label="complete task" name="complete task" typeRef="string" />
+      <rule id="DecisionRule_1afq6wd">
+        <inputEntry id="UnaryTests_1vjhrpy">
+          <text>taking stock of the current items in the Windows</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mmt0pp">
+          <text>list of products on display</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1l25efg">
+        <inputEntry id="UnaryTests_17ijlpu">
+          <text>to produce the products required for purchase</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00s2ke5">
+          <text>list of goods for purchase</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1q4rfca">
+        <inputEntry id="UnaryTests_1qt3879">
+          <text>get technical information about new products</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1voua8v">
+          <text>technical information about new products</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xtqdcj">
+        <inputEntry id="UnaryTests_0po8f5s">
+          <text>training to improve the quality of communication with customers</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00pqsbe">
+          <text>increasing the level of communication with the buyer</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <knowledgeSource id="KnowledgeSource_1h5urf4" name="Customer service manual">
+    <extensionElements>
+      <biodi:bounds x="1073" y="154" width="100" height="63" />
+    </extensionElements>
+  </knowledgeSource>
+  <knowledgeSource id="KnowledgeSource_1a0263e" name="insructions for accounting for goods">
+    <extensionElements>
+      <biodi:bounds x="187" y="249" width="100" height="63" />
+    </extensionElements>
+  </knowledgeSource>
+</definitions>
