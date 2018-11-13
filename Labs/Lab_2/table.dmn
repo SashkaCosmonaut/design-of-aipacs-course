@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="definitions_0oiuhwh" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="Decision_11w8ghc" name="Ценовая категория">
+    <extensionElements>
+      <biodi:bounds x="315" y="384" width="180" height="80" />
+      <biodi:edge source="InputData_1a038wf">
+        <biodi:waypoints x="276" y="537" />
+        <biodi:waypoints x="324" y="464" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_1a038wf" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1nnk5xv">
+      <input id="InputClause_0nja1c3">
+        <inputExpression id="LiteralExpression_1yw0rid" typeRef="double">
+          <text>Price</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0tlu8bt" typeRef="string" />
+      <rule id="DecisionRule_1aw47ss">
+        <inputEntry id="UnaryTests_1fnfeju">
+          <text>2000..10000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ut4lfh">
+          <text>Бюджетные видеокарты</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1m0jawx">
+        <inputEntry id="UnaryTests_19a1kzv">
+          <text>10000..20000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_008r58i">
+          <text>Средние</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0x74v8u">
+        <inputEntry id="UnaryTests_04ain2s">
+          <text>20000..60000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1u6htcs">
+          <text>Дорогие</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1vivj99">
+        <inputEntry id="UnaryTests_0gxnrom">
+          <text>60000..</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0af6wya">
+          <text>Очень дорогие</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_140o5mu" name="Тип видеокарты">
+    <extensionElements>
+      <biodi:bounds x="463" y="234" width="180" height="80" />
+      <biodi:edge source="Decision_11w8ghc">
+        <biodi:waypoints x="430" y="384" />
+        <biodi:waypoints x="474" y="314" />
+      </biodi:edge>
+      <biodi:edge source="InputData_00gz9to">
+        <biodi:waypoints x="620" y="367" />
+        <biodi:waypoints x="602" y="314" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Decision_11w8ghc" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_00gz9to" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1nfxs4k">
+      <input id="InputClause_03uw5sc">
+        <inputExpression id="LiteralExpression_1d8z0o5" typeRef="string">
+          <text>Ценовая категория</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_19jk81k">
+        <inputExpression id="LiteralExpression_0te3mvw" typeRef="double">
+          <text>Количество памяти</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0ylw4i6" name="Тип видеокарты" typeRef="string" />
+      <rule id="DecisionRule_05s3cwb">
+        <description>Для постоянного использования компьюетра без запуска требовательных игр и графических приложений</description>
+        <inputEntry id="UnaryTests_0h79h9c">
+          <text>Бюджетные</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jkdbc3">
+          <text>2..4</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0li6f4s">
+          <text>Для обычного пользования</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_15dehb1">
+        <description>Для работы с графикой и запуска нетребовательных игр</description>
+        <inputEntry id="UnaryTests_0rt0zm7">
+          <text>Средние</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vjub7y">
+          <text>4..6</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1j20xxy">
+          <text>Для широкого пользования</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1cy7qec">
+        <description>Для запуска игр с графикой нового поколения и сложных графических работ</description>
+        <inputEntry id="UnaryTests_133o503">
+          <text>Дорогие</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0i44ag7">
+          <text>6..10</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15xkt7q">
+          <text>Игровые</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1nnff71">
+        <description>Для увеличений мощности серверов/кластеров вычислений</description>
+        <inputEntry id="UnaryTests_02s8ng3">
+          <text>Очень дорогие</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ai1hir">
+          <text>10+</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0e0dx91">
+          <text>Для вычислений</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1a038wf" name="Цена">
+    <extensionElements>
+      <biodi:bounds x="198" y="537" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_00gz9to" name="Количество памяти">
+    <extensionElements>
+      <biodi:bounds x="563" y="367" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_1orwrtf" name="Производитель видеокарты">
+    <extensionElements>
+      <biodi:bounds x="715" y="365" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_1v6gxgv" name="Тип памяти">
+    <extensionElements>
+      <biodi:bounds x="882" y="363" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="Decision_0e1wq0j" name="Видеопроцессор">
+    <extensionElements>
+      <biodi:bounds x="770" y="232" width="180" height="80" />
+      <biodi:edge source="InputData_1v6gxgv">
+        <biodi:waypoints x="927" y="363" />
+        <biodi:waypoints x="886" y="312" />
+      </biodi:edge>
+      <biodi:edge source="InputData_1orwrtf">
+        <biodi:waypoints x="796" y="365" />
+        <biodi:waypoints x="837" y="312" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_1v6gxgv" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_1orwrtf" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0h234c8">
+      <input id="InputClause_1wfzwq8">
+        <inputExpression id="LiteralExpression_1953fme" typeRef="string">
+          <text>Производитель</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1bhbhoc">
+        <inputExpression id="LiteralExpression_0a2wzlf" typeRef="string">
+          <text>Тип памяти</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1cdb2bw" name="Видеопроцессор" typeRef="string" />
+      <rule id="DecisionRule_0el7qcg">
+        <inputEntry id="UnaryTests_06adsit">
+          <text>MSI</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ypvgi8">
+          <text>GDDR6</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0702s1t">
+          <text>Nvidia</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fvjh58">
+        <inputEntry id="UnaryTests_1ili3xa">
+          <text>PALIT</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dx8vhn">
+          <text>GDDR5</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ln13rf">
+          <text>Nvidia</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ss0tn7">
+        <inputEntry id="UnaryTests_17w3x1c">
+          <text>SAPPHIRE</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12lo0wt">
+          <text>DDR5</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wivej3">
+          <text>AMD</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1grqcgr">
+        <inputEntry id="UnaryTests_0gw47ng">
+          <text>POWERCOLOR</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0t4a8t4">
+          <text>DDR4</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1k6eu5s">
+          <text>AMD</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_0gab99y" name="Videocard">
+    <extensionElements>
+      <biodi:bounds x="617" y="87" width="180" height="80" />
+      <biodi:edge source="Decision_140o5mu">
+        <biodi:waypoints x="590" y="234" />
+        <biodi:waypoints x="651" y="167" />
+      </biodi:edge>
+      <biodi:edge source="Decision_0e1wq0j">
+        <biodi:waypoints x="813" y="232" />
+        <biodi:waypoints x="737" y="167" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Decision_140o5mu" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#Decision_0e1wq0j" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1j6v58y">
+      <input id="InputClause_0oasl1w">
+        <inputExpression id="LiteralExpression_1ckknfk" typeRef="string">
+          <text>Тип видеокарты</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1qe2uzo">
+        <inputExpression id="LiteralExpression_0d86bjb" typeRef="string">
+          <text>Видепроцессор</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_18opkfq" typeRef="string" />
+      <rule id="DecisionRule_1el0uwk">
+        <inputEntry id="UnaryTests_1e08eac">
+          <text>Для обычного пользования</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_124ub7t">
+          <text>AMD</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17b4m1u">
+          <text>
+
+Видеокарта SAPPHIRE AMD Radeon R5 230</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_16tzlbl">
+        <inputEntry id="UnaryTests_0neetkw">
+          <text>Для широкого пользования</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1acl0wb">
+          <text>AMD</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1prafud">
+          <text>Видеокарта POWERCOLOR AMD Radeon RX 560</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_16gnz9b">
+        <inputEntry id="UnaryTests_0p6egh0">
+          <text>Игровые</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1yq26z5">
+          <text>NVIDIA</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uv3ooi">
+          <text>Видеокарта PALIT nVidia GeForce GTX 1060</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1cpih7g">
+        <inputEntry id="UnaryTests_0vfqngx">
+          <text>Для вычислений</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02x9r9b">
+          <text>NVIDIA</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0dvr0p6">
+          <text>Видеокарта MSI nVidia GeForce RTX 2080Ti</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
