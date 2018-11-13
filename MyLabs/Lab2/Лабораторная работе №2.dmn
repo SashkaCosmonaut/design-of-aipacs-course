@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="definitions_1rdr3g4" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision_1lmwvhg" name="Хим формула">
+    <extensionElements>
+      <biodi:bounds x="421" y="118" width="180" height="80" />
+      <biodi:edge source="Decision_10b47o4">
+        <biodi:waypoints x="616" y="254" />
+        <biodi:waypoints x="584" y="198" />
+      </biodi:edge>
+      <biodi:edge source="Decision_0p0d7u8">
+        <biodi:waypoints x="412" y="221" />
+        <biodi:waypoints x="440" y="198" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Decision_10b47o4" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#Decision_0p0d7u8" />
+    </informationRequirement>
+    <decisionTable id="decisionTable">
+      <input id="input1" label="">
+        <inputExpression id="inputExpression1" typeRef="string">
+          <text>Структура</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0mo3yez">
+        <inputExpression id="LiteralExpression_08b86q3" typeRef="string">
+          <text>Вещество</text>
+        </inputExpression>
+      </input>
+      <output id="output1" label="" name="Способ анализа" typeRef="string" />
+      <rule id="DecisionRule_04m4x05">
+        <inputEntry id="UnaryTests_0db06a6">
+          <text>Полная</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bvmqyh">
+          <text>Сложное</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1kfbqfo">
+          <text>Тип 1</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_04z9o3x">
+        <inputEntry id="UnaryTests_0wk34ik">
+          <text>Не полная</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_016u1ki">
+          <text>Простое</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0s5wjdc">
+          <text>Тип 2</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0mw2smt">
+        <inputEntry id="UnaryTests_1tsm5p6">
+          <text>Полная</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hvdn2h">
+          <text>Простое</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1re865r">
+          <text>Тип 1</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1bil6q4">
+        <inputEntry id="UnaryTests_11yxj0h">
+          <text>Не полная</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jlpa75">
+          <text>Сложное</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tzpa60">
+          <text>Тип 2</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_0p0d7u8" name="Структура">
+    <extensionElements>
+      <biodi:bounds x="274" y="221" width="180" height="80" />
+      <biodi:edge source="Decision_17ukh9s">
+        <biodi:waypoints x="305" y="332" />
+        <biodi:waypoints x="337" y="301" />
+      </biodi:edge>
+      <biodi:edge source="InputData_1d8ln0i">
+        <biodi:waypoints x="435" y="349" />
+        <biodi:waypoints x="396" y="301" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Decision_17ukh9s" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_1d8ln0i" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_04guojp">
+      <input id="InputClause_1qsmub3">
+        <inputExpression id="LiteralExpression_1shvdjk" typeRef="string">
+          <text>MOL-таблица</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1cdwag8">
+        <inputExpression id="LiteralExpression_0c5btiz" typeRef="boolean">
+          <text>InChi</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0pxkq06" name="Структура" typeRef="string" />
+      <rule id="DecisionRule_0yzohyr">
+        <inputEntry id="UnaryTests_0hx1792">
+          <text>Структурная форма</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0li3s98">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0vh6bwt">
+          <text>Полная</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1peon2p">
+        <inputEntry id="UnaryTests_0fj10xg">
+          <text>SMILES</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ea0pdz">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_11049yw">
+          <text>Полная</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0jsip9m">
+        <inputEntry id="UnaryTests_0pchsri" expressionLanguage="feel">
+          <text>Отпечаток</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xal5dg">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_11cn3ow">
+          <text>Полная</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fuco0t">
+        <inputEntry id="UnaryTests_135sa0b">
+          <text>Структурная форма</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19gvwof">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tudg5y">
+          <text>Не полная</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ogbnef">
+        <inputEntry id="UnaryTests_0gnu5bk">
+          <text>SMILES</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jq2raw">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12c0mqr">
+          <text>Не полная</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0jzgtrb">
+        <inputEntry id="UnaryTests_0wfoux2">
+          <text>Отпечаток</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ivuiij">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fdaq1h">
+          <text>Не полная</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_10b47o4" name="Вещество">
+    <extensionElements>
+      <biodi:bounds x="547" y="254" width="180" height="80" />
+      <biodi:edge source="Decision_0o11mnc">
+        <biodi:waypoints x="713" y="369" />
+        <biodi:waypoints x="688" y="334" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Decision_0o11mnc" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1knqnmu">
+      <input id="InputClause_13pthgl">
+        <inputExpression id="LiteralExpression_0d2y8ml" typeRef="string">
+          <text>Сведения</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0swq9bz">
+        <inputExpression id="LiteralExpression_1nt9oyp" typeRef="string">
+          <text>Наличие сведения</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_13975tq" name="Сложость" typeRef="string" />
+      <rule id="DecisionRule_009c60l">
+        <inputEntry id="UnaryTests_1hnxjyp">
+          <text>Принадлежность элемента</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lft2lf">
+          <text>Есть</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07j7lt1">
+          <text>Простое</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_16gaezm">
+        <inputEntry id="UnaryTests_12dwq4p">
+          <text>Количественный состав</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01xrlqi">
+          <text>Есть</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0lzi1zl">
+          <text>Сложное</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1o14tzc">
+        <inputEntry id="UnaryTests_0hi18jf">
+          <text>Массовый состав</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17p6k64">
+          <text>Есть</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0fv6q9m">
+          <text>Сложное</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0obbbhs">
+        <inputEntry id="UnaryTests_1de2u4i">
+          <text>Качественный состав</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0og8cc1">
+          <text>Есть</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1kktipi">
+          <text>Сложное</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1wgdqsa">
+        <inputEntry id="UnaryTests_1xze2rh">
+          <text>Один моль вещества</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08p3lj9">
+          <text>Есть</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00sfdgr">
+          <text>Простое</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_0o11mnc" name="Сведения">
+    <extensionElements>
+      <biodi:bounds x="658" y="369" width="180" height="80" />
+      <biodi:edge source="InputData_0dvh080">
+        <biodi:waypoints x="789" y="511" />
+        <biodi:waypoints x="752" y="449" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_0dvh080" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1uudka1">
+      <input id="InputClause_0e8jwik">
+        <inputExpression id="LiteralExpression_1uq2keq" typeRef="string">
+          <text>Тип сведения</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0soz6ov" name="Сведения" typeRef="string" />
+      <rule id="DecisionRule_07o9gkr">
+        <inputEntry id="UnaryTests_0n4pkyn">
+          <text>Класс вещества/веществ</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0utune5">
+          <text>Принадлежность элемента</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1b6kx30">
+        <inputEntry id="UnaryTests_0oyrnr7">
+          <text>Число молей, кол-во атомов</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_08wbrom">
+          <text>Количественный состав</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0skzkqg">
+        <inputEntry id="UnaryTests_000sl9m">
+          <text>Хим. эл-ты</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ii67mh">
+          <text>Качественный состав</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0hroz2w">
+        <inputEntry id="UnaryTests_0e2z7vu">
+          <text>Масса к-го эл-та, доли, объем</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ucpnmt">
+          <text>Массовый состав</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1mpc2r6">
+        <inputEntry id="UnaryTests_0a2y0r6">
+          <text>Моль</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1m8m52q">
+          <text>Один моль вещества</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_17ukh9s" name="International Chemical Identifier">
+    <extensionElements>
+      <biodi:bounds x="173" y="332" width="180" height="80" />
+      <biodi:edge source="InputData_0izollb">
+        <biodi:waypoints x="202" y="459" />
+        <biodi:waypoints x="246" y="412" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_0izollb" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0v9p2eh">
+      <input id="InputClause_1ognkld">
+        <inputExpression id="LiteralExpression_1mymzdm" typeRef="string">
+          <text>Наличие радикала</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0ra5etq" name="InChi" typeRef="boolean" />
+      <rule id="DecisionRule_0cntnn2">
+        <inputEntry id="UnaryTests_1ww9y2d">
+          <text>Есть</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0mzay4u">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0c8fha1">
+        <inputEntry id="UnaryTests_1xo9tg9">
+          <text>Нет</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06zy4y2">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_0izollb" name="Есть ли радикал?">
+    <extensionElements>
+      <biodi:bounds x="118" y="459" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_1d8ln0i" name="MOL-таблица">
+    <extensionElements>
+      <biodi:bounds x="391" y="349" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_0dvh080" name="Тип сведения">
+    <extensionElements>
+      <biodi:bounds x="728" y="511" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+</definitions>
