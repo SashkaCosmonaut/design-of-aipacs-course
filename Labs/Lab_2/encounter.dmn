@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="definitions_15gk4q2" name="Random Encounter" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="EnemyCheck" name="EnemyCheck">
+    <extensionElements>
+      <biodi:bounds x="150" y="150" width="180" height="80" />
+      <biodi:edge source="InputData_02vdpnr">
+        <biodi:waypoints x="132" y="349" />
+        <biodi:waypoints x="175" y="230" />
+      </biodi:edge>
+      <biodi:edge source="InputData_1i82bb6">
+        <biodi:waypoints x="292" y="347" />
+        <biodi:waypoints x="276" y="230" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_02vdpnr" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_1i82bb6" />
+    </informationRequirement>
+    <decisionTable id="decisionTable">
+      <input id="input1" label="Your Fraction">
+        <inputExpression id="inputExpression1" typeRef="string">
+          <text>myFraction</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0serfyw" label="His Fraction">
+        <inputExpression id="LiteralExpression_0ecyysz" typeRef="string">
+          <text>creatureFraction</text>
+        </inputExpression>
+      </input>
+      <output id="output1" label="Is Enemy" name="isEnemy" typeRef="string" />
+      <rule id="DecisionRule_08zyr6w">
+        <description>Default - hooman vs hooman</description>
+        <inputEntry id="UnaryTests_1tdv2pd">
+          <text>not("Orc", "Elf", "Dwarf")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_191zuwx">
+          <text>not("Orc", "Elf", "Dwarf")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_03okq1k" expressionLanguage="juel">
+          <text>"False"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0t9qs79">
+        <inputEntry id="UnaryTests_1vta6wh">
+          <text>"Orc"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jfaxpc">
+          <text>"Orc", "Dwarf"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0i673up" expressionLanguage="juel">
+          <text>"False"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_188toed">
+        <inputEntry id="UnaryTests_1evqt8r">
+          <text>"Elf"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0irku8f">
+          <text>"Elf", "Human"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0pf0rkk" expressionLanguage="juel">
+          <text>"False"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1wekwqu">
+        <inputEntry id="UnaryTests_0pl9haf">
+          <text>"Dwarf"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_156wbyq">
+          <text>"Dwarf", "Orc"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06ij8be" expressionLanguage="juel">
+          <text>"False"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1pjhi89">
+        <inputEntry id="UnaryTests_03qb6ao">
+          <text>"Human"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ziccea">
+          <text>"Human", "Elf"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_059m779" expressionLanguage="juel">
+          <text>"False"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0rr66h9">
+        <inputEntry id="UnaryTests_0cyfkgq">
+          <text>"Human"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14skvei">
+          <text>not("Human", "Elf")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1f7m7bo" expressionLanguage="juel">
+          <text>"True"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1a6954u">
+        <inputEntry id="UnaryTests_0n21f0k">
+          <text>"Orc"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xrtori">
+          <text>not("Orc", "Dwarf")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1744k9t" expressionLanguage="juel">
+          <text>"True"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1gfjfct">
+        <inputEntry id="UnaryTests_07efd2x">
+          <text>"Elf"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02m1a77">
+          <text>not("Elf", "Human")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hnj36x" expressionLanguage="juel">
+          <text>"True"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0gk1doe">
+        <inputEntry id="UnaryTests_0o9z2d5">
+          <text>"Dwarf"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0skkr2o">
+          <text>not("Dwarf", "Orc")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1y1b1eh" expressionLanguage="juel">
+          <text>"True"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0q8r1hu">
+        <inputEntry id="UnaryTests_1vf0bgy">
+          <text>not("Orc", "Elf", "Dwarf")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uq8ywk">
+          <text>"Orc", "Dwarf"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0rguwcj" expressionLanguage="juel">
+          <text>"True"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_02vdpnr" name="Your Fraction">
+    <extensionElements>
+      <biodi:bounds x="61" y="349" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_1i82bb6" name="Creature Fraction">
+    <extensionElements>
+      <biodi:bounds x="232" y="347" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="ChooseAction" name="ChooseAction">
+    <extensionElements>
+      <biodi:bounds x="395" y="149" width="180" height="80" />
+      <biodi:edge source="EnemyCheck">
+        <biodi:waypoints x="330" y="186" />
+        <biodi:waypoints x="394" y="185" />
+      </biodi:edge>
+      <biodi:edge source="InputData_1sitwti">
+        <biodi:waypoints x="576" y="346" />
+        <biodi:waypoints x="524" y="229" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0ctq0fy">
+        <biodi:waypoints x="442" y="347" />
+        <biodi:waypoints x="435" y="229" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#EnemyCheck" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_1sitwti" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_0ctq0fy" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0nvvtus" hitPolicy="FIRST">
+      <input id="InputClause_1yaqh6t" label="Spotted You?">
+        <inputExpression id="LiteralExpression_1dfk4xj" typeRef="string">
+          <text>spottedYou</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_11lsynh" label="Level Difference">
+        <inputExpression id="LiteralExpression_04mit7u" typeRef="integer">
+          <text>lvlDifference</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0v9ykjn" label="Is Enemy">
+        <inputExpression id="LiteralExpression_0qkpyxm" typeRef="string">
+          <text>isEnemy</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1xg2pqy" label="Action" name="action" typeRef="string" />
+      <rule id="DecisionRule_1mmtzqw">
+        <inputEntry id="UnaryTests_1qz7ahc">
+          <text>"False"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oxowh6">
+          <text>0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12v8hp6">
+          <text>"True"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_184s5nt">
+          <text>"Sneak and Attack"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0jya1z2">
+        <inputEntry id="UnaryTests_12bi3lq">
+          <text>"False"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dqx5x5">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0utl3hn">
+          <text>"True"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15a90bg">
+          <text>"Sneak and Attack"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1wjzpuv">
+        <inputEntry id="UnaryTests_0fd8obg">
+          <text>"False"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nfdqtx">
+          <text>&gt;=2</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ufp8l2">
+          <text>"True"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1w3m3hu">
+          <text>"Attack"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0f1u67g">
+        <inputEntry id="UnaryTests_0e3rrra">
+          <text>"False"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_064j700">
+          <text>-1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0f2c4nw">
+          <text>"True"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1twlzo4">
+          <text>"Sneak and Attack"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1i5522h">
+        <inputEntry id="UnaryTests_1hs30mt">
+          <text>"False"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1p32vu2">
+          <text>&lt;=-2</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1868zit">
+          <text>"True"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17zyj31">
+          <text>"Sneak out"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0vn0scn">
+        <inputEntry id="UnaryTests_19p70qo">
+          <text>"True"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lxs3y3">
+          <text>0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wrq7bq">
+          <text>"True"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tzmv4c">
+          <text>"Attack"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0v1ixod">
+        <inputEntry id="UnaryTests_17ebuu0">
+          <text>"True"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0aq1ho3">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10oxyic">
+          <text>"True"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1unkumu">
+          <text>"Attack"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_091dsed">
+        <inputEntry id="UnaryTests_1lezlwm">
+          <text>"True"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16eo1jt">
+          <text>&gt;=2</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jok9ua">
+          <text>"True"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sqo3o3">
+          <text>"Chase and Attack"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1kur93p">
+        <inputEntry id="UnaryTests_0e35w80">
+          <text>"True"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06dq5lx">
+          <text>-1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vzdaeg">
+          <text>"True"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06kytea">
+          <text>"Run"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1korzsj">
+        <inputEntry id="UnaryTests_1x52z4w">
+          <text>"True"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rc8vzr">
+          <text>&lt;=-2</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0im5ahc">
+          <text>"True"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gut2cz">
+          <text>"Run"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1qel43j">
+        <inputEntry id="UnaryTests_11t7092">
+          <text>"True", "False"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09b2m05">
+          <text>&gt;=0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0x79bvf">
+          <text>"False"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1z0oucv">
+          <text>"Talk to"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_114cus6">
+        <inputEntry id="UnaryTests_0h1hpbc">
+          <text>"True", "False"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1epn5zh">
+          <text>&lt;=0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16h2t64">
+          <text>"False"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zevz9j">
+          <text>"Talk to"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_0ctq0fy" name="Are you spotted">
+    <extensionElements>
+      <biodi:bounds x="380" y="347" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_1sitwti" name="Level Difference">
+    <extensionElements>
+      <biodi:bounds x="523" y="346" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+</definitions>
