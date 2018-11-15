@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="definitions_0lx0633" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision_073v5ix" name="Genre">
+    <extensionElements>
+      <biodi:bounds x="150" y="151" width="180" height="80" />
+      <biodi:edge source="InputData_1dtxv06">
+        <biodi:waypoints x="170" y="320" />
+        <biodi:waypoints x="205" y="236" />
+      </biodi:edge>
+      <biodi:edge source="InputData_06kjhjv">
+        <biodi:waypoints x="324" y="320" />
+        <biodi:waypoints x="280" y="231" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_1dtxv06" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_06kjhjv" />
+    </informationRequirement>
+    <decisionTable id="decisionTable">
+      <input id="input1" label="Age">
+        <inputExpression id="inputExpression1" typeRef="integer">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0565uhf" label="Gender">
+        <inputExpression id="LiteralExpression_1gskv4t" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="output1" label="" name="" typeRef="string" />
+      <rule id="DecisionRule_1bpmk0c">
+        <inputEntry id="UnaryTests_0s87623">
+          <text>[0..7]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gztn9g">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1d258u3">
+          <text>"Сказки"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0mj369v">
+        <inputEntry id="UnaryTests_13qtmnn">
+          <text>[8..15]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ol654x">
+          <text>"male"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jw4jtz">
+          <text>"ДетскаяФантастика"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xon8e8">
+        <inputEntry id="UnaryTests_1w4805c">
+          <text>[16..24]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ce8qvo">
+          <text>"male"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hvpyf8">
+          <text>"Приключения"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_04dxupm">
+        <inputEntry id="UnaryTests_0p4pcxl">
+          <text>[25..40]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1d3bmvw">
+          <text>"male"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uy3naz">
+          <text>"Фантастика"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1wljhb7">
+        <inputEntry id="UnaryTests_17h1op6">
+          <text>&gt;40</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17ghsso">
+          <text>"male"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tu1dne">
+          <text>"ИсторическийРоман"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xreavy">
+        <inputEntry id="UnaryTests_0qniliv">
+          <text>[8..15]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0utrsaw">
+          <text>"female"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1y5z9mz">
+          <text>"ДетскийДетектив"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ikuyb8">
+        <inputEntry id="UnaryTests_1wpxjf8">
+          <text>[16..24]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sjjkye">
+          <text>"female"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ygws3i">
+          <text>"Романтика"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_15tqfbr">
+        <inputEntry id="UnaryTests_0qwan3o">
+          <text>[25..40]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0f5x3g8">
+          <text>"female"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0k9fitb">
+          <text>"Детектив"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09algs0">
+        <inputEntry id="UnaryTests_0wszrjj">
+          <text>&gt;40</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cw352u">
+          <text>"female"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jjv0fd">
+          <text>"КлассическаяПроза"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1dtxv06" name="Age">
+    <extensionElements>
+      <biodi:bounds x="97" y="320" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_06kjhjv" name="Gender">
+    <extensionElements>
+      <biodi:bounds x="272" y="320" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="Decision_0chnxb2" name="Book">
+    <extensionElements>
+      <biodi:bounds x="320" y="-22" width="180" height="80" />
+      <biodi:edge source="decision_073v5ix">
+        <biodi:waypoints x="280" y="151" />
+        <biodi:waypoints x="374" y="58" />
+      </biodi:edge>
+      <biodi:edge source="InputData_1exk620">
+        <biodi:waypoints x="525" y="154" />
+        <biodi:waypoints x="444" y="58" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#decision_073v5ix" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_1exk620" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1986se8">
+      <input id="InputClause_1uhunlg" label="Genre">
+        <inputExpression id="LiteralExpression_115fn8w" typeRef="string">
+          <text>Genre</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0ww14a7" label="BookCollection">
+        <inputExpression id="LiteralExpression_1o2g1n5" typeRef="boolean">
+          <text>BookCollection</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0yhcy88" label="Book" name="Book" typeRef="string" />
+      <rule id="DecisionRule_10rc43s">
+        <inputEntry id="UnaryTests_1jgbvqq">
+          <text>"Сказки"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xbjvw6">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0rt0v3o">
+          <text>"Русские сказки"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0veop4u">
+        <inputEntry id="UnaryTests_1w1aydi">
+          <text>"ДетскаяФантастика"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18m5su1">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1dd8l6s">
+          <text>"Гарри Поттер"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1dftl4f">
+        <inputEntry id="UnaryTests_0tmw27f">
+          <text>"Приключения"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dgidte">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_196s85p">
+          <text>"Приключения Шерлока Холмса"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0jncx4y">
+        <inputEntry id="UnaryTests_0yxmynq">
+          <text>"Фантастика"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fn1nwp">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sgmj3m">
+          <text>"Автостопом по галактике"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06o46gu">
+        <inputEntry id="UnaryTests_1brv0z2">
+          <text>"ИсторическийРоман"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0t05cfj">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1c89l78">
+          <text>"А. Чапыгин. Собрание сочинений в пяти томах"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_143hrqz">
+        <inputEntry id="UnaryTests_1hofcat">
+          <text>"ДетскийДетектив"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1uynnoi">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0f6ijdy">
+          <text>"Черный котёнок"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1rligvq">
+        <inputEntry id="UnaryTests_1w34pry">
+          <text>"Романтика"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04i5bcx">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16gfrpg">
+          <text>"Сумерки"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0qedkwy">
+        <inputEntry id="UnaryTests_19ynts3">
+          <text>"Детектив"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ai0dt5">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fd9hf0">
+          <text>"Новогодний детектив"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0gnzclm">
+        <inputEntry id="UnaryTests_1dmkn78">
+          <text>"КлассическаяПроза"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_036wuxx">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1yn374y">
+          <text>"Л. Н. Толстой. Повести и рассказы"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_11sa0h7">
+        <inputEntry id="UnaryTests_096slq4">
+          <text>"Сказки"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uubz6y">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1g3n4v7">
+          <text>"Морозко"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1cmuylx">
+        <inputEntry id="UnaryTests_0ebynqe">
+          <text>"ДетскаяФантастика"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1t9t0e7">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06luhow">
+          <text>"Путешествие к центру Земли"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1wrcknw">
+        <inputEntry id="UnaryTests_0zyr5gk">
+          <text>"Приключения"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_101xt4p">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xkrwcr">
+          <text>"Робинзон Крузо"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0c5hgel">
+        <inputEntry id="UnaryTests_097r107">
+          <text>"Фантастика"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13bgnl6">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_11ji8hx">
+          <text>"О дивный новый мир"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0krv8n1">
+        <inputEntry id="UnaryTests_1f3d4y1">
+          <text>"ИсторическийРоман"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nbda3c">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1o1636h">
+          <text>"Честь имею"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0mr7y3m">
+        <inputEntry id="UnaryTests_159g3d1">
+          <text>"ДетскийДетектив"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1j80gjy">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ptd3b3">
+          <text>"Тайна рыжего кота"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0e3hmj4">
+        <inputEntry id="UnaryTests_11w3w62">
+          <text>"Романтика"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0q31vd2">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0yv5kdk">
+          <text>"Дневник памяти"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1q6t7ih">
+        <inputEntry id="UnaryTests_16n4zme">
+          <text>"Детектив"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1v0vsyd">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ufphdq">
+          <text>"Десять негритят"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wznxdu">
+        <inputEntry id="UnaryTests_0ryg815">
+          <text>"КлассическаяПроза"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vrm1a3">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0a3egvn">
+          <text>"Анна Каренина"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1exk620" name="BookCollection">
+    <extensionElements>
+      <biodi:bounds x="481" y="154" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+</definitions>
