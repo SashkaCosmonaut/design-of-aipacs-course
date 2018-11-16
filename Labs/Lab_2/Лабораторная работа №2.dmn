@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="definitions_0ktd67d" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision_0l47jy2" name="Уровень">
+    <extensionElements>
+      <biodi:bounds x="150" y="150" width="180" height="80" />
+      <biodi:edge source="InputData_1vfrs8f">
+        <biodi:waypoints x="104" y="328" />
+        <biodi:waypoints x="178" y="230" />
+      </biodi:edge>
+      <biodi:edge source="Decision_1cd2k2d">
+        <biodi:waypoints x="370" y="296" />
+        <biodi:waypoints x="328" y="234" />
+      </biodi:edge>
+      <biodi:edge source="Decision_054em2z">
+        <biodi:waypoints x="188" y="444" />
+        <biodi:waypoints x="242" y="230" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_1vfrs8f" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#Decision_1cd2k2d" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#Decision_054em2z" />
+    </informationRequirement>
+    <decisionTable id="decisionTable">
+      <input id="input1" label="">
+        <inputExpression id="inputExpression1" typeRef="string">
+          <text>Сложность</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_12j3m15">
+        <inputExpression id="LiteralExpression_10sgyzc" typeRef="string">
+          <text>Конечности</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1mshl4d">
+        <inputExpression id="LiteralExpression_1hg2h19" typeRef="string">
+          <text>Основное действие</text>
+        </inputExpression>
+      </input>
+      <output id="output1" label="" name="Уровень" typeRef="date" />
+      <rule id="DecisionRule_1ip871w">
+        <inputEntry id="UnaryTests_1w05g4u">
+          <text>Начальная</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qd5kac">
+          <text>Пальцы</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0c13mzu">
+          <text>Перебор</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0cwtj5k">
+          <text>Пианино</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0pmguts">
+        <inputEntry id="UnaryTests_12o1lmi">
+          <text>Легкая</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11w2wnk">
+          <text>Пальца и ладонь</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ytl8o3">
+          <text>Вращение</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0stf8dv">
+          <text>Конструктор</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06qgju5">
+        <inputEntry id="UnaryTests_16pvq99">
+          <text>Средняя</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1uaf8q8">
+          <text>Кисть</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1orf7ht">
+          <text>Бросок</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0rj1xmw">
+          <text>Боулинг</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06ctxie">
+        <inputEntry id="UnaryTests_0mx2i9x">
+          <text>Сложная</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15vjge7">
+          <text>Ладонь</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_126vyey">
+          <text>Ориентация руки</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09lgd9c">
+          <text>Лабиринт</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1vfrs8f" name="Какие конечности развить?">
+    <extensionElements>
+      <biodi:bounds x="29" y="328" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="Decision_1cd2k2d" name="Основное действие">
+    <extensionElements>
+      <biodi:bounds x="353" y="296" width="180" height="80" />
+      <biodi:edge source="InputData_1uvqnsd">
+        <biodi:waypoints x="538" y="422" />
+        <biodi:waypoints x="506" y="376" />
+      </biodi:edge>
+      <biodi:edge source="Decision_16yqwx7">
+        <biodi:waypoints x="420" y="503" />
+        <biodi:waypoints x="431" y="376" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_1uvqnsd" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#Decision_16yqwx7" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0ol5k3m">
+      <input id="InputClause_0o17qe1">
+        <inputExpression id="LiteralExpression_0jsngo1" typeRef="string">
+          <text>Навык</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0yhmdt5">
+        <inputExpression id="LiteralExpression_109ozal" typeRef="string">
+          <text>Распознаваемое действие</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_06htpuf" typeRef="string" />
+      <rule id="DecisionRule_1fq2o2w">
+        <inputEntry id="UnaryTests_0hnpl2p">
+          <text>Ратсяжка рук</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19unl5s">
+          <text>Простое_1</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tqbcwb">
+          <text>Перебор</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_15l9khm">
+        <inputEntry id="UnaryTests_0n5cyjd">
+          <text>Удержание</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11s9vqb">
+          <text>Составное</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1nkjfis">
+          <text>Вращение</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bvkwjf">
+        <inputEntry id="UnaryTests_0gnbeke">
+          <text>Сила броска</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mn9ywj">
+          <text>Простое_2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13mqqms">
+          <text>Бросок</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0i781lh">
+        <inputEntry id="UnaryTests_1sog1jf">
+          <text>Сосредоточенность</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1yu0zq4">
+          <text>Составное</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04i1kgb">
+          <text>Ориентация руки</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1uvqnsd" name="Какой навык развить?">
+    <extensionElements>
+      <biodi:bounds x="491" y="422" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="Decision_054em2z" name="Сложность">
+    <extensionElements>
+      <biodi:bounds x="88" y="444" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="DecisionTable_08q96po">
+      <input id="InputClause_1e3h0de">
+        <inputExpression id="LiteralExpression_1yp0jnq" typeRef="string">
+          <text>Чувствительность к действию</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1nofgxx" name="Сложность" typeRef="string" />
+      <rule id="DecisionRule_0pazf4v">
+        <inputEntry id="UnaryTests_12bkze0">
+          <text>Низкая</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bxxbb3">
+          <text>Начальный</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xh9hh6">
+        <inputEntry id="UnaryTests_101f9j5">
+          <text>Легкая</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0vf9776">
+          <text>Легкий</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zeok7p">
+        <inputEntry id="UnaryTests_1y02k72">
+          <text>Средняя</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19m2wxk">
+          <text>Средний</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0fcg48w">
+        <inputEntry id="UnaryTests_1ndww8b">
+          <text>Высокая</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1n8eq3z">
+          <text>Сложный</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_16yqwx7" name="Распознаваемое действие">
+    <extensionElements>
+      <biodi:bounds x="327" y="503" width="180" height="80" />
+      <biodi:edge source="InputData_1xxsna0">
+        <biodi:waypoints x="408" y="629" />
+        <biodi:waypoints x="413" y="583" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_1xxsna0" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1d2hkqm">
+      <input id="InputClause_1jox3qb">
+        <inputExpression id="LiteralExpression_1wzubv9" typeRef="string">
+          <text>Жест</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1lxywt5" name="Распознаваемое действие" typeRef="string" />
+      <rule id="DecisionRule_13k5ar3">
+        <inputEntry id="UnaryTests_109uytp">
+          <text>Tap</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0husmmj">
+          <text>Простое_1</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_007uob1">
+        <inputEntry id="UnaryTests_1wut86a">
+          <text>Перемещение руки</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15087di">
+          <text>Простое_2</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_16i11ok">
+        <inputEntry id="UnaryTests_1iclhys">
+          <text>Вращение + перемещение</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1yrqeh9">
+          <text>Составное</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1xxsna0" name="Жест">
+    <extensionElements>
+      <biodi:bounds x="343" y="629" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+</definitions>
