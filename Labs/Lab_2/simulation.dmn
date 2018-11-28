@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="dinnerDecisions" name="Dinner Decisions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="beverages" name="Middle part face">
+    <extensionElements>
+      <biodi:bounds x="578" y="167" width="180" height="80" />
+      <biodi:edge source="Decision_0v6lvdk">
+        <biodi:waypoints x="104" y="338" />
+        <biodi:waypoints x="163" y="264" />
+      </biodi:edge>
+      <biodi:edge source="InputData_1rf1n1q">
+        <biodi:waypoints x="602" y="316" />
+        <biodi:waypoints x="633" y="247" />
+      </biodi:edge>
+      <biodi:edge source="InputData_1ktxgu8">
+        <biodi:waypoints x="758" y="319" />
+        <biodi:waypoints x="704" y="247" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_1rf1n1q" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_1ktxgu8" />
+    </informationRequirement>
+    <decisionTable hitPolicy="COLLECT">
+      <input id="InputClause_1acmlkd" label="Nose" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_0bqgrlg" typeRef="string">
+          <text>Nose</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1xdem91" label="Ears">
+        <inputExpression id="LiteralExpression_1sun8o2" typeRef="string">
+          <text>Ears</text>
+        </inputExpression>
+      </input>
+      <output id="OuputClause_99999" label="Lie2" name="Lie2" typeRef="boolean" />
+      <rule id="row-506282952-7">
+        <description></description>
+        <inputEntry id="UnaryTests_03g3ci0">
+          <text>"close"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0x2ikko">
+          <text>"itches"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1kr45vj">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-8">
+        <inputEntry id="UnaryTests_1ckv0bb">
+          <text>"itches"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0il3djw">
+          <text>"red"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_139n7gl">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0j1arq2">
+        <inputEntry id="UnaryTests_1f2p96b">
+          <text>"Nothing"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rpmytf">
+          <text>"Nothing"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1m6mvqx">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1f3308v">
+        <inputEntry id="UnaryTests_1tem432">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14pypfy">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0lizmkf">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="dish" name="Top part face">
+    <extensionElements>
+      <biodi:bounds x="323" y="170" width="180" height="80" />
+      <biodi:edge source="KnowledgeSource_0b8hnqo">
+        <biodi:waypoints x="206" y="206" />
+        <biodi:waypoints x="323" y="208" />
+      </biodi:edge>
+      <biodi:edge source="InputData_1c7t2gr">
+        <biodi:waypoints x="275" y="317" />
+        <biodi:waypoints x="344" y="250" />
+      </biodi:edge>
+      <biodi:edge source="InputData_1x0nv5g">
+        <biodi:waypoints x="430" y="316" />
+        <biodi:waypoints x="461" y="250" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_1c7t2gr" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_1x0nv5g" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_040j91i">
+      <input id="InputClause_0bbq1z8" label="Eyes" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_1iwaqcz" typeRef="string">
+          <text>Eyes</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0pcbpc9" label="Eyebrows" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_1uu3xe6" typeRef="string">
+          <text>Eyebrows</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0lfar1z" label="Lie1" name="Lie1" typeRef="boolean" />
+      <rule id="row-884555325-1">
+        <description>Default value</description>
+        <inputEntry id="UnaryTests_0cy7usy">
+          <text>"looking left"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ww352f">
+          <text>"raised"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07xyqqp">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-1">
+        <inputEntry id="UnaryTests_06z2ju4">
+          <text>"looking right"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ph5qbt">
+          <text>"raised"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sntjhd">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-2">
+        <inputEntry id="UnaryTests_0o5o0mm">
+          <text>"looking top"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rtyr8x">
+          <text>"furrowed"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15nybba">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1w09trp">
+        <inputEntry id="UnaryTests_07jm65t">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_139e9g7">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ailwsd">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1sucd0i" name="Result interview">
+    <extensionElements>
+      <biodi:bounds x="588" y="15" width="180" height="80" />
+      <biodi:edge source="dish">
+        <biodi:waypoints x="466" y="170" />
+        <biodi:waypoints x="585" y="100" />
+      </biodi:edge>
+      <biodi:edge source="beverages">
+        <biodi:waypoints x="669" y="167" />
+        <biodi:waypoints x="678" y="98" />
+      </biodi:edge>
+      <biodi:edge source="Decision_1lq78xl">
+        <biodi:waypoints x="845" y="166" />
+        <biodi:waypoints x="728" y="95" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#dish" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#beverages" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#Decision_1lq78xl" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0bw1hfn">
+      <input id="InputClause_18bbyvd" label="Lie1">
+        <inputExpression id="LiteralExpression_07lag30" typeRef="boolean">
+          <text>Lie1</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0vtn9dg" label="Lie2">
+        <inputExpression id="LiteralExpression_197hj1a" typeRef="boolean">
+          <text>Lie2</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_14urjr4" label="Lie3">
+        <inputExpression id="LiteralExpression_0f3pbew" typeRef="boolean">
+          <text>Lie3</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1oxsuu4" label="Result" name="Result" typeRef="string" />
+      <rule id="DecisionRule_0iiovrq">
+        <inputEntry id="UnaryTests_1728p58">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_112jo7t">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_176cc5s">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0chwd9w">
+          <text>"interviewer lied"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_13bxgw2">
+        <inputEntry id="UnaryTests_0teovdf">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0emk8vd">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12r1deo">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09zbw13">
+          <text>"interviewer did not lie"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0psweir">
+        <inputEntry id="UnaryTests_00r76ul">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vu98ov">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1al004r">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0l5aq3f">
+          <text>"interviewer did not lie2"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1b02ult">
+        <inputEntry id="UnaryTests_02qu196">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0p08cw4">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1h8gkkx">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qxjgm5">
+          <text>"interviewer lied2"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1kg0phm">
+        <inputEntry id="UnaryTests_19s3j7g">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yplaif">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1k55e3j">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1uql8d2">
+          <text>"interviewer did not lie3"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_19eg53h">
+        <inputEntry id="UnaryTests_02h8eqz">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0n3dxw3">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0w35xks">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ehinfg">
+          <text>"interviewer lied4"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1bl7pgb">
+        <inputEntry id="UnaryTests_0glta0a">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0itrk01">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1sgec05">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1nngvs8">
+          <text>"none"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1x0nv5g" name="Eyesbrows">
+    <extensionElements>
+      <biodi:bounds x="367" y="316" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_1rf1n1q" name="Nose">
+    <extensionElements>
+      <biodi:bounds x="527" y="316" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_1c7t2gr" name="Eyes">
+    <extensionElements>
+      <biodi:bounds x="188" y="317" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_1ktxgu8" name="Ears">
+    <extensionElements>
+      <biodi:bounds x="700" y="319" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="Decision_1lq78xl" name="Bottom part face">
+    <extensionElements>
+      <biodi:bounds x="821" y="166" width="180" height="80" />
+      <biodi:edge source="InputData_1c6h776">
+        <biodi:waypoints x="929" y="292" />
+        <biodi:waypoints x="919" y="246" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0m7ohd9">
+        <biodi:waypoints x="1020" y="207" />
+        <biodi:waypoints x="1001" y="207" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_1c6h776" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_0m7ohd9" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0xc0j0e">
+      <input id="InputClause_1li8ffe" label="cheeks">
+        <inputExpression id="LiteralExpression_0mvnrc8" typeRef="string">
+          <text>cheeks</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_18jvob8" label="mouth">
+        <inputExpression id="LiteralExpression_0cvge9b" typeRef="string">
+          <text>mouth</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1tp1izy" label="Lie3" name="Lie3" typeRef="boolean" />
+      <rule id="DecisionRule_1iub7r9">
+        <inputEntry id="UnaryTests_1negrn4">
+          <text>"red"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0c10j03">
+          <text>"close"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_064p687">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0terays">
+        <inputEntry id="UnaryTests_11h4ibw">
+          <text>"Nothing"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0d9jg3z">
+          <text>"Nothing"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1s7o71y">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18064ew">
+        <inputEntry id="UnaryTests_14xobb2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10o413k">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05ezjhi">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1c6h776" name="mouth">
+    <extensionElements>
+      <biodi:bounds x="871" y="292" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_0m7ohd9" name="cheeks">
+    <extensionElements>
+      <biodi:bounds x="1020" y="184" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+</definitions>
