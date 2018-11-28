@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="interactionControl" name="Interaction control" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="situation" name="The situation to the buyer">
+    <extensionElements>
+      <biodi:bounds x="316" y="223" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="DecisionTable_040j91i">
+      <input id="InputClause_0uo7pm8" label="Situation">
+        <inputExpression id="LiteralExpression_0c9uc4l" typeRef="string">
+          <text>Situation</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0lfar1z" label="QualityWork" name="QualityWork" typeRef="boolean" />
+      <rule id="row-884555325-1">
+        <description></description>
+        <inputEntry id="UnaryTests_1js8ln2">
+          <text>"standingFace"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07xyqqp">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-1">
+        <inputEntry id="UnaryTests_06szzuw">
+          <text>"standsSideways"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sntjhd">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-2">
+        <inputEntry id="UnaryTests_1bx879b">
+          <text>"back"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15nybba">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-3">
+        <inputEntry id="UnaryTests_1enoomz">
+          <text>"standsDistance"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ki86jo">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-4">
+        <description></description>
+        <inputEntry id="UnaryTests_13tqvin">
+          <text>"standClose"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1h969t1">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0gysjhx">
+        <inputEntry id="UnaryTests_1gyaljk">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1x1btld">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="movement" name="Movement">
+    <extensionElements>
+      <biodi:bounds x="833" y="223" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="DecisionTable_15fqebi">
+      <input id="InputClause_06txzva" label="SellerMovement">
+        <inputExpression id="LiteralExpression_0attebu" typeRef="string">
+          <text>SellerMovement</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_14bd9wi" label="qualityMov" name="qualityMov" typeRef="boolean" />
+      <rule id="DecisionRule_1px5tkf">
+        <inputEntry id="UnaryTests_18o6mta">
+          <text>"moves"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17z3awc">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0vle4v4">
+        <inputEntry id="UnaryTests_14dv11m">
+          <text>"nomoves"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1o7tl8t">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1pcmnts">
+        <inputEntry id="UnaryTests_0250d27">
+          <text>"moves_arms"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07hgky9">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jr7gg1">
+        <inputEntry id="UnaryTests_0hiwde5">
+          <text>"no_moves_arms"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wkumx3">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1pmo0rr">
+        <inputEntry id="UnaryTests_1lduta8">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tidlc3">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="results" name="Results">
+    <extensionElements>
+      <biodi:bounds x="570" y="82" width="180" height="80" />
+      <biodi:edge source="situation">
+        <biodi:waypoints x="475" y="223" />
+        <biodi:waypoints x="580" y="162" />
+      </biodi:edge>
+      <biodi:edge source="movement">
+        <biodi:waypoints x="855" y="223" />
+        <biodi:waypoints x="750" y="161" />
+      </biodi:edge>
+      <biodi:edge source="Decision_007cxzk">
+        <biodi:waypoints x="658" y="222" />
+        <biodi:waypoints x="665" y="162" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#situation" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#movement" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#Decision_007cxzk" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1bx5g7i">
+      <input id="InputClause_0pcf51r" label="QualityWork">
+        <inputExpression id="LiteralExpression_06oi298" typeRef="boolean">
+          <text>QualityWork</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1o4yp14" label="qualityCom">
+        <inputExpression id="LiteralExpression_1j4ufs2" typeRef="boolean">
+          <text>qualityCom</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_125pcrw" label="qualityMov">
+        <inputExpression id="LiteralExpression_0vmr98c" typeRef="boolean">
+          <text>qualityMov</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0l18gac" label="res" name="res" typeRef="boolean" />
+      <rule id="DecisionRule_1hwculv">
+        <inputEntry id="UnaryTests_03ltcek">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09wd77k">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0q17cz7">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tt2sin">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0lp9t3u">
+        <inputEntry id="UnaryTests_1xrm4io">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19b3mls">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1olmr0x">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pl56wg">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0w3nj7w">
+        <inputEntry id="UnaryTests_07ia68o">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1imptpq">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04ugwxl">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0d5goyy">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0atkzrb">
+        <inputEntry id="UnaryTests_1gxxaqp">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1yc0azv">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nlowgv">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1a13hjc">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1abemyx">
+        <inputEntry id="UnaryTests_1abpro2">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1knwkku">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gw0s9i">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_02axns3">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0qunmmg">
+        <inputEntry id="UnaryTests_11fjn5i">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1p8xa2h">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0s83sql">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09e59fz">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0kdfpzx">
+        <inputEntry id="UnaryTests_00a91dp">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0t7xfq3">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16gcb46">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1dqkqdr">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_007cxzk" name="Communication with buyer">
+    <extensionElements>
+      <biodi:bounds x="563" y="222" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="DecisionTable_0e13y6e">
+      <input id="InputClause_1s9tfpx" label="Commun">
+        <inputExpression id="LiteralExpression_1cliba7" typeRef="string">
+          <text>Commun</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_06416wz" label="qualityCom" name="qualityCom" typeRef="boolean" />
+      <rule id="DecisionRule_0qbw2vv">
+        <inputEntry id="UnaryTests_0s0ua0m">
+          <text>"emotionally"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ebv0sc">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00gtuti">
+        <inputEntry id="UnaryTests_1g6agdp">
+          <text>"noemotionally"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1az83lz">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_080jr5e">
+        <inputEntry id="UnaryTests_00lutj3">
+          <text>"slowTalking"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hhbcq1">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0rooe0j">
+        <inputEntry id="UnaryTests_1hqh83s">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jt8few">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
