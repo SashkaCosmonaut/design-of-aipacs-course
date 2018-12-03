@@ -9,6 +9,7 @@
     <bpmn:messageFlow id="MessageFlow_1vb8hl4" name="Документы клиента" sourceRef="Task_09hq2eb" targetRef="Task_0qq0wg1" />
     <bpmn:messageFlow id="MessageFlow_0mmg3iy" name="Решение СПР" sourceRef="Task_1cgeink" targetRef="Task_1qcourb" />
     <bpmn:messageFlow id="MessageFlow_0jxbigk" name="Данные клиента" sourceRef="Task_18okd0r" targetRef="Task_1o7kmiy" />
+    <bpmn:messageFlow id="MessageFlow_1xq4bv6" name="Решение по займу" sourceRef="Task_07ovtfe" targetRef="Task_05nyd6r" />
   </bpmn:collaboration>
   <bpmn:process id="Process_0rlowbz">
     <bpmn:sequenceFlow id="SequenceFlow_1u5c1wf" sourceRef="Task_1qcourb" targetRef="ExclusiveGateway_1dnnfa1" />
@@ -60,16 +61,12 @@
       <bpmn:outgoing>SequenceFlow_01m53x7</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_0pl1pdn</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="SequenceFlow_0owqhq2" sourceRef="Task_1epri2v" targetRef="EndEvent_0dnt42b" />
+    <bpmn:sequenceFlow id="SequenceFlow_0owqhq2" sourceRef="Task_1epri2v" targetRef="Task_07ovtfe" />
     <bpmn:sequenceFlow id="SequenceFlow_0nw4np3" name="Согласовано" sourceRef="ExclusiveGateway_0muxmir" targetRef="Task_0cizoz0" />
     <bpmn:sequenceFlow id="SequenceFlow_02u6xbw" name="Отказ" sourceRef="ExclusiveGateway_0muxmir" targetRef="Task_1epri2v" />
     <bpmn:sequenceFlow id="SequenceFlow_07s8mo0" sourceRef="Task_1f1ar7k" targetRef="ExclusiveGateway_0muxmir" />
     <bpmn:sequenceFlow id="SequenceFlow_0cf5yda" sourceRef="Task_04r0fri" targetRef="Task_1f1ar7k" />
     <bpmn:sequenceFlow id="SequenceFlow_0tlmqim" sourceRef="Task_0h4ax5b" targetRef="EndEvent_083x7y2" />
-    <bpmn:endEvent id="EndEvent_0dnt42b">
-      <bpmn:incoming>SequenceFlow_0owqhq2</bpmn:incoming>
-      <bpmn:incoming>SequenceFlow_1xo09xp</bpmn:incoming>
-    </bpmn:endEvent>
     <bpmn:task id="Task_0cizoz0" name="Автоматический перевод денег клиенту">
       <bpmn:incoming>SequenceFlow_0nw4np3</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1xo09xp</bpmn:outgoing>
@@ -98,7 +95,16 @@
       <bpmn:incoming>SequenceFlow_01m53x7</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0tlmqim</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:sequenceFlow id="SequenceFlow_1xo09xp" sourceRef="Task_0cizoz0" targetRef="EndEvent_0dnt42b" />
+    <bpmn:sequenceFlow id="SequenceFlow_1xo09xp" sourceRef="Task_0cizoz0" targetRef="Task_07ovtfe" />
+    <bpmn:sequenceFlow id="SequenceFlow_1m3g0g2" sourceRef="Task_07ovtfe" targetRef="EndEvent_0dnt42b" />
+    <bpmn:task id="Task_07ovtfe" name="Сообщить решение клиенту">
+      <bpmn:incoming>SequenceFlow_0owqhq2</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1xo09xp</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1m3g0g2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="EndEvent_0dnt42b">
+      <bpmn:incoming>SequenceFlow_1m3g0g2</bpmn:incoming>
+    </bpmn:endEvent>
   </bpmn:process>
   <bpmn:process id="Process_06eb7ga">
     <bpmn:sequenceFlow id="SequenceFlow_07yx50e" sourceRef="Task_1o7kmiy" targetRef="Task_1cgeink" />
@@ -117,43 +123,43 @@
     <bpmn:sequenceFlow id="SequenceFlow_08rxi6q" sourceRef="Task_0gikrsj" targetRef="Task_1w58vom" />
     <bpmn:sequenceFlow id="SequenceFlow_1cndinm" sourceRef="Task_09xt8iv" targetRef="Task_0gikrsj" />
     <bpmn:sequenceFlow id="SequenceFlow_04j9aqn" sourceRef="StartEvent_1" targetRef="Task_09xt8iv" />
-    <bpmn:endEvent id="EndEvent_0o26nmg">
-      <bpmn:incoming>SequenceFlow_0p8i3fh</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:task id="Task_05nyd6r" name="Клиент ожидает решения по кредиту">
-      <bpmn:incoming>SequenceFlow_1t0hnnw</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0p8i3fh</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:task id="Task_09hq2eb" name="Клиент загружает фотографии документов">
-      <bpmn:incoming>SequenceFlow_0p9rarw</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1t0hnnw</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:task id="Task_1w58vom" name="Клиент заполняет дополнительную информацию о себе (работа, друзья, учеба, социальный статус)">
-      <bpmn:incoming>SequenceFlow_08rxi6q</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0p9rarw</bpmn:outgoing>
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_04j9aqn</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Task_09xt8iv" name="Клиент заполняет заявку на кредит">
+      <bpmn:incoming>SequenceFlow_04j9aqn</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1cndinm</bpmn:outgoing>
     </bpmn:task>
     <bpmn:task id="Task_0gikrsj" name="Клиент ожидает пин-код для верификации номера телефона">
       <bpmn:incoming>SequenceFlow_1cndinm</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_08rxi6q</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:task id="Task_09xt8iv" name="Клиент заполняет заявку на кредит">
-      <bpmn:incoming>SequenceFlow_04j9aqn</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1cndinm</bpmn:outgoing>
+    <bpmn:task id="Task_1w58vom" name="Клиент заполняет дополнительную информацию о себе (работа, друзья, учеба, социальный статус)">
+      <bpmn:incoming>SequenceFlow_08rxi6q</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0p9rarw</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:startEvent id="StartEvent_1">
-      <bpmn:outgoing>SequenceFlow_04j9aqn</bpmn:outgoing>
-    </bpmn:startEvent>
+    <bpmn:task id="Task_09hq2eb" name="Клиент загружает фотографии документов">
+      <bpmn:incoming>SequenceFlow_0p9rarw</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1t0hnnw</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_05nyd6r" name="Клиент ожидает решения по кредиту">
+      <bpmn:incoming>SequenceFlow_1t0hnnw</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0p8i3fh</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="EndEvent_0o26nmg">
+      <bpmn:incoming>SequenceFlow_0p8i3fh</bpmn:incoming>
+    </bpmn:endEvent>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0ewub9n">
       <bpmndi:BPMNShape id="Participant_1hscdeo_di" bpmnElement="Participant_1hscdeo">
-        <dc:Bounds x="288" y="266" width="2748" height="250" />
+        <dc:Bounds x="288" y="266" width="2941" height="266" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Participant_0dz15ww_di" bpmnElement="Participant_0dz15ww">
-        <dc:Bounds x="288" y="515" width="1559" height="250" />
+        <dc:Bounds x="288" y="515" width="2940" height="231" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Participant_029lppy_di" bpmnElement="Participant_029lppy">
-        <dc:Bounds x="288" y="3" width="1766" height="261" />
+        <dc:Bounds x="288" y="3" width="2941" height="263" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_09xt8iv_di" bpmnElement="Task_09xt8iv">
         <dc:Bounds x="457" y="92" width="100" height="80" />
@@ -329,18 +335,18 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Task_05nyd6r_di" bpmnElement="Task_05nyd6r">
-        <dc:Bounds x="1543" y="92" width="100" height="80" />
+        <dc:Bounds x="2882" y="100" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1t0hnnw_di" bpmnElement="SequenceFlow_1t0hnnw">
-        <di:waypoint x="1470" y="132" />
-        <di:waypoint x="1543" y="132" />
+        <di:waypoint x="1470" y="133" />
+        <di:waypoint x="2882" y="140" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_0o26nmg_di" bpmnElement="EndEvent_0o26nmg">
-        <dc:Bounds x="1762" y="114" width="36" height="36" />
+        <dc:Bounds x="3095" y="122" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0p8i3fh_di" bpmnElement="SequenceFlow_0p8i3fh">
-        <di:waypoint x="1643" y="132" />
-        <di:waypoint x="1762" y="132" />
+        <di:waypoint x="2982" y="140" />
+        <di:waypoint x="3095" y="140" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_083x7y2_di" bpmnElement="EndEvent_083x7y2">
         <dc:Bounds x="2287" y="299" width="36" height="36" />
@@ -390,13 +396,13 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_0dnt42b_di" bpmnElement="EndEvent_0dnt42b">
-        <dc:Bounds x="2900" y="378" width="36" height="36" />
+        <dc:Bounds x="3081" y="373" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0owqhq2_di" bpmnElement="SequenceFlow_0owqhq2">
         <di:waypoint x="2762" y="330" />
-        <di:waypoint x="2831" y="330" />
-        <di:waypoint x="2831" y="396" />
-        <di:waypoint x="2900" y="396" />
+        <di:waypoint x="2829" y="330" />
+        <di:waypoint x="2829" y="391" />
+        <di:waypoint x="2881" y="391" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="MessageFlow_0jxbigk_di" bpmnElement="MessageFlow_0jxbigk">
         <di:waypoint x="1595" y="436" />
@@ -408,8 +414,22 @@
       <bpmndi:BPMNEdge id="SequenceFlow_1xo09xp_di" bpmnElement="SequenceFlow_1xo09xp">
         <di:waypoint x="2762" y="472" />
         <di:waypoint x="2831" y="472" />
-        <di:waypoint x="2831" y="396" />
-        <di:waypoint x="2900" y="396" />
+        <di:waypoint x="2831" y="391" />
+        <di:waypoint x="2881" y="391" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_07ovtfe_di" bpmnElement="Task_07ovtfe">
+        <dc:Bounds x="2881" y="351" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1m3g0g2_di" bpmnElement="SequenceFlow_1m3g0g2">
+        <di:waypoint x="2981" y="391" />
+        <di:waypoint x="3081" y="391" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MessageFlow_1xq4bv6_di" bpmnElement="MessageFlow_1xq4bv6">
+        <di:waypoint x="2931" y="351" />
+        <di:waypoint x="2931" y="180" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2898" y="291" width="62" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
