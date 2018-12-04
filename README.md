@@ -65,6 +65,39 @@
 * [Что такое «хорошее» ТЗ на сайт?](https://habr.com/post/5556/)
 
 ### Лабораторная работа №6. Работа с LaTeX
+#### Оффлайн-редактор:
+1. https://miktex.org/
+1. https://www.texstudio.org/
+Мануал: http://texstudio.sourceforge.net/manual/current/usermanual_en.html
+
+#### Онлайн-редакторы:
+* https://ru.overleaf.com/ (совмещён с  https://ru.sharelatex.com/)
+* https://latexbase.com
+
+#### Краткие онлайн-курсы:
+* https://learnxinyminutes.com/docs/latex/
+* https://www.latex-tutorial.com/tutorials/
+* https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
+
+#### Объемные материалы:
+* Русская и английская Wiki: https://ru.wikibooks.org/wiki/LaTeX, https://en.wikibooks.org/wiki/LaTeX
+* [Курс на Coursera](https://ru.coursera.org/learn/latex)
+
+#### Создание презентаций в LaTeX:
+
+#### Полезные шаблоны:
+* [Бакалаврская и магистерская диссертации](https://bitbucket.org/McLeree/latex-sp-vstu/wiki/Home)
+* [Шаблон кандидатской диссертации](https://www.sharelatex.com/templates/thesis/russian-phd-latex-dissertation-template), [Он же на GitHub](https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template)
+* [Шаблон статьи для Springer](https://www.springer.com/gp/livingreviews/latex-templates)
+* https://www.overleaf.com/gallery/tagged/springer 
+
+#### Cheat sheets:
+* https://wch.github.io/latexsheet/latexsheet.pdf
+* ftp://ftp.dante.de/tex-archive/info/latex-refsheet/LaTeX_RefSheet.pdf
+
+#### Дополнительные инструменты:
+* [Take a screenshot of math and paste the LaTeX into your editor](https://mathpix.com/)
+* [LaTeX Table Generator](https://www.tablesgenerator.com/)
 
 
 ## Различные материалы для чтения на досуге
