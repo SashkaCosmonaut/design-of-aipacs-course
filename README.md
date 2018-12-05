@@ -67,44 +67,74 @@
 * [Что такое «хорошее» ТЗ на сайт?](https://habr.com/post/5556/)
 
 ### Лабораторная работа №6. Работа с LaTeX
-На данной лабораторной работе ТЗ, сформированное на прошлой лабораторной работе, необходимо сверстать в системе компьютерной вёрстки LaTeX. На выходе данной работы в соответствующей папке репозитория должен быть исходный код (.tex) и другие файлы для разработки ТЗ. Сам PDF-файл ТЗ либо размещается в ней же, либо в папке 5-й лабораторной работы, если вы сразу делаете две лабораторные, а лучше в обеих папках.
+На данной лабораторной работе ТЗ, сформированное на прошлой лабораторной работе, необходимо сверстать в системе компьютерной вёрстки LaTeX. На выходе данной работы в соответствующей папке репозитория должен быть исходный код (.tex) и другие файлы для разработки ТЗ. Сам PDF-файл ТЗ либо размещается в ней же, либо в папке 5-й лабораторной работы, если вы сразу делаете две лабораторные, а лучше в обеих папках. 
 
-**Доп. требования:** необходимо, чтобы в файле ТЗ был хотя бы один рисунок (например, BPMN-диаграмма), одна таблица (например, таблица входных и выходных данных из файла 4-й лабораторной), оглавление и список использованных источников, сформированных с помощью BibTeX (можно туда поместить разные источники о формировании ТЗ или о работе в LaTeX).
+**Доп. требования:** необходимо, чтобы в файле ТЗ был хотя бы один рисунок (например, BPMN-диаграмма), одна таблица (например, таблица входных и выходных данных из файла 4-й лабораторной), оглавление и список использованных источников, сформированных с помощью BibTeX (можно туда поместить разные источники о формировании ТЗ или о работе в LaTeX). Ниже приложен список различных материалов, c помощью которых легко в нём разобраться.
 
-#### Оффлайн-редактор:
-1. https://miktex.org/
-1. https://www.texstudio.org/
-Мануал: http://texstudio.sourceforge.net/manual/current/usermanual_en.html
+#### Материалы
+Извиняюсь за неудобства, но на всякий случай, проверяйте, пожалуйста, материалы на актуальность - в слишком старых статьях что-то может делаться сложнее, чем это есть сейчас. Сейчас технологии LaTeX хорошо развились и на многие вопросы есть более простые ответы, есть более проработанные шаблоны и более актуальные репозитории.
+
+#### Оффлайн-редактор и IDE:
+1. [MiKTeX - хороший дистрибутив TeX для платформы Windows, в котором множество пакетов и в комплекте идёт хорошая IDE TeXWorks](https://miktex.org/)
+1. [TeXstudio - также очень хорошая IDE, но для работы заранее надо поставить MiKTeX](https://www.texstudio.org/) Мануал для неё: http://texstudio.sourceforge.net/manual/current/usermanual_en.html
 
 #### Онлайн-редакторы:
-* https://ru.overleaf.com/ (совмещён с  https://ru.sharelatex.com/)
-* https://latexbase.com
+* https://ru.overleaf.com/ (теперь совмещён с https://ru.sharelatex.com/)
+* https://latexbase.com (аналог JSFiddle)
 
 #### Краткие онлайн-курсы:
+* [Tutorial: 4 steps to getting started with LaTeX (and liking it)](https://medium.com/@learnetto/tutorial-4-steps-to-getting-started-with-latex-and-liking-it-1f76d4b0a6c4)
 * https://learnxinyminutes.com/docs/latex/
 * https://www.latex-tutorial.com/tutorials/
-* https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
+* https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes (короткая шпаргалка в Overleaf)
+* http://www.machinelearning.ru/wiki/index.php?title=LaTeX (Немного информации, но много ссылок)
 
 #### Объемные материалы:
 * Русская и английская Wiki: https://ru.wikibooks.org/wiki/LaTeX, https://en.wikibooks.org/wiki/LaTeX
+* https://www.overleaf.com/learn/latex/Main_Page (большая справка в Overleaf)
 * [Курс на Coursera](https://ru.coursera.org/learn/latex)
+* [Целый блог про LaTeX](https://texblog.org/)
+* [В блоге "Записки дебианщика" много интересных статей про LaTeX](http://mydebianblog.blogspot.com/), например [Как оформить диплом в LaTeX? (немного устаревшая статья)](http://mydebianblog.blogspot.com/2008/11/latex.html)
 
-#### Создание презентаций в LaTeX:
+#### Книги:
+* [Сверстай диплом красиво: LaTeX за три дня](http://www.stolyarov.info/books/pdf/latex3days.pdf)
+* [Набор математических формул в LATEX 2ε](https://grammarware.net/text/syutkin/MathInLaTeX.pdf)
+* [С. М. Львовский - Набор и вёрстка в системе LATEX](https://www.mccme.ru/free-books/llang/newllang.pdf)
+* [Кнут Д. - Всё про TeX](https://www.rulit.me/author/knut-donald/vsyo-pro-tex-download-free-198456.html)
+* [The Not So Short Introduction To LaTeX 2e](https://tobi.oetiker.ch/lshort/lshort.pdf)
+* [More Math Into LATEX](http://users.auth.gr/siskakis/Gratzer-Latex.pdf)
+* [Learning LATEX by Doing](http://www.cs.cmu.edu/afs/cs/academic/class/15251/Site/current/Help/Latex-info/latexcourse.pdf)
+* [LATEX for Beginners](http://www.docs.is.ed.ac.uk/skills/documents/3722/3722-2014.pdf)
 
-#### Полезные шаблоны:
+#### Создание презентаций в LaTeX с пакетом beamer:
+* [Хабр: Beamer — верстаем презентации](https://habr.com/post/145523/)
+* [Краткая презентация на эту тему](http://statmod.ru/wiki/_media/study:fall2013:tex:06-beamer.pdf?id=study%3Afall2013%3Atex&cache=cache)
+* [Статья на "Записках дебианщика"](http://mydebianblog.blogspot.com/2007/07/latex-beamer.html)
+* [Ещё статья](http://ego-machine.blogspot.com/2010/03/latex-beamer.html)
+* [Вики на английском](https://en.wikibooks.org/wiki/LaTeX/Presentations)
+
+#### Полезные шаблоны и статьи для вёрстки работ:
 * [Бакалаврская и магистерская диссертации](https://bitbucket.org/McLeree/latex-sp-vstu/wiki/Home)
 * [Шаблон кандидатской диссертации](https://www.sharelatex.com/templates/thesis/russian-phd-latex-dissertation-template), [Он же на GitHub](https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template)
+* [Шаблоны диплома, диссертации и автореферата Санкт-Петербургского Государственного Университета](http://meta.math.spbu.ru/ru/template.shtml)
+* [Как я диплом в LaTeX писал с GitHub, Docker и TravisCI](https://habr.com/post/424805/)
+* [Верстка сборника тезисов конференции в LaTeX](https://habr.com/post/348950/)
+* [Диплом бакалавра в LaTeX, или ДСТУ 3008-95 в 150 строк](https://habr.com/post/144648/)
 * [Шаблон статьи для Springer](https://www.springer.com/gp/livingreviews/latex-templates)
 * https://www.overleaf.com/gallery/tagged/springer 
+* [Best engineer resume template (uses LaTeX)](https://notes.breakoutlist.com/best-engineer-resume-template-uses-latex-14380b4a239f)
+* [Создаем резюме на LaTeX — как и зачем?](https://habr.com/post/187496/)
+* [Не пишите в LaTeX! Он только для вёрстки](https://habr.com/post/339340/)
 
 #### Cheat sheets:
 * https://wch.github.io/latexsheet/latexsheet.pdf
 * ftp://ftp.dante.de/tex-archive/info/latex-refsheet/LaTeX_RefSheet.pdf
 
-#### Дополнительные инструменты:
+#### Инструменты:
 * [Take a screenshot of math and paste the LaTeX into your editor](https://mathpix.com/)
-* [LaTeX Table Generator](https://www.tablesgenerator.com/)
-
+* [LaTeX - генератор таблиц](https://www.tablesgenerator.com/)
+* [LaTeX - генератор формул](https://www.codecogs.com/latex/eqneditor.php)
+* [Электрические схемы средствами LaTeX и TikZ](https://habr.com/post/250541/)
 
 ## Различные материалы для чтения на досуге
 * [Машинное обучение для людей](https://vas3k.ru/blog/machine_learning/)
