@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="definitions_071x583" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision_0iluk0z" name="identification">
+    <extensionElements>
+      <biodi:bounds x="608" y="116" width="180" height="80" />
+      <biodi:edge source="InputData_14oqin6">
+        <biodi:waypoints x="445" y="129" />
+        <biodi:waypoints x="608" y="187" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_14oqin6" />
+    </informationRequirement>
+    <decisionTable id="decisionTable">
+      <input id="input1" label="">
+        <inputExpression id="inputExpression1" typeRef="long">
+          <text>face_info</text>
+        </inputExpression>
+      </input>
+      <output id="output1" label="" name="is_identifyed" typeRef="boolean" />
+      <output id="OutputClause_1dkeund" name="result" typeRef="string" />
+      <rule id="DecisionRule_0tbe0z0">
+        <description>Return client data in JSON</description>
+        <inputEntry id="UnaryTests_01szbti">
+          <text>face_picture</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qblti0">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10bpkoh">
+          <text>ok</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09vvf6w">
+        <description>return NOT OK</description>
+        <inputEntry id="UnaryTests_1o7eczp">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1obnqgp">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04cds53">
+          <text>not ok</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_0ex2ew0" name="client_info">
+    <extensionElements>
+      <biodi:bounds x="324" y="242" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_14oqin6" name="client_face">
+    <extensionElements>
+      <biodi:bounds x="320" y="121" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="Decision_1ijqqzq" name="adding new face">
+    <extensionElements>
+      <biodi:bounds x="608" y="214" width="180" height="80" />
+      <biodi:edge source="InputData_14oqin6">
+        <biodi:waypoints x="425" y="166" />
+        <biodi:waypoints x="608" y="261" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0ex2ew0">
+        <biodi:waypoints x="449" y="268" />
+        <biodi:waypoints x="608" y="274" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_14oqin6" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_0ex2ew0" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1295dfr">
+      <input id="InputClause_01flcqs" label="face_picture">
+        <inputExpression id="LiteralExpression_0v0adif" typeRef="long">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0meijln">
+        <inputExpression id="LiteralExpression_0pmylba" typeRef="string">
+          <text>user_data_in_JSON</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1cvtppb" name="face_descriptor" typeRef="double" />
+      <output id="OutputClause_1hn4qwv" name="adding_status" typeRef="string" />
+      <rule id="DecisionRule_0acsw19">
+        <inputEntry id="UnaryTests_1pxwii0">
+          <text>face_finded</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ssntym">
+          <text>{"Имя":"Иван", "Фамилия":"Иван"}</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18adg6d">
+          <text>descriptor_vector</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sxu2sj">
+          <text>Added</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17t1t2e">
+        <inputEntry id="UnaryTests_1ko56c6">
+          <text>face_not_finded</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gbbr4d">
+          <text>{"Имя":"Иван", "Фамилия":"Иван"}</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1c4gdo2">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1do8gxf">
+          <text>Not added</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1l5gnj7">
+        <inputEntry id="UnaryTests_13jgxa2">
+          <text>face_finded</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04554ax">
+          <text>No data</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1n4mr4u">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05q4m6h">
+          <text>Not added</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_16mnian">
+        <inputEntry id="UnaryTests_0psbvt0">
+          <text>face_not_finded</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wrqv9i">
+          <text>No data</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19slxlh">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_166parf">
+          <text>Not added</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
