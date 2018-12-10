@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="definitions_0izf6b3" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision" name="Система принятия решения по выдачи микрокредита">
+    <extensionElements>
+      <biodi:bounds x="150" y="150" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="decisionTable">
+      <input id="input1" label="Кол-во просроченных дней последнего займа">
+        <inputExpression id="inputExpression1" typeRef="integer">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_18n4pjb">
+        <inputExpression id="LiteralExpression_1jyjoyr" typeRef="boolean">
+          <text>Есть действующий заем ?</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_19z51vz">
+        <inputExpression id="LiteralExpression_04q1h1e" typeRef="string">
+          <text>Цель кредита</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0eamzkt">
+        <inputExpression id="LiteralExpression_1lw4zft" typeRef="boolean">
+          <text>Безработный ?</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0z7ysvt">
+        <inputExpression id="LiteralExpression_0j4f86y" typeRef="integer">
+          <text>Возраст</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0egt902">
+        <inputExpression id="LiteralExpression_0v0rdgv" typeRef="boolean">
+          <text>Документы подтверждены ?</text>
+        </inputExpression>
+      </input>
+      <output id="output1" label="" name="Выдаем кредит ?" typeRef="boolean" />
+      <rule id="DecisionRule_0c7af27">
+        <description>Т.к. есть действующий заем, поэтому не выдаем</description>
+        <inputEntry id="UnaryTests_087f03k">
+          <text>0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ii822x">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1bz8bal">
+          <text>Починить автомобиль</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xr6qq9">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1onk51r">
+          <text>23</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0acbz0v">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1o8utd8">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0d5cc18">
+        <description>Т.к. цель кредита - оплата других долгов, то не выдаем</description>
+        <inputEntry id="UnaryTests_1gx5fw3">
+          <text>2</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_196uizs">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0do4jpk">
+          <text>Оплата других долгов</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g5zadp">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_058dfmh">
+          <text>25</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ptbgun">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0h1fy4p">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0mbsa35">
+        <description>Т.к. безработный, то не выдаем</description>
+        <inputEntry id="UnaryTests_0yfa0zl">
+          <text>0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_159w59m">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ub1y5c">
+          <text>Для бизнеса</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lisvnt">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1yuzkpq">
+          <text>27</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1p00554">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jqxmc5">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0o1puz5">
+        <description>Т.к. меньше либо равно 18 лет, то не выдаем</description>
+        <inputEntry id="UnaryTests_1xr39lp">
+          <text>3</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fzmyf9">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zljul5">
+          <text>Оплата аренды квартиры</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vnvvue">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05net2l">
+          <text>&lt;= 18</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01k5bc9">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ap9m9d">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1c8lnr4">
+        <inputEntry id="UnaryTests_0954kin">
+          <text>0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_139zedu">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ce04rw">
+          <text>Ремонт в квартире</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lhxsaf">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wirxyu">
+          <text>25</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1udqg70">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0f430xb">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_16orlku">
+        <description>Т.к. не подтверждены документы, то не выдаем</description>
+        <inputEntry id="UnaryTests_16zfdgi">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ft2efc">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gxuiy9">
+          <text>Купить телефон</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0itczer">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0466hfk">
+          <text>28</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0a7rewd">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1urjym1">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_04zn8td">
+        <inputEntry id="UnaryTests_0d8iogp">
+          <text>2</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1l1u6mj">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vqs8ca">
+          <text>Оплата штрафов</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1thltvy">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09rq7rt">
+          <text>29</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1c6wsde">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1g13poe">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ueb4zd">
+        <description>Т.к. больше возраст больше либо равен 65, то не выдаем</description>
+        <inputEntry id="UnaryTests_10qos18">
+          <text>3</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qo4fji">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_182hjtv">
+          <text>На отпуск</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fqhsqs">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12was03">
+          <text>&gt;= 65</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mpjkub">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1rm8iuh">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ou9yvu">
+        <description>Т.к. количество просроченных дней больше либо равно 4, то не выдаем</description>
+        <inputEntry id="UnaryTests_0jon3ol">
+          <text>&gt;= 4</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0u1y4ut">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qgt5is">
+          <text>Для бизнеса</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ynge4g">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01hhnpu">
+          <text>30</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0f2jqbv">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1itfctq">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_148p44i">
+        <inputEntry id="UnaryTests_0gm24y6">
+          <text>0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kcuimv">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1m701va">
+          <text>Починить автомобиль</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cqsxpe">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15hcyiz">
+          <text>26</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kqq7di">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19fc3gs">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_03z1dm7">
+        <inputEntry id="UnaryTests_0hlufxh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13f4xwu">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11d3vxs">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1n0fwzq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16gue1t">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0n6ccsd">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18saz0b">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
