@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="definitions_01t5bxu" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision_05wlcir" name="Board Game">
+    <extensionElements>
+      <biodi:bounds x="707" y="291" width="180" height="80" />
+      <biodi:edge source="InputData_02zr2yq">
+        <biodi:waypoints x="620" y="450" />
+        <biodi:waypoints x="732" y="371" />
+      </biodi:edge>
+      <biodi:edge source="Decision_040gv9l">
+        <biodi:waypoints x="916" y="442" />
+        <biodi:waypoints x="878" y="371" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0qecxar">
+        <biodi:waypoints x="763" y="450" />
+        <biodi:waypoints x="762" y="371" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_02zr2yq" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#Decision_040gv9l" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_0qecxar" />
+    </informationRequirement>
+    <decisionTable id="decisionTable">
+      <input id="input1" label="Board game type">
+        <inputExpression id="inputExpression1" typeRef="string">
+          <text>gameType</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_135yidx" label="Hard Rules">
+        <inputExpression id="LiteralExpression_09bfp0z" typeRef="boolean">
+          <text>hardRules</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1f1kbb5" label="Playing with childs">
+        <inputExpression id="LiteralExpression_002i7hn" typeRef="boolean">
+          <text>withChilds</text>
+        </inputExpression>
+      </input>
+      <output id="output1" label="Board Game" name="boardGame" typeRef="string" />
+      <rule id="DecisionRule_1uevr4m">
+        <inputEntry id="UnaryTests_08ysia2">
+          <text>"Abstract Games"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0l9z87u">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1w65naj">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1rnnevs">
+          <text>"Chess"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0mchwe9">
+        <inputEntry id="UnaryTests_15w25n8">
+          <text>"Abstract Games"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wkqyyg">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_078kwyj">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0oeni6p">
+          <text>"Chekers"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02eyf80">
+        <inputEntry id="UnaryTests_0zya12j">
+          <text>"Ameritrash Games"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kj9e3t">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gfu6tc">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1iy7har">
+          <text>"Monopoly"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1pfhzg5">
+        <inputEntry id="UnaryTests_15x3spa">
+          <text>"Ameritrash Games"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1a6fwai">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1a8pyyn">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0viut75">
+          <text>"Axis and allies"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0oi2fl5">
+        <inputEntry id="UnaryTests_0e3mcst">
+          <text>"Ameritrash Games"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cyk0ed">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ayirwe">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01u53sj">
+          <text>"Munchkin"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0kk2pbz">
+        <inputEntry id="UnaryTests_1gr5pg7">
+          <text>"Euro Games"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0u4ug9t">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tchrri">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1owha26">
+          <text>"7 Wonders"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1h3gyjc">
+        <inputEntry id="UnaryTests_1phvzlf">
+          <text>"Euro Games"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1p0wv2x">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ecq7au">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_089y30w">
+          <text>"Catan"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0cxy8mi">
+        <inputEntry id="UnaryTests_0vd4v8m">
+          <text>"Euro Games"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03cnszz">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ae7gb9">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19s5jcc">
+          <text>"Carcasson"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0x76e52">
+        <inputEntry id="UnaryTests_0k7ecn9">
+          <text>"Party Games"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09aze9m">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_090v1cn">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09tj7cw">
+          <text>"Charades"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0g9v2nh">
+        <inputEntry id="UnaryTests_0p8qad2">
+          <text>"Party Games"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04w53r0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ifnu1t">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1u27ho1">
+          <text>"Mafia"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1gy2rot">
+        <inputEntry id="UnaryTests_0641xli">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04hx7ow">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jjibtr">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0dogl6j">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_02zr2yq" name="Playing with childrens?">
+    <extensionElements>
+      <biodi:bounds x="545" y="450" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="Decision_040gv9l" name="Board game type">
+    <extensionElements>
+      <biodi:bounds x="848" y="442" width="180" height="80" />
+      <biodi:edge source="InputData_1y9krr9">
+        <biodi:waypoints x="879" y="592" />
+        <biodi:waypoints x="880" y="522" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0ltw5ij">
+        <biodi:waypoints x="1121" y="482" />
+        <biodi:waypoints x="1028" y="479" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_1y9krr9" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_0ltw5ij" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1e4u8jw">
+      <input id="InputClause_0jbvc5t" label="Count of players">
+        <inputExpression id="LiteralExpression_044ib6t" typeRef="integer">
+          <text>playerCount</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0y7op72" label="Competitive or Cooperative">
+        <inputExpression id="LiteralExpression_16i37ob" typeRef="string">
+          <text>compVScoop</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_14m6rxs" label="Board game type" name="gameType" typeRef="string" />
+      <rule id="DecisionRule_1iuap31">
+        <inputEntry id="UnaryTests_09vs9w8">
+          <text>2</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uw7bxm">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_188qjs7">
+          <text>"Abstract Games"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0rwemuc">
+        <inputEntry id="UnaryTests_1fc59zl">
+          <text>&lt;= 4</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nyir8x">
+          <text>"Competitive"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01xno3r">
+          <text>"Ameritrash Games"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10c4wbb">
+        <inputEntry id="UnaryTests_1mljubh">
+          <text>&lt;= 4</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rw4lgv">
+          <text>"Cooperative"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0k0t2rc">
+          <text>"Euro Games"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ua5aw0">
+        <inputEntry id="UnaryTests_1y375tu">
+          <text>&gt; 4</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pbxnxm">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1v3yo70">
+          <text>"Party Games"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0uuy45r">
+        <inputEntry id="UnaryTests_07ea2uy">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1i88lkt">
+          <text>"Competitive"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hmjtnq">
+          <text>"Set count of players"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_05gg9my">
+        <inputEntry id="UnaryTests_02sd6ag">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17n2xxj">
+          <text>"Cooperative"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_097m3n5">
+          <text>"Set count of players"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1y9krr9" name="Count of players">
+    <extensionElements>
+      <biodi:bounds x="816" y="592" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_0qecxar" name="Hard rules?">
+    <extensionElements>
+      <biodi:bounds x="700" y="450" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_0ltw5ij" name="Competitive or Cooperative?">
+    <extensionElements>
+      <biodi:bounds x="1121" y="459" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+</definitions>
