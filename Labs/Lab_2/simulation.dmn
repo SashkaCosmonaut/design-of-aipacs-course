@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="definitions_0bocpyh" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="Content" name="Content">
+    <extensionElements>
+      <biodi:bounds x="182" y="283" width="180" height="80" />
+      <biodi:edge source="InputData_1gkbwpd">
+        <biodi:waypoints x="213" y="429" />
+        <biodi:waypoints x="230" y="365" />
+      </biodi:edge>
+      <biodi:edge source="InputData_15v4m1k">
+        <biodi:waypoints x="339" y="430" />
+        <biodi:waypoints x="311" y="367" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_1gkbwpd" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_15v4m1k" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0fvmgul">
+      <input id="InputClause_13alurm" label="Your age">
+        <inputExpression id="LiteralExpression_1g8zpk9" typeRef="integer">
+          <text>Age</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1hpbnbw" label="Do you want watch game">
+        <inputExpression id="LiteralExpression_0qb30o8" typeRef="boolean">
+          <text>gameOrMan</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_047e3y8" label="Content" name="ourContent" typeRef="string" />
+      <rule id="DecisionRule_16b1fbq">
+        <inputEntry id="UnaryTests_1y4gwpj">
+          <text>[0..16)</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qzkrdv">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sry615">
+          <text>"Game content"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0x3n4zt">
+        <inputEntry id="UnaryTests_0cz54o6">
+          <text>[0..16)</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12pi5k1">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jnhvdn">
+          <text>"Talking content"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1wyg1v1">
+        <inputEntry id="UnaryTests_04w13jd">
+          <text>[16..24]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1a1hruu">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04t36y2">
+          <text>"Fap content"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0oysdzd">
+        <inputEntry id="UnaryTests_0fnxzin">
+          <text>[16..24]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_119cs65">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1282x6m">
+          <text>"Something forbidden"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0n1kcx0">
+        <inputEntry id="UnaryTests_0c4oxgv">
+          <text>&lt; 0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pe3nm6">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1s2uc7q">
+          <text>"Lie"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1mgz4vh">
+        <inputEntry id="UnaryTests_1rh3c8c">
+          <text>&gt; 24</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09sfion">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tanh8u">
+          <text>"Go to work"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1gkbwpd" name="Your age">
+    <extensionElements>
+      <biodi:bounds x="133" y="429" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_15v4m1k" name="Do you want watch game">
+    <extensionElements>
+      <biodi:bounds x="285" y="430" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_0vby9g3" name="Streamers male">
+    <extensionElements>
+      <biodi:bounds x="443" y="309" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <knowledgeSource id="KnowledgeSource_1hfqg3r" name="Twitch strimers">
+    <extensionElements>
+      <biodi:bounds x="140" y="185" width="100" height="63" />
+    </extensionElements>
+  </knowledgeSource>
+  <decision id="Streamer" name="Streamer">
+    <extensionElements>
+      <biodi:bounds x="325" y="146" width="180" height="80" />
+      <biodi:edge source="InputData_0vby9g3">
+        <biodi:waypoints x="491" y="309" />
+        <biodi:waypoints x="435" y="226" />
+      </biodi:edge>
+      <biodi:edge source="Content">
+        <biodi:waypoints x="314" y="283" />
+        <biodi:waypoints x="375" y="226" />
+      </biodi:edge>
+      <biodi:edge source="KnowledgeSource_1hfqg3r">
+        <biodi:waypoints x="240" y="206" />
+        <biodi:waypoints x="325" y="186" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_0vby9g3" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#Content" />
+    </informationRequirement>
+    <authorityRequirement>
+      <requiredAuthority href="#KnowledgeSource_1hfqg3r" />
+    </authorityRequirement>
+    <decisionTable id="DecisionTable_0f9u0zl">
+      <input id="InputClause_1ckg3b6" label="What do you want?">
+        <inputExpression id="LiteralExpression_1tz7gs8" typeRef="string">
+          <text>ourContent</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1s2x4b3" label="Streamers male">
+        <inputExpression id="LiteralExpression_1f9qsyy" typeRef="boolean">
+          <text>Male</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1htywx5" label="Streamer" name="ourStreamer" typeRef="string" />
+      <rule id="DecisionRule_1caly47">
+        <inputEntry id="UnaryTests_0h3g6bo">
+          <text>"Game content"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nrhzb3">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09cnqww">
+          <text>"HoneyMad"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1epk8sc">
+        <inputEntry id="UnaryTests_0d5gb08">
+          <text>"Talking content"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nmtul3">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cy3hy2">
+          <text>"Bratishkinoff"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1t78jsn">
+        <inputEntry id="UnaryTests_0t4xjjj">
+          <text>"Fap content"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14qrg5b">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hxeqyo">
+          <text>"WeLoveGames"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0lcrvuo">
+        <inputEntry id="UnaryTests_07p1kob">
+          <text>"Game content"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1v71ofb">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0r22x4l">
+          <text>"Etozhezanuda"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jz9xys">
+        <inputEntry id="UnaryTests_0nlo6lb">
+          <text>"Talking content"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1kkr92b">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ptijoz">
+          <text>"Olyasha"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0x4unwz">
+        <inputEntry id="UnaryTests_050imuo">
+          <text>"Fap content"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hdmnyy">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0c5qdtd">
+          <text>"Amoraunth"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ljw04t">
+        <inputEntry id="UnaryTests_0kiilq0">
+          <text>"Something forbidden"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1r30487">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_02m9a7s">
+          <text>"Guit88man"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0484hkm">
+        <inputEntry id="UnaryTests_1ugburd">
+          <text>"Lie"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_156ex7w">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0m7ez3l">
+          <text>"You are not worthy"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0dm8e9j">
+        <inputEntry id="UnaryTests_0kp2atz">
+          <text>"Go to work"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qu0imn">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_156w8gb">
+          <text>"Stream is not for you"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <knowledgeSource id="KnowledgeSource_0gwpryr" name="Twitch smiles">
+    <extensionElements>
+      <biodi:bounds x="263" y="45" width="100" height="63" />
+    </extensionElements>
+  </knowledgeSource>
+  <inputData id="InputData_0bo33vh" name="What is streamer doing">
+    <extensionElements>
+      <biodi:bounds x="591" y="171" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="Smile" name="Smile">
+    <extensionElements>
+      <biodi:bounds x="449" y="26" width="180" height="80" />
+      <biodi:edge source="KnowledgeSource_0gwpryr">
+        <biodi:waypoints x="363" y="70" />
+        <biodi:waypoints x="449" y="59" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0bo33vh">
+        <biodi:waypoints x="636" y="171" />
+        <biodi:waypoints x="583" y="106" />
+      </biodi:edge>
+      <biodi:edge source="Streamer">
+        <biodi:waypoints x="455" y="146" />
+        <biodi:waypoints x="496" y="106" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_0bo33vh" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#Streamer" />
+    </informationRequirement>
+    <authorityRequirement>
+      <requiredAuthority href="#KnowledgeSource_0gwpryr" />
+    </authorityRequirement>
+    <decisionTable id="DecisionTable_13e4ikv">
+      <input id="InputClause_105qum2" label="Streamer">
+        <inputExpression id="LiteralExpression_07navp5" typeRef="string">
+          <text>ourStreamer</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1b7c8i8" label="What is streamer doing?">
+        <inputExpression id="LiteralExpression_0vcwz4s" typeRef="string">
+          <text>Do</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1wre5me" label="Smile" name="ourSmile" typeRef="string" />
+      <rule id="DecisionRule_11olw34">
+        <inputEntry id="UnaryTests_1idnzxs">
+          <text>"HoneyMad"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zz8cpd">
+          <text>"Game"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1blrq21">
+          <text>"BlessRNG"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0v33s0w">
+        <inputEntry id="UnaryTests_1ni8fui">
+          <text>"HoneyMad"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0t2f3kc">
+          <text>"IRL"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1kjq0w5">
+          <text>"WutFace"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ac9n1s">
+        <inputEntry id="UnaryTests_1c5euot">
+          <text>"HoneyMad", "Etozhezanuda"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1auvukn">
+          <text>"Musik"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pabmlq">
+          <text>"KreyGasm"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fucvwf">
+        <inputEntry id="UnaryTests_0d3anlv">
+          <text>"Bratishkinoff", "Olyasha"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1f86m9q">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0rn9kdc">
+          <text>"ResidentSleeper"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0q4fi34">
+        <inputEntry id="UnaryTests_0wz4z9y">
+          <text>"WeLoveGames"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hyewl8">
+          <text>"Game"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0dfhc1x">
+          <text>"KappaPride"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0622isd">
+        <inputEntry id="UnaryTests_1ad81xx">
+          <text>"WeLoveGames"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0njjov8">
+          <text>"IRL", "Musik"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1in2z0i">
+          <text>"ResidentSleeper"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hz7evw">
+        <inputEntry id="UnaryTests_1en5lze">
+          <text>"Etozhezanuda"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sv903u">
+          <text>"Game"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1h984mc">
+          <text>"CoolCat"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1gd0bmd">
+        <inputEntry id="UnaryTests_04rb7gs">
+          <text>"Etozhezanuda"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ya0ri4">
+          <text>"IRL"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vz3d4c">
+          <text>"PogChamp"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_14f02vv">
+        <inputEntry id="UnaryTests_0mvjfed">
+          <text>"Amoraunth"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1t164g8">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01y7f0l">
+          <text>"KreyGasm"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0w615hl">
+        <inputEntry id="UnaryTests_1776r8g">
+          <text>"Guit88man"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nmf10r">
+          <text>"Game"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0mvcbpu">
+          <text>"Smork"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09w6g7d">
+        <inputEntry id="UnaryTests_0zam32n">
+          <text>"Guit88man"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1u44p8v">
+          <text>"IRL"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_11md37p">
+          <text>"CoolStoryBob"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1l8pyyq">
+        <inputEntry id="UnaryTests_178ioc0">
+          <text>"Guit88man"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rmte07">
+          <text>"Musik"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1h2wj1y">
+          <text>"GachiBass"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1s6c159">
+        <inputEntry id="UnaryTests_10s14jm">
+          <text>"You are not worthy"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g6n4gt">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17c6zom">
+          <text>"So stupid man"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0i9qts8">
+        <inputEntry id="UnaryTests_00m45l7">
+          <text>"Stream is not for you"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1e7cn9c">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cit49w">
+          <text>"OLD B)"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
