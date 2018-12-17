@@ -2,52 +2,52 @@
 <definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="definitions_0izf6b3" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
   <decision id="decision" name="Система принятия решения по выдачи микрокредита">
     <extensionElements>
-      <biodi:bounds x="153" y="164" width="180" height="80" />
+      <biodi:bounds x="368" y="44" width="180" height="80" />
       <biodi:edge source="Decision_0ujxwy3">
-        <biodi:waypoints x="483" y="79" />
-        <biodi:waypoints x="313" y="164" />
+        <biodi:waypoints x="420" y="216" />
+        <biodi:waypoints x="463" y="124" />
       </biodi:edge>
     </extensionElements>
     <informationRequirement>
       <requiredDecision href="#Decision_0ujxwy3" />
     </informationRequirement>
-    <decisionTable id="decisionTable">
+    <decisionTable id="decisionTable" hitPolicy="FIRST">
       <input id="input1" label="Кол-во просроченных дней последнего займа">
         <inputExpression id="inputExpression1" typeRef="integer">
-          <text></text>
+          <text>numberOfDays</text>
         </inputExpression>
       </input>
-      <input id="InputClause_18n4pjb">
+      <input id="InputClause_18n4pjb" label="Есть действующий заем?">
         <inputExpression id="LiteralExpression_1jyjoyr" typeRef="boolean">
-          <text>Есть действующий заем ?</text>
+          <text>activeLoan</text>
         </inputExpression>
       </input>
-      <input id="InputClause_19z51vz">
+      <input id="InputClause_19z51vz" label="Цель кредита">
         <inputExpression id="LiteralExpression_04q1h1e" typeRef="string">
-          <text>Цель кредита</text>
+          <text>loanPurpose</text>
         </inputExpression>
       </input>
-      <input id="InputClause_0eamzkt">
+      <input id="InputClause_0eamzkt" label="Безработный ?">
         <inputExpression id="LiteralExpression_1lw4zft" typeRef="boolean">
-          <text>Безработный ?</text>
+          <text>isUnemployed</text>
         </inputExpression>
       </input>
-      <input id="InputClause_0z7ysvt">
+      <input id="InputClause_0z7ysvt" label="Возраст">
         <inputExpression id="LiteralExpression_0j4f86y" typeRef="integer">
-          <text>Возраст</text>
+          <text>age</text>
         </inputExpression>
       </input>
-      <input id="InputClause_0egt902">
+      <input id="InputClause_0egt902" label="Документы подтверждены ?">
         <inputExpression id="LiteralExpression_0v0rdgv" typeRef="boolean">
-          <text>Документы подтверждены ?</text>
+          <text>documentsAccepted</text>
         </inputExpression>
       </input>
-      <input id="InputClause_1ggdq2x">
+      <input id="InputClause_1ggdq2x" label="Скоринговый балл">
         <inputExpression id="LiteralExpression_09uy1vq" typeRef="integer">
-          <text>Скоринговый балл</text>
+          <text>scoring</text>
         </inputExpression>
       </input>
-      <output id="output1" label="" name="Выдаем кредит ?" typeRef="boolean" />
+      <output id="output1" label="Выдаем кредит ?" name="accept" typeRef="boolean" />
       <rule id="DecisionRule_0c7af27">
         <description>Т.к. есть действующий заем, поэтому не выдаем</description>
         <inputEntry id="UnaryTests_087f03k">
@@ -57,7 +57,7 @@
           <text>true</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1bz8bal">
-          <text>Починить автомобиль</text>
+          <text>"Починить автомобиль"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1xr6qq9">
           <text>false</text>
@@ -84,7 +84,7 @@
           <text>false</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0do4jpk">
-          <text>Оплата других долгов</text>
+          <text>"Оплата других долгов"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1g5zadp">
           <text>false</text>
@@ -111,7 +111,7 @@
           <text>false</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0ub1y5c">
-          <text>Для бизнеса</text>
+          <text>"Для бизнеса"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1lisvnt">
           <text>true</text>
@@ -138,7 +138,7 @@
           <text>false</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0zljul5">
-          <text>Оплата аренды квартиры</text>
+          <text>"Оплата аренды квартиры"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0vnvvue">
           <text>false</text>
@@ -164,7 +164,7 @@
           <text>false</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1ce04rw">
-          <text>Ремонт в квартире</text>
+          <text>"Ремонт в квартире"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0lhxsaf">
           <text>false</text>
@@ -191,7 +191,7 @@
           <text>false</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0gxuiy9">
-          <text>Купить телефон</text>
+          <text>"Купить телефон"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0itczer">
           <text>false</text>
@@ -217,7 +217,7 @@
           <text>false</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0vqs8ca">
-          <text>Оплата штрафов</text>
+          <text>"Оплата штрафов"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1thltvy">
           <text>false</text>
@@ -244,7 +244,7 @@
           <text>false</text>
         </inputEntry>
         <inputEntry id="UnaryTests_182hjtv">
-          <text>На отпуск</text>
+          <text>"На отпуск"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0fqhsqs">
           <text>false</text>
@@ -271,7 +271,7 @@
           <text>false</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0qgt5is">
-          <text>Для бизнеса</text>
+          <text>"Для бизнеса"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1ynge4g">
           <text>true</text>
@@ -297,7 +297,7 @@
           <text>false</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1m701va">
-          <text>Починить автомобиль</text>
+          <text>"Починить автомобиль"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0cqsxpe">
           <text>false</text>
@@ -313,32 +313,6 @@
         </inputEntry>
         <outputEntry id="LiteralExpression_19fc3gs">
           <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_03z1dm7">
-        <inputEntry id="UnaryTests_0hlufxh">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_13f4xwu">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_11d3vxs">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1n0fwzq">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_16gue1t">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0n6ccsd">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1gji3kc">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_18saz0b">
-          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0h1wz8c">
@@ -371,25 +345,25 @@
   </decision>
   <decision id="Decision_0ujxwy3" name="Бюро кредитных историй">
     <extensionElements>
-      <biodi:bounds x="473" y="-1" width="180" height="80" />
+      <biodi:bounds x="312" y="216" width="180" height="80" />
     </extensionElements>
-    <decisionTable id="DecisionTable_1u5flz2">
-      <input id="InputClause_1f9cjzm">
+    <decisionTable id="DecisionTable_1u5flz2" hitPolicy="FIRST">
+      <input id="InputClause_1f9cjzm" label="Количество закрытых займов">
         <inputExpression id="LiteralExpression_1vr9mho" typeRef="integer">
-          <text>Количество закрытых займов</text>
+          <text>numerOfClosed</text>
         </inputExpression>
       </input>
-      <input id="InputClause_0qfyew1">
+      <input id="InputClause_0qfyew1" label="Количество активных займов">
         <inputExpression id="LiteralExpression_0pctubz" typeRef="integer">
-          <text>Количество активных займов</text>
+          <text>numberOfActive</text>
         </inputExpression>
       </input>
-      <input id="InputClause_0gcovc5">
+      <input id="InputClause_0gcovc5" label="Количество просроченных займов">
         <inputExpression id="LiteralExpression_0llaw5c" typeRef="integer">
-          <text>Количество просроченных займов</text>
+          <text>numberOfDelayed</text>
         </inputExpression>
       </input>
-      <output id="OutputClause_04ffz1q" name="Скоринговый балл" typeRef="integer" />
+      <output id="OutputClause_04ffz1q" label="Скоринговый балл" name="scoring" typeRef="integer" />
       <rule id="DecisionRule_1qy4uvm">
         <inputEntry id="UnaryTests_1a3jepm">
           <text>3</text>
