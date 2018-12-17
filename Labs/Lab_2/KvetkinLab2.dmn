@@ -2,8 +2,15 @@
 <definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="definitions_0izf6b3" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
   <decision id="decision" name="Система принятия решения по выдачи микрокредита">
     <extensionElements>
-      <biodi:bounds x="150" y="150" width="180" height="80" />
+      <biodi:bounds x="153" y="164" width="180" height="80" />
+      <biodi:edge source="Decision_0ujxwy3">
+        <biodi:waypoints x="483" y="79" />
+        <biodi:waypoints x="313" y="164" />
+      </biodi:edge>
     </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Decision_0ujxwy3" />
+    </informationRequirement>
     <decisionTable id="decisionTable">
       <input id="input1" label="Кол-во просроченных дней последнего займа">
         <inputExpression id="inputExpression1" typeRef="integer">
@@ -35,6 +42,11 @@
           <text>Документы подтверждены ?</text>
         </inputExpression>
       </input>
+      <input id="InputClause_1ggdq2x">
+        <inputExpression id="LiteralExpression_09uy1vq" typeRef="integer">
+          <text>Скоринговый балл</text>
+        </inputExpression>
+      </input>
       <output id="output1" label="" name="Выдаем кредит ?" typeRef="boolean" />
       <rule id="DecisionRule_0c7af27">
         <description>Т.к. есть действующий заем, поэтому не выдаем</description>
@@ -55,6 +67,9 @@
         </inputEntry>
         <inputEntry id="UnaryTests_0acbz0v">
           <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1701j2h">
+          <text>4</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1o8utd8">
           <text>false</text>
@@ -80,6 +95,9 @@
         <inputEntry id="UnaryTests_1ptbgun">
           <text>true</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_179a2kj">
+          <text>3</text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0h1fy4p">
           <text>false</text>
         </outputEntry>
@@ -103,6 +121,9 @@
         </inputEntry>
         <inputEntry id="UnaryTests_1p00554">
           <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03bujug">
+          <text>5</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1jqxmc5">
           <text>false</text>
@@ -128,6 +149,9 @@
         <inputEntry id="UnaryTests_01k5bc9">
           <text>true</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_040rfyr">
+          <text>2</text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_0ap9m9d">
           <text>false</text>
         </outputEntry>
@@ -150,6 +174,9 @@
         </inputEntry>
         <inputEntry id="UnaryTests_1udqg70">
           <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fz2bja">
+          <text>10</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0f430xb">
           <text>true</text>
@@ -175,6 +202,9 @@
         <inputEntry id="UnaryTests_0a7rewd">
           <text>false</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1g6k6wf">
+          <text>8</text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1urjym1">
           <text>false</text>
         </outputEntry>
@@ -197,6 +227,9 @@
         </inputEntry>
         <inputEntry id="UnaryTests_1c6wsde">
           <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kknhj0">
+          <text>6</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1g13poe">
           <text>true</text>
@@ -222,6 +255,9 @@
         <inputEntry id="UnaryTests_1mpjkub">
           <text>true</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1qk0o34">
+          <text>1</text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1rm8iuh">
           <text>false</text>
         </outputEntry>
@@ -246,6 +282,9 @@
         <inputEntry id="UnaryTests_0f2jqbv">
           <text>true</text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1wxkno1">
+          <text>7</text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_1itfctq">
           <text>false</text>
         </outputEntry>
@@ -268,6 +307,9 @@
         </inputEntry>
         <inputEntry id="UnaryTests_0kqq7di">
           <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0w20l5t">
+          <text>9</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_19fc3gs">
           <text>true</text>
@@ -292,8 +334,200 @@
         <inputEntry id="UnaryTests_0n6ccsd">
           <text></text>
         </inputEntry>
+        <inputEntry id="UnaryTests_1gji3kc">
+          <text></text>
+        </inputEntry>
         <outputEntry id="LiteralExpression_18saz0b">
           <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0h1wz8c">
+        <inputEntry id="UnaryTests_1gge53y">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gjqlpp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sdppyi">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rpiyds">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0go8gur">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rms0cm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vrwha7">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14ieiu9">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_0ujxwy3" name="Бюро кредитных историй">
+    <extensionElements>
+      <biodi:bounds x="473" y="-1" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="DecisionTable_1u5flz2">
+      <input id="InputClause_1f9cjzm">
+        <inputExpression id="LiteralExpression_1vr9mho" typeRef="integer">
+          <text>Количество закрытых займов</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0qfyew1">
+        <inputExpression id="LiteralExpression_0pctubz" typeRef="integer">
+          <text>Количество активных займов</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0gcovc5">
+        <inputExpression id="LiteralExpression_0llaw5c" typeRef="integer">
+          <text>Количество просроченных займов</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_04ffz1q" name="Скоринговый балл" typeRef="integer" />
+      <rule id="DecisionRule_1qy4uvm">
+        <inputEntry id="UnaryTests_1a3jepm">
+          <text>3</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05a5csa">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1an1efj">
+          <text>5</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0nzg6u2">
+          <text>4</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0hgya29">
+        <inputEntry id="UnaryTests_1iyu52s">
+          <text>5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1l6wt38">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18v8sve">
+          <text>5</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1w9usip">
+          <text>3</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1g8wdcw">
+        <inputEntry id="UnaryTests_0vpxbvw">
+          <text>4</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ufcaml">
+          <text>0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tm1a55">
+          <text>5</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qqcs70">
+          <text>5</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1kmbcaj">
+        <inputEntry id="UnaryTests_1184b2q">
+          <text>0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ms9s8q">
+          <text>3</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hrhrms">
+          <text>0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tj9hsv">
+          <text>2</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0loz9w0">
+        <inputEntry id="UnaryTests_11e7rm2">
+          <text>10</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wo0bcl">
+          <text>0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hr9r65">
+          <text>0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vi5794">
+          <text>10</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0swd7d2">
+        <inputEntry id="UnaryTests_0jw15do">
+          <text>5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ymrt4d">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06qq286">
+          <text>1</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09fdrrn">
+          <text>8</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1wi3054">
+        <inputEntry id="UnaryTests_0vggoi1">
+          <text>6</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hz0yem">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01l7hv4">
+          <text>2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0j732t6">
+          <text>6</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_05h6g01">
+        <inputEntry id="UnaryTests_0vz4feg">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0llkkjx">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1l8l8xk">
+          <text>10</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0hntunl">
+          <text>1</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0dcippb">
+        <inputEntry id="UnaryTests_094zxlo">
+          <text>4</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1j7no61">
+          <text>0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1yrmk9j">
+          <text>0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1h8jxmw">
+          <text>7</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18uk6dd">
+        <inputEntry id="UnaryTests_12k00kj">
+          <text>3</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xkmo0v">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10qx3qh">
+          <text>0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0drrsq3">
+          <text>9</text>
         </outputEntry>
       </rule>
     </decisionTable>
