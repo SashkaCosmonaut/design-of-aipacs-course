@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="definitions_1nivsdo" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="demostration_of_exoskeletons_dynamics" name=" Выбор видеоряда в зависимости от введенных параметров">
+    <extensionElements>
+      <biodi:bounds x="402" y="134" width="180" height="80" />
+      <biodi:edge source="Decision_1ockyc2">
+        <biodi:waypoints x="351" y="271" />
+        <biodi:waypoints x="476" y="214" />
+      </biodi:edge>
+      <biodi:edge source="step_height">
+        <biodi:waypoints x="671" y="255" />
+        <biodi:waypoints x="574" y="214" />
+      </biodi:edge>
+      <biodi:edge source="Decision_0vskeo2">
+        <biodi:waypoints x="516" y="371" />
+        <biodi:waypoints x="508" y="214" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Decision_1ockyc2" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#step_height" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#Decision_0vskeo2" />
+    </informationRequirement>
+    <decisionTable id="decisionTable">
+      <input id="input1" label="">
+        <inputExpression id="inputExpression1" typeRef="string">
+          <text>высота ступенек</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1f6z9lf">
+        <inputExpression id="LiteralExpression_04i27md" typeRef="string">
+          <text>комплекция человека</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1srvqru">
+        <inputExpression id="LiteralExpression_1phfk87" typeRef="string">
+          <text>пол человека</text>
+        </inputExpression>
+      </input>
+      <output id="output1" label="" name="" typeRef="string" />
+      <rule id="DecisionRule_0fpa3g6">
+        <inputEntry id="UnaryTests_15eb6jx">
+          <text>low</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0q39pp5">
+          <text>эктоморф</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1sxliu7">
+          <text>м</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18fhde7">
+          <text>Видеоряд1</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1yob3l2">
+        <inputEntry id="UnaryTests_0ixgca9">
+          <text>low</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19lvwur">
+          <text>эктоморф</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rfkblp">
+          <text>ж</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1klr7bh">
+          <text>Видеоряд2</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0l3z90f">
+        <inputEntry id="UnaryTests_0cooigm">
+          <text>low</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0otq9sf">
+          <text>мезоморф</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mfb3hx">
+          <text>м</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hh4ipq">
+          <text>Видеоряд3</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06u96sd">
+        <inputEntry id="UnaryTests_15nyx8c">
+          <text>low</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1y6bj4w">
+          <text>мезоморф</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ajnjmb">
+          <text>ж</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tgifig">
+          <text>Видеоряд4</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18tserd">
+        <inputEntry id="UnaryTests_15xb28g">
+          <text>middle</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05m6pn2">
+          <text>эктоморф</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0eyylww">
+          <text>м</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09h83ow">
+          <text>Видеоряд5</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0lyjj5p">
+        <inputEntry id="UnaryTests_14dd6up">
+          <text>middle</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zu08w8">
+          <text>эктоморф</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18433d2">
+          <text>ж</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0pdriou">
+          <text>Видеоряд6</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18oxx5t">
+        <inputEntry id="UnaryTests_0udxdf4">
+          <text>middle</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1urjqg4">
+          <text>мезоморф</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wlq30j">
+          <text>м</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1j1kng3">
+          <text>Видеоряд7</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06nu1s3">
+        <inputEntry id="UnaryTests_0ehgdt8">
+          <text>middle</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hdc8em">
+          <text>мезоморф</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1b5cn87">
+          <text>ж</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ip2u4r">
+          <text>Видеоряд8</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1lkczva">
+        <inputEntry id="UnaryTests_06glris">
+          <text>high</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vrhyrn">
+          <text>эктоморф</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ri4gud">
+          <text>м</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mm8z0b">
+          <text>Видеоряд9</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1qgb8ud">
+        <inputEntry id="UnaryTests_095sotw">
+          <text>high</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1h9yexf">
+          <text>эктоморф</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1v4qe2r">
+          <text>ж</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ph72cm">
+          <text>Видеоряд10</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1qf8ct6">
+        <inputEntry id="UnaryTests_05t4u98">
+          <text>high</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0o99bqh">
+          <text>мезоморф</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12b1j24">
+          <text>м</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14jiesr">
+          <text>Видеоряд11</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1lelm6u">
+        <inputEntry id="UnaryTests_0uc2hmn">
+          <text>high</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0b2ac26">
+          <text>мезоморф</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12de8il">
+          <text>ж</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1kfaegy">
+          <text>Видеоряд12</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1ockyc2" name="Выбор комплекции человека">
+    <extensionElements>
+      <biodi:bounds x="234" y="271" width="180" height="80" />
+      <biodi:edge source="InputData_11tyrbg">
+        <biodi:waypoints x="294" y="421" />
+        <biodi:waypoints x="333" y="351" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_11tyrbg" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_15n1xgo">
+      <input id="InputClause_0jev8fm">
+        <inputExpression id="LiteralExpression_0jhkwzs" typeRef="string">
+          <text>телосложение</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1mjpplv" typeRef="string" />
+      <rule id="DecisionRule_1sui9fo">
+        <inputEntry id="UnaryTests_0xy1isw">
+          <text>худощавое</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vab0q0">
+          <text>эктоморф</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0afbqt7">
+        <inputEntry id="UnaryTests_0ukyyhb">
+          <text>полное</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0djmq2i">
+          <text>мезоморф</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_0vskeo2" name="Выбор пола человека">
+    <extensionElements>
+      <biodi:bounds x="428" y="371" width="180" height="80" />
+    </extensionElements>
+  </decision>
+  <decision id="step_height" name="Выбор высоты ступенек">
+    <extensionElements>
+      <biodi:bounds x="642" y="255" width="180" height="80" />
+      <biodi:edge source="InputData_197sjhj">
+        <biodi:waypoints x="754" y="405" />
+        <biodi:waypoints x="744" y="335" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_197sjhj" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1phmlqw">
+      <input id="InputClause_1no79qe">
+        <inputExpression id="LiteralExpression_14v6pde" typeRef="integer">
+          <text>высота ступенек</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0phqghb" typeRef="string" />
+      <rule id="DecisionRule_0nugrk4">
+        <inputEntry id="UnaryTests_1tpz3s5">
+          <text>от 0 до 10 см</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1x3rnpr">
+          <text>low</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1o8k2lc">
+        <inputEntry id="UnaryTests_1qkho8v">
+          <text>от 10 до 20 см</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lpzyfu">
+          <text>middle</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1liodk8">
+        <inputEntry id="UnaryTests_0zoq70s">
+          <text>от 20 и выше</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0075ey5">
+          <text>high</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_11tyrbg" name="Выбор комплекции  по параметрам  тела">
+    <extensionElements>
+      <biodi:bounds x="222" y="421" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_197sjhj" name="Выбор высоты из диапазона">
+    <extensionElements>
+      <biodi:bounds x="694" y="405" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="start_demonstration" name="Запуск демонстрации динамики ">
+    <extensionElements>
+      <biodi:bounds x="394" y="-25" width="180" height="80" />
+      <biodi:edge source="demostration_of_exoskeletons_dynamics">
+        <biodi:waypoints x="499" y="134" />
+        <biodi:waypoints x="512" y="55" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#demostration_of_exoskeletons_dynamics" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_04nly8m">
+      <input id="InputClause_0tu07qt">
+        <inputExpression id="LiteralExpression_1xrmuuh" typeRef="boolean">
+          <text>Проверка ввода параметра 1</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1h6thw2">
+        <inputExpression id="LiteralExpression_12djb0a" typeRef="boolean">
+          <text>Проверка ввода параметра 2</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0iv15rg">
+        <inputExpression id="LiteralExpression_0ma2n1c" typeRef="boolean">
+          <text>Проверка ввода параметра 3</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_054u6l6" name="Результат работы программы" typeRef="string" />
+      <rule id="DecisionRule_0p8mx1p">
+        <inputEntry id="UnaryTests_1bsx3fi">
+          <text>не введен</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_192wpnv">
+          <text>не введен</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ay5axv">
+          <text>не введен</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lrrow0">
+          <text>сообщение о необходимости заполнения всех параметров</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0b544ym">
+        <inputEntry id="UnaryTests_1gwrkml">
+          <text>не введен</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mqcov4">
+          <text>не введен</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hrl8i0">
+          <text>введен</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_010ndcu">
+          <text>сообщение о необходимости заполнения 1-го и 2-го параметров</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0elg4ct">
+        <inputEntry id="UnaryTests_061v7q9">
+          <text>не введен</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lqfw3e">
+          <text>введен</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1woz10d">
+          <text>не введен</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10ux8dl">
+          <text>сообщение о необходимости заполнения 1-го и 3-го параметров</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0k6d1mk">
+        <inputEntry id="UnaryTests_1o2gpuh">
+          <text>не введен</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nqi1e0">
+          <text>введен</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1144i4n">
+          <text>введен</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1rfjwh8">
+          <text>сообщение о необходимости заполнения 1-го параметра</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ggv3fx">
+        <inputEntry id="UnaryTests_05svvtr">
+          <text>введен</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_089nrrq">
+          <text>не введен</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0akdytl">
+          <text>не введен</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1v92ch3">
+          <text>сообщение о необходимости заполнения 2-го и 3-го параметров</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0awpt1t">
+        <inputEntry id="UnaryTests_0vxz7jm">
+          <text>введен</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03pgklz">
+          <text>не введен</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05eulht">
+          <text>введен</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01rb5j4">
+          <text>сообщение о необходимости заполнения 2-го параметра</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1d88m86">
+        <inputEntry id="UnaryTests_0oaz7er">
+          <text>введен</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qhyvtc">
+          <text>введен</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1s1hj1f">
+          <text>не введен</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ce6c8v">
+          <text>сообщение о необходимости заполнения 3-го параметра</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1tvahwp">
+        <inputEntry id="UnaryTests_0sfjw4d">
+          <text>введен</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ube2ts">
+          <text>введен</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1thrhp7">
+          <text>введен</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wdc8af">
+          <text>запустить видеоряд основываясь на введенные параметры</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
