@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="Markov" name="Lab 2" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="Objects" name="Objects">
+    <extensionElements>
+      <biodi:bounds x="462" y="16" width="180" height="80" />
+      <biodi:edge source="Decision_0v6lvdk">
+        <biodi:waypoints x="104" y="338" />
+        <biodi:waypoints x="163" y="264" />
+      </biodi:edge>
+      <biodi:edge source="Maps">
+        <biodi:waypoints x="552" y="173" />
+        <biodi:waypoints x="552" y="96" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0pgvdj9">
+        <biodi:waypoints x="723" y="54" />
+        <biodi:waypoints x="644" y="56" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Maps" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_0pgvdj9" />
+    </informationRequirement>
+    <decisionTable hitPolicy="COLLECT">
+      <input id="InputClause_1acmlkd" label="Name of map" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_0bqgrlg" typeRef="string">
+          <text>desiredDish</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0bo3uen" label="Open API" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_0d6l79o" typeRef="boolean">
+          <text>guestsWithChildren</text>
+        </inputExpression>
+      </input>
+      <output id="OuputClause_99999" label="Objects for parsing" name="beverages" typeRef="string" />
+      <rule id="row-506282952-7">
+        <description>Максимально возможно спарсить 12 свойств объекта</description>
+        <inputEntry id="UnaryTests_03g3ci0">
+          <text>"Yandex - Maps"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jb8hau">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1kr45vj">
+          <text>"Name, Category, Address, Latitude, Longitude, Opening hours, Parking, Floors, Shop, Office, Stop, Levels"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-8">
+        <description>Максимально возможно спарсить 8 свойств объекта</description>
+        <inputEntry id="UnaryTests_1ckv0bb">
+          <text>"Google - Maps"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1joyits">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_139n7gl">
+          <text>"Name, City, Address, Coors, Opening hours, Levels, Buisness"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-9">
+        <description>Максимально возможно спарсить 6 свойств объекта</description>
+        <inputEntry id="UnaryTests_05rspiy">
+          <text>"OpenStreetMap"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15yl6ki">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bzfo47">
+          <text>"Name, Latitude, Longitude, Address"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-10">
+        <description>Максимально возможно спарсить 3 свойства объекта</description>
+        <inputEntry id="UnaryTests_0mk75lc">
+          <text>"Wikimapia"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18uxmko">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00nwn3e">
+          <text>"Name, Nested objects, Nearby objects"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-11">
+        <description>Максимально возможно спарсить 5 свойств объекта</description>
+        <inputEntry id="UnaryTests_11o8pqj">
+          <text>"Bing"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1298ow3">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0z18erz">
+          <text>"Name, City, Address, Category, Country"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-12">
+        <description>Максимально возможно спарсить 7 свойств объекта</description>
+        <inputEntry id="UnaryTests_0shocr0">
+          <text>"2Gis"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nblyrk">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0s2fq8r">
+          <text>"Name, Coors, Opening hours, Owner, City, Category, Latitude, Longitude"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Maps" name="Maps">
+    <extensionElements>
+      <biodi:bounds x="465" y="173" width="180" height="80" />
+      <biodi:edge source="KnowledgeSource_0b8hnqo">
+        <biodi:waypoints x="363" y="212" />
+        <biodi:waypoints x="465" y="211" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0rin549">
+        <biodi:waypoints x="443" y="327" />
+        <biodi:waypoints x="519" y="253" />
+      </biodi:edge>
+      <biodi:edge source="InputData_1axnom3">
+        <biodi:waypoints x="641" y="329" />
+        <biodi:waypoints x="590" y="253" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_0rin549" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_1axnom3" />
+    </informationRequirement>
+    <authorityRequirement>
+      <requiredAuthority href="#KnowledgeSource_0b8hnqo" />
+    </authorityRequirement>
+    <decisionTable id="DecisionTable_040j91i">
+      <input id="InputClause_0bbq1z8" label="Map ID" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_1iwaqcz" typeRef="string">
+          <text>season</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0pcbpc9" label="Amount objects" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_1uu3xe6" typeRef="integer">
+          <text>guestCount</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0lfar1z" label="Name of map" name="desiredDish" typeRef="string" />
+      <rule id="row-884555325-1">
+        <description>Default value</description>
+        <inputEntry id="UnaryTests_0cy7usy">
+          <text>not("Map1", "Map2", "Map3", "Map4", "Map5", "Map6")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ww352f">
+          <text>0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07xyqqp">
+          <text>" "</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-1">
+        <description>Предназначен для парсинга в пределах РФ</description>
+        <inputEntry id="UnaryTests_06z2ju4">
+          <text>"Map1"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ph5qbt">
+          <text>[8..12]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sntjhd">
+          <text>"Yandex - Maps"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-2">
+        <description>Предназначен для парсинга по всему миру</description>
+        <inputEntry id="UnaryTests_0o5o0mm">
+          <text>"Map2"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rtyr8x">
+          <text>[6..8]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15nybba">
+          <text>"Google - Maps"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-3">
+        <description>Предназначен для парсинга по всему миру</description>
+        <inputEntry id="UnaryTests_1f00omt">
+          <text>"Map3"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03yxt5d">
+          <text>[4..6]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ki86jo">
+          <text>"openStreetMap"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-4">
+        <description>Предназначен для парсинга объектов по всему миру</description>
+        <inputEntry id="UnaryTests_18csep1">
+          <text>"Map4"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lt4o3q">
+          <text>[1..3]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1h969t1">
+          <text>"Wikimapia"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-5">
+        <description>Предназначен для парсинга по всему миру</description>
+        <inputEntry id="UnaryTests_0cp9scy">
+          <text>"Map5"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1to1xxg">
+          <text>[3..5]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0fjt4uo">
+          <text>"Bing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-6">
+        <description>Предназначен для парсинга по всему миру</description>
+        <inputEntry id="UnaryTests_0s5azk4">
+          <text>"Map6"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nuzyri">
+          <text>[5..7]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0nspzk1">
+          <text>"2Gis"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_0rin549" name="Map ID">
+    <extensionElements>
+      <biodi:bounds x="362" y="327" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_1axnom3" name="Amount of objects">
+    <extensionElements>
+      <biodi:bounds x="594" y="329" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_0pgvdj9" name="Open API?">
+    <extensionElements>
+      <biodi:bounds x="723" y="31" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <knowledgeSource id="KnowledgeSource_0b8hnqo" name="Name Of Map">
+    <extensionElements>
+      <biodi:bounds x="263" y="180" width="100" height="63" />
+    </extensionElements>
+  </knowledgeSource>
+</definitions>
