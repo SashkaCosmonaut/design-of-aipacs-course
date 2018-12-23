@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="distroChooser" name="Distro Chooser" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="linuxDistro" name="Distro&#10;">
+    <extensionElements>
+      <biodi:bounds x="462" y="16" width="180" height="80" />
+      <biodi:edge source="Decision_0v6lvdk">
+        <biodi:waypoints x="104" y="338" />
+        <biodi:waypoints x="163" y="264" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0pgvdj9">
+        <biodi:waypoints x="647" y="163" />
+        <biodi:waypoints x="595" y="96" />
+      </biodi:edge>
+      <biodi:edge source="de">
+        <biodi:waypoints x="446" y="170" />
+        <biodi:waypoints x="530" y="96" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0tsjsn9">
+        <biodi:waypoints x="761" y="93" />
+        <biodi:waypoints x="642" y="65" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_0pgvdj9" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#de" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_0tsjsn9" />
+    </informationRequirement>
+    <decisionTable hitPolicy="COLLECT">
+      <input id="InputClause_1acmlkd" label="DE">
+        <inputExpression id="LiteralExpression_0bqgrlg" typeRef="string">
+          <text>desktopEnvironment</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1i538xn" label="Fixed Release Model">
+        <inputExpression id="LiteralExpression_0tl42eb" typeRef="boolean">
+          <text>releaseModel</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_05e8jjk" label="Based on Ubuntu">
+        <inputExpression id="LiteralExpression_13dgj7v" typeRef="boolean">
+          <text>basedOn</text>
+        </inputExpression>
+      </input>
+      <output id="OuputClause_99999" label="Linux Distro" name="distro" typeRef="string" />
+      <rule id="row-506282952-7">
+        <description></description>
+        <inputEntry id="UnaryTests_03g3ci0">
+          <text>"KDE", "XFCE", "LXDE", "GNOME"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0z3hz58">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1l3i91q">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1kr45vj">
+          <text>"Debian"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_082gkaq">
+        <inputEntry id="UnaryTests_1jmh3ta">
+          <text>"KDE", "XFCE", "GNOME", "LXDE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0d7hftq">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01qdd2b">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14nrxbq">
+          <text>"Arch"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tpsolq">
+        <inputEntry id="UnaryTests_1vdhi14">
+          <text>"Pantheon"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dxcmjt">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ss61lv">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0kjmk5e">
+          <text>"Elementary OS"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_19ustkj">
+        <inputEntry id="UnaryTests_0m489fh">
+          <text>"KDE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0t0lq5a">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lv1wx2">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fvqy3h">
+          <text>"KDE Neon"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_11h7hzo">
+        <inputEntry id="UnaryTests_0bzq2ca">
+          <text>"KDE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_011t4iq">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09h4p0z">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jclb3w">
+          <text>"Kubuntu"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1mzjjhd">
+        <inputEntry id="UnaryTests_1iw0fln">
+          <text>"XFCE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xy421c">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ke0tdh">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1k0n3dl">
+          <text>"Xubuntu"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_13s7s93">
+        <inputEntry id="UnaryTests_1nkpeh7">
+          <text>not("KDE")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lr9s5q">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0o9jepd">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lcaf41">
+          <text>"Sorry, dude. Distro not found. Check release model"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17ixv68">
+        <inputEntry id="UnaryTests_1hhxj7h">
+          <text>"LXDE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01wspmq">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17k2prx">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ojoumt">
+          <text>"Lubuntu"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0iyogpx">
+        <inputEntry id="UnaryTests_0br00vz">
+          <text>"GNOME"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_061k5jb">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0072szt">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1s7sgkx">
+          <text>"Ubuntu"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06rlc76">
+        <inputEntry id="UnaryTests_072qmap">
+          <text>"Pantheon"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1p4pe3v">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_132uu5f">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1oz1eif">
+          <text>"Check ubuntu-based distros"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="de" name="Desktop Environment">
+    <extensionElements>
+      <biodi:bounds x="315" y="170" width="180" height="80" />
+      <biodi:edge source="InputData_0rin549">
+        <biodi:waypoints x="317" y="329" />
+        <biodi:waypoints x="369" y="250" />
+      </biodi:edge>
+      <biodi:edge source="InputData_1axnom3">
+        <biodi:waypoints x="506" y="331" />
+        <biodi:waypoints x="440" y="250" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_0rin549" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_1axnom3" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_040j91i">
+      <input id="InputClause_0bbq1z8" label="Memory Usage" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_1iwaqcz" typeRef="integer">
+          <text>memoryUsage</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0pcbpc9" label="Windows Like DE?" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_1uu3xe6" typeRef="boolean">
+          <text>windowsLike</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0lfar1z" label="Desktop Environment" name="desktopEnvironment" typeRef="string" />
+      <rule id="row-506282952-1">
+        <inputEntry id="UnaryTests_06z2ju4">
+          <text>&gt;=500</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ph5qbt">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sntjhd">
+          <text>"KDE"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-2">
+        <inputEntry id="UnaryTests_0o5o0mm">
+          <text>&lt;500</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rtyr8x">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15nybba">
+          <text>"XFCE"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-3">
+        <inputEntry id="UnaryTests_1f00omt">
+          <text>&gt;600</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03yxt5d">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ki86jo">
+          <text>"GNOME"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-4">
+        <description></description>
+        <inputEntry id="UnaryTests_18csep1">
+          <text>[500..600]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lt4o3q">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1h969t1">
+          <text>"Pantheon"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-6">
+        <description></description>
+        <inputEntry id="UnaryTests_0s5azk4">
+          <text>&lt;500</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nuzyri">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0nspzk1">
+          <text>"LXDE"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_0rin549" name="RAM usage&#10;">
+    <extensionElements>
+      <biodi:bounds x="236" y="329" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_1axnom3" name="Windows Style&#10;">
+    <extensionElements>
+      <biodi:bounds x="459" y="331" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_0pgvdj9" name="Based on ubuntu?&#10;">
+    <extensionElements>
+      <biodi:bounds x="595" y="163" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_0tsjsn9" name="Release Model?&#10;">
+    <extensionElements>
+      <biodi:bounds x="761" y="85" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+</definitions>
