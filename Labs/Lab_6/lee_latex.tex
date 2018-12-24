@@ -1,0 +1,310 @@
+\documentclass[14pt]{extarticle}        % article, 14 pt
+\usepackage[a4paper,				% one-sided article with reduced margins, a4
+	    lmargin=2.5cm,rmargin=2cm,		% set left and right margins
+	    tmargin=2.5cm,			% set top margin
+	    bmargin=2cm,			% set bottom margin
+	    marginpar=1cm,			% set margin notes width
+	    marginparsep=0.5cm,			% set notes to paragraph separation width
+	    headheight=17pt]{geometry}		% set head height
+\usepackage{type1ec}				% use postscript cm-fonts
+\usepackage[warn]{mathtext}			% use text in equations
+\usepackage[T2A]{fontenc}			% internal font encoding
+\usepackage[utf8]{inputenc}			% input encoding
+\usepackage{caption}				% caption control
+\usepackage[english,russian]{babel}		% localization
+\usepackage{indentfirst}			% first indent
+\usepackage{fancyhdr}				% fancy headers
+\usepackage{color}				% define some colors
+\usepackage{amssymb}				% AMS packages
+\usepackage{amsfonts}				% AMS fonts for symbols
+\usepackage{amsmath}				% AMS fonts for equations
+\usepackage[integrals]{wasysym}			% symbols without integrals
+\usepackage{graphicx}				% graphics including
+\usepackage{array}				% basic array interface
+\usepackage{tabu}				% advanced tables
+\usepackage{xparse}				% document commands for rotatebox
+\usepackage{titlesec}				% section titles interface
+\usepackage[unicode=true,
+	    colorlinks=true,
+	    linkcolor=black]{hyperref}		% hyperlinks, PDF display and information options
+\usepackage[utf8]{inputenc}
+\usepackage{lastpage}
+
+
+\setlength{\parindent}{5ex}			% set paragraph indent
+\setlength{\parskip}{0pt}			% set paragraph skip
+\clubpenalty=10000 \widowpenalty=10000		% single line penalty
+
+
+\DeclareCaptionLabelFormat{rightparen}{#2)}	% caption format with right paren
+\captionsetup{labelsep=space,justification=justified,singlelinecheck=off}
+\captionsetup[table]{labelsep=period,position=t,justification=raggedright,singlelinecheck=off,aboveskip=0pt}
+\captionsetup[figure]{labelsep=period,justification=centering,singlelinecheck=off,aboveskip=10pt}
+
+
+\renewcommand{\labelitemi}%
+	     {\normalfont\bfseries{--}}		% en-dash for itemize
+\renewcommand{\le}{\leqslant}			% less-or-equal sign for russian style
+\renewcommand{\ge}{\geqslant}			% graeter-then-or-equal sign for russian style
+\newcommand{\degC}{\(\,^{\circ}{\rm C}\)}	% Celsius degree
+
+
+% Table column formats
+\newcolumntype{Y}[1]{>{\strut\hspace{0pt}}X[#1]<{\hspace{0pt}\strut}}
+\tabucolumn Y
+\renewcommand{\baselinestretch}{1.5}
+
+% Rotation: \rot[<angle>][<width>]{<stuff>}
+\NewDocumentCommand{\rot}{O{90} O{1em} m}{\makebox[#2][l]{\rotatebox{#1}{#3}}}%
+
+
+\makeatletter
+% Titlepage
+\newcommand{\texzadtitle}[6]{%
+\begin{titlepage}
+ \begin{center}
+    Министерство образования и науки Российской Федерации\\
+    Федеральное государственное бюджетное образовательное учреждение высшего образования\\
+    Волгоградский Государственный Технический Университет\\
+    Кафедра «Системы автоматизированного проектирования и поискового конструирования»
+ \end{center}
+ \vspace{2cm}
+ \vbox{
+  \hfill
+  \parbox{7.5cm}{
+   \centerline{УТВЕРЖДАЮ}
+   \centerline{Зав. кафедрой САПР и ПК}\vspace{20pt}
+   \hrulefill~д.т.н.\,~Щербаков М.В.\par\vspace{7pt}
+   \centerline{
+   \hbox to 6cm{<<\rule{7mm}{0.4pt}>>\hrulefill~\number\year\,г.}}
+   }
+  }
+ \vfill
+ \begin{center}
+    Разработка модуля автоматизации работы ГАК\vspace{1cm}\\
+    Техническое задание\\
+    \MakeUppercase{листов} \pageref{LastPage}
+ \end{center}
+ \vfill
+ \vfill
+ \vfill
+ \centerline{#6}
+ \vspace*{1cm}
+ \centerline{Волгоград, \number\year}
+\end{titlepage}
+\setcounter{page}{2}
+}
+
+
+
+
+
+% Section numbering
+\setcounter{secnumdepth}{5}
+\renewcommand*{\thesection}{\arabic{section}}
+\renewcommand*{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand*{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+
+
+\titlespacing*{\subsection}{0pt}{15pt}{1em}
+\titlespacing*{\subsubsection}{0pt}{15pt}{1em}
+\titlespacing*{\paragraph}{0pt}{15pt}{1em}
+
+\titleformat{\section}[block]{\normalfont}{\hspace*{\normalparindent}\thesection}{1em}{}
+\titleformat{\subsection}[block]{\normalfont}{\hspace*{\normalparindent}\thesubsection}{1em}{}
+\titleformat{\subsubsection}[block]{\normalfont}{\hspace*{\normalparindent}\thesubsubsection}{1em}{}
+\titleformat{\paragraph}[block]{\normalfont}{\hspace*{\normalparindent}\theparagraph}{1em}{}
+
+\begin{document}
+
+\texzadtitle{рабочей конструкторской документации фильтра СВЧ}%
+	    {разработка РКД}%
+	    {группа"~01}%
+	    {группа"~12}%
+	    {АФАР}%
+	    {}%
+	    
+\newcommand{\anonsection}[1]{\section*{#1}\addcontentsline{toc}{section}{#1}}
+\anonsection {Аннотация}
+Техническое задание на программный модуль автоматизации работы ГАК. Составлено и оформлено согласно ГОСТ 19.201-78. Страниц – \pageref{LastPage}.\par
+Содержит основные сведения об объекте разработки, требования к программе и программной документации, технико-экономические показате-ли, стадии и этапы разработки, порядок контроля и приёмки.
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Введение}
+\label{sec:purpose}
+
+\subsection{Наименование программы}
+Полное наименование – «Программный модуль автоматизации рабо-ты государственной аттестационной комиссии». В дальнейшем используется краткое название – программа.
+
+\subsection{Краткая характеристика области применения}
+Программа предназначена к применению в ВолгГТУ при ежегодной аттестации выпускных работ.
+
+\newpage
+
+\section{Основания для разработки}
+
+\subsection{Документы, на основании которых ведется проектирование}
+Разработка ведется на основании задания в рамках курса «Проекти-рование АСОиУ».
+
+\subsection{Организация, утвердившая документ, и дата утверждения}
+Документ утвердил зав. кафедрой САПР и ПК д.т.н. Щербаков М.В.\\
+Дата утверждения документа: <<\rule{7mm}{0.4pt}>> \rule{35mm}{0.4pt} \number\year\ г.
+
+\newpage
+
+\section{Назначение разработки}
+Автоматизированная подготовка документации, необходимой для проведения аттестации.
+
+\newpage
+
+\section{Требования к программе}
+\subsection{Требования к функциональным характеристикам}
+\subsubsection{Состав выполняемых функций}
+Программа должна обеспечивать выполнение следующих функций:\par
+\begin{enumerate} 
+    \item Регистрация пользователя в системе\par\parindent=1cm
+    При запуске системы, должна появиться форма авторизации, содер-жащая:
+    \begin{itemize}
+        \item текстовое поле для электронной почты;
+        \item текстовое поле для пароля;
+        \item кнопка авторизации;
+        \item кнопка регистрации.
+    \end{itemize}\par\parindent=1cm
+    Нажатие на кнопку регистрации, должна открываться форма реги-страции, содержащая чек-боксы о согласии с политикой обработки персо-нальных данных, графическое поле для создания подписи и следующие тек-стовые поля:
+    \begin{itemize}
+        \item имя;
+        \item фамилия;
+        \item отчество;
+        \item электронная почта;
+        \item телефон;
+        \item должность;
+        \item звание;
+        \item факультет;
+        \item кафедра.
+    \end{itemize}\par\parindent=1cm
+    Если верные данные введены во все поля и все чек-боксы выбраны, то пользователь регистрируется в системе.
+    
+    \item Авторизация.\par\parindent=1cm
+    При заполнении полей “электронная почта” и “пароль” корректными данными, пользователь входит в систему под своей учетной записью.
+    
+    \item Создание электронного документа\par\parindent=1cm
+    Нажав на кнопку “создать документ”, пользователь может выбрать за-готовку документа из имеющегося в базе набора форм документов. Затем пользователь заполняет поля заготовки содержимым и сохраняет, нажав на кнопку “сохранить”.
+    
+    \item Отправка документа на подпись\par\parindent=1cm
+    Выбрав созданный документ, пользователь, может выбрать получате-лей из базы и отправить им ссылку на документ. Получатели могут ознако-миться, с полученным документом, войдя в свои учетные записи. Также они могут выбрать поле для подписи и нажать кнопку “подписать” для вставки своей подписи.
+\end{enumerate}
+
+\subsubsection{Организация входных и выходных данных}
+\paragraph{Входные данные}
+Входные данные:
+    \begin{enumerate}
+        \item данные пользователей;
+    \end{enumerate}
+
+\paragraph{Выходные данные}
+Выходные данные:
+    \begin{enumerate}
+        \item документы;
+    \end{enumerate}
+    
+\subsection{Требования к надёжности}  
+\subsubsection{Требования к надёжному функционированию}
+Надежное (устойчивое) функционирование программы должно быть обеспечено выполнением Заказчиком совокупности организационно-технических мероприятий, перечень которых приведен ниже:
+\begin{itemize}
+    \item организацией бесперебойного питания технических средств;
+    \item испытания программных средств на наличие вредоносного про-граммного обеспечения;
+    \item использованием лицензионного программного обеспечения.
+\end{itemize}
+
+\subsubsection {Время восстановления после отказа}   
+Время восстановления после отказа, вызванного сбоем электропита-ния технических средств (иными внешними факторами), не фатальным сбоем (не крахом) операционной системы, не должно превышать десяти минут при условии соблюдения условий эксплуатации технических и программных средств.\par
+Время восстановления после отказа, вызванного неисправностью тех-нических средств, фатальным сбоем (крахом) операционной системы, не должно превышать времени, требуемого на устранение неисправностей тех-нических средств и переустановки программных средств.
+
+\subsubsection {Отказы из-за некорректных действий оператора}
+Отказы программы возможны вследствие некорректных действий оператора (пользователя) при взаимодействии с операционной системой. Во избежание возникновения отказов программы по указанной выше причине должна быть обеспечена работа конечного пользователя без предоставления ему административных привилегий.
+
+\subsection {Условия эксплуатации}
+Минимальное количество персонала, требуемого для работы про-граммы, должно составлять 1 штатная единица – пользователь программы.
+
+\subsection {Требования к составу и параметрам технических средств}
+Состав технических средств, а также общесистемного и прикладного программного обеспечения:
+\begin{itemize}
+    \item процессор с минимальной тактовой частотой 3 ГГц;
+    \item объем оперативной памяти 4 ГБ; 
+    \item 2 ГБ дискового пространства;
+    \item монитор с разрешением 1920х1080 или больше;
+    \item операционная система Windows 10;
+    \item мышь и клавиатура.
+\end{itemize}
+
+\subsection {Требования к информационной и программной совместимости}
+\subsubsection {Требования к методам решения}
+Методы решения должны обеспечивать выполнение всех этапов про-ектирования программы в соответствии с их порядком и сроками выполне-ния, указанными в разделе 7 данного документа.
+\subsubsection {Требования к языкам программирования}
+Исходные коды программы должны быть реализованы на языке C# в среде разработки Microsoft Visual Studio 2017 Community, распространяю-щейся на основе бесплатной лицензии для одиночных и малых групп разра-ботчиков Microsoft Corporation.
+\subsubsection {Требования к программным средствам, используемым программой}
+Для работы программного модуля необходима операционная система Microsoft Windows 10: x32 или x64 с установленными библиотеками Microsoft .NET Framework 4.5.
+
+\newpage
+
+\section {Требования к программной документации}
+В состав программной документации, сопровождающей проектируе-мое изделие – «Разработка программной системы для моделирования и про-гнозирования наработок до отказа невосстанавливаемого промышленного оборудования»– необходимо включить техническое задание по ГОСТ 19.201-78.
+
+\newpage
+
+\section {Стадии и этапы разработки}
+\subsection {Стадии разработки}
+Разработка должна включать следующие стадии: 
+\begin{itemize}
+    \item анализ требований пользователя; 
+    \item разработка технического задания; 
+    \item рабочее проектирование;
+    \item реализация программы;
+    \item тестирование программы.
+\end{itemize}
+
+\subsubsection{Этапы разработки}
+На стадии анализа требований пользователя должны быть выполнены следующие этапы:
+\begin{itemize}
+    \item изучение предметной области;
+    \item обзор систем-аналогов;
+\end{itemize}\par
+На стадии разработки технического задания должны быть выполнены следующие этапы:
+\begin{itemize}
+    \item разработка технического задания;
+    \item согласование и утверждение технического задания.
+\end{itemize}\par
+На стадии рабочего проектирования должны быть выполнены перечисленные следующие этапы:
+\begin{itemize}
+    \item разработка макетов экранных форм;
+    \item разработка модели web-приложения;
+    \item разработка алгоритмов функций, перечисленных в данном техни-ческом задании.
+\end{itemize}\par
+На стадии реализации программы должны быть выполнены перечис-ленные следующие этапы:
+\begin{itemize}
+    \item реализация вертикального прототипа;
+    \item доработка прототипа до конечного продукта.
+\end{itemize}\par
+На стадии тестирования программы должны быть выполнены пере-численные следующие этапы:
+\begin{itemize}
+    \item проверка правильности работы программы по каждой из реализованных функций;
+    \item анализ эффективности программы.
+\end{itemize}
+
+\newpage
+
+\section {Порядок контроля и приёмки}
+\subsection {Виды испытаний}
+Испытания программы и верификация документации должны прово-диться в организации заказчика.\par
+Приемно-сдаточные испытания программы должны производиться зав. кафедрой САПР и ПК д.т.н. Щербаков М.В.\par
+Программа должна соответствовать всем требованиям, изложенным в техническом задании.
+\subsection {Общие требования к приёмке}
+Приемка программы должна производиться зав. кафедрой САПР и ПК
+д.т.н. Щербаков М.В.\par
+Программа должна считаться годной для приемки, если в процессе те-стирования заказчиком она удовлетворяет всем пунктам данного техническо-го задания.
+
+\label{sec:purpose}
+\end{document}
