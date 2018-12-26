@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="dish" name="Dish" namespace="http://camunda.org/schema/1.0/dmn">
+  <inputData id="dayType_id" name="Stock of goods">
+    <extensionElements>
+      <biodi:bounds x="451" y="320" width="125" height="45" />
+    </extensionElements>
+    <variable id="dayType_ii" name="Type of day" typeRef="string" />
+  </inputData>
+  <inputData id="temperature_id" name="Сustomer desires">
+    <extensionElements>
+      <biodi:bounds x="101" y="308" width="125" height="45" />
+    </extensionElements>
+    <variable id="temperature_ii" name="Weather in Celsius" typeRef="integer" />
+  </inputData>
+  <decision id="dish-decision" name="Phone selection">
+    <extensionElements>
+      <biodi:bounds x="246" y="48" width="180" height="80" />
+      <biodi:edge source="guestCount">
+        <biodi:waypoints x="470" y="177" />
+        <biodi:waypoints x="361" y="128" />
+      </biodi:edge>
+      <biodi:edge source="season">
+        <biodi:waypoints x="239" y="178" />
+        <biodi:waypoints x="293" y="128" />
+      </biodi:edge>
+      <biodi:edge source="InputData_1ao7vz5">
+        <biodi:waypoints x="562" y="89" />
+        <biodi:waypoints x="428" y="89" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0uw4pev">
+        <biodi:waypoints x="68" y="133" />
+        <biodi:waypoints x="244" y="88" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#guestCount" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#season" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_1ao7vz5" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_0uw4pev" />
+    </informationRequirement>
+    <decisionTable id="dishDecisionTable">
+      <input id="seasonInput" label="Desire Conclusion">
+        <inputExpression id="seasonInputExpression" typeRef="string">
+          <text>desire_Conclusion</text>
+        </inputExpression>
+      </input>
+      <input id="guestCountInput" label="Sale Importance">
+        <inputExpression id="guestCountInputExpression" typeRef="string">
+          <text>sale_Importance</text>
+        </inputExpression>
+      </input>
+      <output id="output1" label="Dish" name="desiredDish" typeRef="string" />
+      <rule id="row-495762709-1">
+        <inputEntry id="UnaryTests_1nxcsjr">
+          <text>low cost</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1r9yorj">
+          <text>low</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mtwzqz">
+          <text>Meizu</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-495762709-2">
+        <inputEntry id="UnaryTests_1lxjbif">
+          <text>brand</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nhiedb">
+          <text>high</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1h30r12">
+          <text>Iphone</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-495762709-3">
+        <inputEntry id="UnaryTests_0ifgmfm">
+          <text>average</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12cib9m">
+          <text>low</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wgaegy">
+          <text>Sony</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-495762709-7">
+        <inputEntry id="UnaryTests_0ozm9s7">
+          <text>low cost</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sesgov">
+          <text>high</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1dvc5x3">
+          <text>Xiaomi</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-445981423-3">
+        <inputEntry id="UnaryTests_1er0je1">
+          <text>brand</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1uzqner">
+          <text>low</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pxy4g1">
+          <text>Samsung</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-445981423-4">
+        <inputEntry id="UnaryTests_06or48g">
+          <text>average</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wa71sy">
+          <text>high</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09ggol9">
+          <text>Sony</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="season" name="Conclusions of desire">
+    <extensionElements>
+      <biodi:bounds x="106" y="178" width="180" height="80" />
+      <biodi:edge source="temperature_id">
+        <biodi:waypoints x="176" y="308" />
+        <biodi:waypoints x="187" y="258" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#temperature_id" />
+    </informationRequirement>
+    <decisionTable id="seasonDecisionTable">
+      <input id="temperatureInput" label="Cost">
+        <inputExpression id="temperatureInputExpression" typeRef="integer">
+          <text>cost</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0qc2w9s" label="Brand importance">
+        <inputExpression id="LiteralExpression_0sl557x" typeRef="string">
+          <text>brand_importance</text>
+        </inputExpression>
+      </input>
+      <output id="seasonOutput" label="Cost Selection" name="cost_Selection" typeRef="string" />
+      <rule id="row-495762709-5">
+        <inputEntry id="UnaryTests_1fd0eqo">
+          <text>&lt;20000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nkbytb">
+          <text>low</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0l98klb">
+          <text>low-cost</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-495762709-6">
+        <inputEntry id="UnaryTests_1nz6at2">
+          <text>&gt;=40000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0u1zmuz">
+          <text>high</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_08moy1k">
+          <text>brand</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-445981423-2">
+        <inputEntry id="UnaryTests_1a0imxy">
+          <text>[20000..40000]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02mb1d6">
+          <text>high</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1poftw4">
+          <text>brand</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18nddwq">
+        <inputEntry id="UnaryTests_0w7wmj3">
+          <text>&lt;20000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ryb2pc">
+          <text>high</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0roex8d">
+          <text>average</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_16cdlxo">
+        <inputEntry id="UnaryTests_1m7vlru">
+          <text>&gt;=40000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ivtax8">
+          <text>low</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_11cp3wk">
+          <text>average</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0w1ek2g">
+        <inputEntry id="UnaryTests_1l3u22f">
+          <text>[20000..40000]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jqdazd">
+          <text>low</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0cwltr2">
+          <text>average</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="guestCount" name="Importance of sale">
+    <extensionElements>
+      <biodi:bounds x="405" y="177" width="180" height="80" />
+      <biodi:edge source="dayType_id">
+        <biodi:waypoints x="517" y="320" />
+        <biodi:waypoints x="496" y="257" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0uw4pev">
+        <biodi:waypoints x="558" y="159" />
+        <biodi:waypoints x="506" y="220" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#dayType_id" />
+    </informationRequirement>
+    <decisionTable id="guestCountDecisionTable">
+      <input id="typeOfDayInput" label="How much in stock(many)">
+        <inputExpression id="typeOfDayInputExpression" typeRef="integer">
+          <text>how_Much</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_00t5bss" label="How long in stock(month)">
+        <inputExpression id="LiteralExpression_0i8pogr" typeRef="integer">
+          <text>how_Long</text>
+        </inputExpression>
+      </input>
+      <output id="guestCountOutput" label="Importance of sale" name="importance_Of_Sale" typeRef="integer" />
+      <rule id="row-495762709-8">
+        <inputEntry id="UnaryTests_0l72u8n">
+          <text>&gt;20</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1kvnrzx">
+          <text>&gt;3</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wuwqaz">
+          <text>high</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-495762709-9">
+        <inputEntry id="UnaryTests_03a73o9">
+          <text>&gt;20</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ltdk82">
+          <text>&lt;2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1whn119">
+          <text>high</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-495762709-10">
+        <inputEntry id="UnaryTests_12tygwt">
+          <text>&lt;20</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_012c0z5">
+          <text>&lt;2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1b5k9t8">
+          <text>low</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_15jw284">
+        <inputEntry id="UnaryTests_1e4bzhk">
+          <text>&gt;30</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pau0jn">
+          <text>&lt;1</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0etvemf">
+          <text>low</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_13oelar">
+        <inputEntry id="UnaryTests_1ujcuaj">
+          <text>&gt;20</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1umbci1">
+          <text>&gt;3</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ok181n">
+          <text>high</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0b488vd">
+        <inputEntry id="UnaryTests_1gq7ul2">
+          <text>&lt;20</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tbxz4r">
+          <text>&lt;1</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gevca8">
+          <text>low</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1ao7vz5" name="Aditional">
+    <extensionElements>
+      <biodi:bounds x="562" y="66" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_0uw4pev" name="phone brand">
+    <extensionElements>
+      <biodi:bounds x="-57" y="115" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+</definitions>
