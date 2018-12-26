@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1okngsi" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="Collaboration_0g3hn0f">
+    <bpmn:participant id="Participant_1hbr7h8" name="Перечень мероприятий, которые необходимо провести, чтобы начать предоставлять образовательные услуги по рабочему плану ускоренного обучения" processRef="Process_1" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_1" isExecutable="false">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_0ovg08s</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Task_0v91gpm" name="Получить документы для формирования личного дела">
+      <bpmn:incoming>SequenceFlow_0ovg08s</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ulb79s</bpmn:outgoing>
+      <bpmn:property id="Property_0qe8im6" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_14ayzi5">
+        <bpmn:sourceRef>DataObjectReference_0ptmovo</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0qe8im6</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:task>
+    <bpmn:task id="Task_0li62o1" name="Провести подготовительные действия до начала формирования личного дела">
+      <bpmn:incoming>SequenceFlow_0ulb79s</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0zlnfw0</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0r6qjau</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1rd76vk</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1yvgajw</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ur9vt4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_1ohflc3" name="Закупить папки">
+      <bpmn:outgoing>SequenceFlow_0zlnfw0</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_1c71vyd" name="Напечатать описи">
+      <bpmn:outgoing>SequenceFlow_0r6qjau</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_0lsejrv" name="Наклеить карман для документов">
+      <bpmn:outgoing>SequenceFlow_1rd76vk</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_1hh2zip" name="Провести выписку из приказов о зачислении и формировании групп">
+      <bpmn:outgoing>SequenceFlow_1yvgajw</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_04nfq9w" name="Сшить личное дело, размещая все документы в правильном порядке">
+      <bpmn:incoming>SequenceFlow_0ur9vt4</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_17de8gb</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_1eywo9e" name="Подготовить студенческие билеты и зачетки">
+      <bpmn:incoming>SequenceFlow_17de8gb</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0q5iahf</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0kv08x3</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_1o1d0d4" name="Создать приказ о формировании групп">
+      <bpmn:incoming>SequenceFlow_0kv08x3</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0grulyv</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_0w3zw91" name="Выдать документы студентам">
+      <bpmn:incoming>SequenceFlow_0grulyv</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1cv6yck</bpmn:outgoing>
+      <bpmn:property id="Property_1cvbnm2" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_0zgfokj">
+        <bpmn:sourceRef>DataObjectReference_1j0wrvg</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1cvbnm2</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:task>
+    <bpmn:dataObjectReference id="DataObjectReference_1j0wrvg" dataObjectRef="DataObject_0az5ihp" />
+    <bpmn:dataObject id="DataObject_0az5ihp" />
+    <bpmn:dataObjectReference id="DataObjectReference_0mv3tpy" dataObjectRef="DataObject_0coe6nq" />
+    <bpmn:dataObject id="DataObject_0coe6nq" />
+    <bpmn:task id="Task_0prjocp" name="Разослать студентам файлы">
+      <bpmn:incoming>SequenceFlow_0xmpbgo</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0p63e09</bpmn:outgoing>
+      <bpmn:property id="Property_00gfl53" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_00fnoia">
+        <bpmn:sourceRef>DataObjectReference_0brkrdn</bpmn:sourceRef>
+        <bpmn:targetRef>Property_00gfl53</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:task>
+    <bpmn:dataObjectReference id="DataObjectReference_0brkrdn" dataObjectRef="DataObject_123jkml" />
+    <bpmn:dataObject id="DataObject_123jkml" />
+    <bpmn:task id="Task_1cupv2k" name="Получить файлы для проведения переаттестации">
+      <bpmn:incoming>SequenceFlow_0p63e09</bpmn:incoming>
+      <bpmn:property id="Property_1rveu9v" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1g954uk">
+        <bpmn:sourceRef>DataObjectReference_1qrdhnh</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1rveu9v</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:task>
+    <bpmn:dataObjectReference id="DataObjectReference_1qrdhnh" dataObjectRef="DataObject_0yuiwnz" />
+    <bpmn:dataObject id="DataObject_0yuiwnz" />
+    <bpmn:dataObjectReference id="DataObjectReference_0ptmovo" dataObjectRef="DataObject_15n91fh" />
+    <bpmn:dataObject id="DataObject_15n91fh" />
+    <bpmn:subProcess id="SubProcess_1k61gpu" name="-приказ о зачислении на 1 курс в формате pdf &#10;-заявление о допуске к вступительным испытаниям&#10;-согласие на обработку персональных данных;&#10;-заявление (согласие на зачисление); &#10;- копия диплома о высшем образовании или копия аттестата о среднем образовании (для студента); &#10;- копия приложения к диплому или оригинал академической справки (для студента); &#10;- справка об обучении из деканата (справка о том, что абитуриет является студентом); &#10;- экзаменационный лист (для абитуриентов с высшим образованием); &#10;- письменные работы по физике, математике и русскому языку (для абитуриентов с высшим образованием); &#10;- договор о платных образовательных услугах; &#10;- выписка из приказа о зачислении на 1 курс; &#10;- выписка из приказа о формировании группы.&#10;">
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_00slhtu">
+        <bpmn:targetRef>DataObjectReference_0ptmovo</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:subProcess>
+    <bpmn:subProcess id="SubProcess_0jtfpho" name="-из приказа о зачислении на 1 курс узнать ФИО студентов; &#10;- в деканате необходимо получить фотографии студентов и файл с номерами зачетных книжек;&#10; - внести все полученные материалы в З.К и С.Б; &#10;- отнести З.К и С.Б на получение подписи и печати к декану факультета послевузовского образования; &#10;- отнести З.К и С.Б на получение подписи и печати к проректору по учебной работе (Гонику Игорю Леонидовичу); 4">
+      <bpmn:outgoing>SequenceFlow_0q5iahf</bpmn:outgoing>
+    </bpmn:subProcess>
+    <bpmn:subProcess id="SubProcess_0kaqaz3" name="Подготовить для подразделения УО кафедры, деканата ФПО, преподавателей и налогового отдела файлы">
+      <bpmn:incoming>SequenceFlow_1cv6yck</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0xmpbgo</bpmn:outgoing>
+      <bpmn:property id="Property_187920r" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_19zgobh">
+        <bpmn:sourceRef>DataObjectReference_0mv3tpy</bpmn:sourceRef>
+        <bpmn:targetRef>Property_187920r</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:subProcess>
+    <bpmn:subProcess id="SubProcess_1p8jsnd" name="- списки групп первого года обучения текущего учебного года; &#10;- списки групп 1 курса для учета личных дел; &#10;-«учет» оплаты по всем курсам (в формате xls с суммами по оплате).">
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_11dx4ma">
+        <bpmn:targetRef>DataObjectReference_0mv3tpy</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:subProcess>
+    <bpmn:subProcess id="SubProcess_1ogumwq" name="- квитанции об оплате; &#10;- стоимость обучения; &#10;- номера договоров и зачетных книжек; &#10;- расписание; &#10;- контактные данные преподавателей; &#10;- учебные планы «mini»; &#10;- файл «переаттестация».">
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_10499kc">
+        <bpmn:targetRef>DataObjectReference_0brkrdn</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:subProcess>
+    <bpmn:subProcess id="SubProcess_0tga01w" name="- учебные планы УО; &#10;- списки групп; &#10;- академические справки; &#10;- копии, приложенные к диплому; &#10;- шаблон для переаттестации.">
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_001vro8">
+        <bpmn:targetRef>DataObjectReference_1qrdhnh</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:subProcess>
+    <bpmn:subProcess id="SubProcess_0lr088q" name="- договор на обучение; &#10;-дополнительное соглашение к договору;&#10; - студенческий билет и зачетную книжку.">
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_19reopi">
+        <bpmn:targetRef>DataObjectReference_1j0wrvg</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:subProcess>
+    <bpmn:sequenceFlow id="SequenceFlow_0ovg08s" sourceRef="StartEvent_1" targetRef="Task_0v91gpm" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ulb79s" sourceRef="Task_0v91gpm" targetRef="Task_0li62o1" />
+    <bpmn:sequenceFlow id="SequenceFlow_0zlnfw0" sourceRef="Task_1ohflc3" targetRef="Task_0li62o1" />
+    <bpmn:sequenceFlow id="SequenceFlow_0r6qjau" sourceRef="Task_1c71vyd" targetRef="Task_0li62o1" />
+    <bpmn:sequenceFlow id="SequenceFlow_1rd76vk" sourceRef="Task_0lsejrv" targetRef="Task_0li62o1" />
+    <bpmn:sequenceFlow id="SequenceFlow_1yvgajw" sourceRef="Task_1hh2zip" targetRef="Task_0li62o1" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ur9vt4" sourceRef="Task_0li62o1" targetRef="Task_04nfq9w" />
+    <bpmn:sequenceFlow id="SequenceFlow_17de8gb" sourceRef="Task_04nfq9w" targetRef="Task_1eywo9e" />
+    <bpmn:sequenceFlow id="SequenceFlow_0q5iahf" sourceRef="SubProcess_0jtfpho" targetRef="Task_1eywo9e" />
+    <bpmn:sequenceFlow id="SequenceFlow_0kv08x3" sourceRef="Task_1eywo9e" targetRef="Task_1o1d0d4" />
+    <bpmn:sequenceFlow id="SequenceFlow_0grulyv" sourceRef="Task_1o1d0d4" targetRef="Task_0w3zw91" />
+    <bpmn:sequenceFlow id="SequenceFlow_1cv6yck" sourceRef="Task_0w3zw91" targetRef="SubProcess_0kaqaz3" />
+    <bpmn:sequenceFlow id="SequenceFlow_0xmpbgo" sourceRef="SubProcess_0kaqaz3" targetRef="Task_0prjocp" />
+    <bpmn:sequenceFlow id="SequenceFlow_0p63e09" sourceRef="Task_0prjocp" targetRef="Task_1cupv2k" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0g3hn0f">
+      <bpmndi:BPMNShape id="Participant_1hbr7h8_di" bpmnElement="Participant_1hbr7h8">
+        <dc:Bounds x="82" y="21" width="1182" height="990" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="134" y="456" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_0v91gpm_di" bpmnElement="Task_0v91gpm">
+        <dc:Bounds x="281" y="434" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SubProcess_1k61gpu_di" bpmnElement="SubProcess_1k61gpu" isExpanded="true">
+        <dc:Bounds x="137" y="35" width="682" height="186" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ovg08s_di" bpmnElement="SequenceFlow_0ovg08s">
+        <di:waypoint x="170" y="474" />
+        <di:waypoint x="281" y="474" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_0li62o1_di" bpmnElement="Task_0li62o1">
+        <dc:Bounds x="462" y="434" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ulb79s_di" bpmnElement="SequenceFlow_0ulb79s">
+        <di:waypoint x="381" y="474" />
+        <di:waypoint x="462" y="474" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="SubProcess_0jtfpho_di" bpmnElement="SubProcess_0jtfpho" isExpanded="true">
+        <dc:Bounds x="870" y="51" width="307" height="153" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_1ohflc3_di" bpmnElement="Task_1ohflc3">
+        <dc:Bounds x="397" y="254" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0zlnfw0_di" bpmnElement="SequenceFlow_0zlnfw0">
+        <di:waypoint x="463" y="334" />
+        <di:waypoint x="499" y="434" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_1c71vyd_di" bpmnElement="Task_1c71vyd">
+        <dc:Bounds x="499" y="254" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0r6qjau_di" bpmnElement="SequenceFlow_0r6qjau">
+        <di:waypoint x="541" y="334" />
+        <di:waypoint x="521" y="434" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_0lsejrv_di" bpmnElement="Task_0lsejrv">
+        <dc:Bounds x="599" y="254" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1rd76vk_di" bpmnElement="SequenceFlow_1rd76vk">
+        <di:waypoint x="617" y="334" />
+        <di:waypoint x="540" y="434" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_1hh2zip_di" bpmnElement="Task_1hh2zip">
+        <dc:Bounds x="710" y="254" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1yvgajw_di" bpmnElement="SequenceFlow_1yvgajw">
+        <di:waypoint x="712" y="330" />
+        <di:waypoint x="561" y="440" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_04nfq9w_di" bpmnElement="Task_04nfq9w">
+        <dc:Bounds x="652" y="434" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ur9vt4_di" bpmnElement="SequenceFlow_0ur9vt4">
+        <di:waypoint x="562" y="474" />
+        <di:waypoint x="652" y="474" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_1eywo9e_di" bpmnElement="Task_1eywo9e">
+        <dc:Bounds x="843" y="434" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_17de8gb_di" bpmnElement="SequenceFlow_17de8gb">
+        <di:waypoint x="752" y="474" />
+        <di:waypoint x="843" y="474" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0q5iahf_di" bpmnElement="SequenceFlow_0q5iahf">
+        <di:waypoint x="1024" y="204" />
+        <di:waypoint x="1024" y="319" />
+        <di:waypoint x="893" y="319" />
+        <di:waypoint x="893" y="434" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_1o1d0d4_di" bpmnElement="Task_1o1d0d4">
+        <dc:Bounds x="1007" y="434" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0kv08x3_di" bpmnElement="SequenceFlow_0kv08x3">
+        <di:waypoint x="943" y="474" />
+        <di:waypoint x="1007" y="474" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_0w3zw91_di" bpmnElement="Task_0w3zw91">
+        <dc:Bounds x="1007" y="560" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0grulyv_di" bpmnElement="SequenceFlow_0grulyv">
+        <di:waypoint x="1057" y="514" />
+        <di:waypoint x="1057" y="560" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="SubProcess_0lr088q_di" bpmnElement="SubProcess_0lr088q" isExpanded="true">
+        <dc:Bounds x="989" y="814" width="246" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataObjectReference_0mv3tpy_di" bpmnElement="DataObjectReference_0mv3tpy">
+        <dc:Bounds x="834" y="692" width="36" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataObjectReference_1j0wrvg_di" bpmnElement="DataObjectReference_1j0wrvg">
+        <dc:Bounds x="1039" y="680" width="36" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0zgfokj_di" bpmnElement="DataInputAssociation_0zgfokj">
+        <di:waypoint x="1057" y="680" />
+        <di:waypoint x="1057" y="640" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_19reopi_di" bpmnElement="DataOutputAssociation_19reopi">
+        <di:waypoint x="1092" y="814" />
+        <di:waypoint x="1065" y="730" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="SubProcess_1p8jsnd_di" bpmnElement="SubProcess_1p8jsnd" isExpanded="true">
+        <dc:Bounds x="742" y="814" width="219" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_11dx4ma_di" bpmnElement="DataOutputAssociation_11dx4ma">
+        <di:waypoint x="852" y="814" />
+        <di:waypoint x="852" y="742" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="SubProcess_0kaqaz3_di" bpmnElement="SubProcess_0kaqaz3" isExpanded="true">
+        <dc:Bounds x="796" y="539" width="140" height="121" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1cv6yck_di" bpmnElement="SequenceFlow_1cv6yck">
+        <di:waypoint x="1007" y="600" />
+        <di:waypoint x="936" y="600" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_19zgobh_di" bpmnElement="DataInputAssociation_19zgobh">
+        <di:waypoint x="855" y="692" />
+        <di:waypoint x="859" y="660" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_0prjocp_di" bpmnElement="Task_0prjocp">
+        <dc:Bounds x="623" y="560" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataObjectReference_0brkrdn_di" bpmnElement="DataObjectReference_0brkrdn">
+        <dc:Bounds x="631" y="680" width="36" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataInputAssociation_00fnoia_di" bpmnElement="DataInputAssociation_00fnoia">
+        <di:waypoint x="655" y="680" />
+        <di:waypoint x="664" y="640" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="SubProcess_1ogumwq_di" bpmnElement="SubProcess_1ogumwq" isExpanded="true">
+        <dc:Bounds x="426" y="814" width="299" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_10499kc_di" bpmnElement="DataOutputAssociation_10499kc">
+        <di:waypoint x="602" y="814" />
+        <di:waypoint x="638" y="730" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0xmpbgo_di" bpmnElement="SequenceFlow_0xmpbgo">
+        <di:waypoint x="796" y="600" />
+        <di:waypoint x="723" y="600" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_1cupv2k_di" bpmnElement="Task_1cupv2k">
+        <dc:Bounds x="443" y="560" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0p63e09_di" bpmnElement="SequenceFlow_0p63e09">
+        <di:waypoint x="623" y="600" />
+        <di:waypoint x="543" y="600" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="DataObjectReference_1qrdhnh_di" bpmnElement="DataObjectReference_1qrdhnh">
+        <dc:Bounds x="351" y="680" width="36" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SubProcess_0tga01w_di" bpmnElement="SubProcess_0tga01w" isExpanded="true">
+        <dc:Bounds x="120" y="825" width="267" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_001vro8_di" bpmnElement="DataOutputAssociation_001vro8">
+        <di:waypoint x="292" y="825" />
+        <di:waypoint x="353" y="730" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1g954uk_di" bpmnElement="DataInputAssociation_1g954uk">
+        <di:waypoint x="387" y="690" />
+        <di:waypoint x="448" y="638" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="DataObjectReference_0ptmovo_di" bpmnElement="DataObjectReference_0ptmovo">
+        <dc:Bounds x="262" y="308" width="36" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_00slhtu_di" bpmnElement="DataOutputAssociation_00slhtu">
+        <di:waypoint x="388" y="221" />
+        <di:waypoint x="298" y="314" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_14ayzi5_di" bpmnElement="DataInputAssociation_14ayzi5">
+        <di:waypoint x="289" y="358" />
+        <di:waypoint x="317" y="434" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
