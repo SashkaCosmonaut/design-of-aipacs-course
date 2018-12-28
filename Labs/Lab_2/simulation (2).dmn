@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="Segment" name="Segmentation" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="Image" name="Image">
+    <extensionElements>
+      <biodi:bounds x="462" y="16" width="180" height="80" />
+      <biodi:edge source="Decision_0v6lvdk">
+        <biodi:waypoints x="104" y="338" />
+        <biodi:waypoints x="163" y="264" />
+      </biodi:edge>
+      <biodi:edge source="object">
+        <biodi:waypoints x="454" y="170" />
+        <biodi:waypoints x="530" y="96" />
+      </biodi:edge>
+      <biodi:edge source="InputData_1ligtcf">
+        <biodi:waypoints x="668" y="149" />
+        <biodi:waypoints x="630" y="96" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#object" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_1ligtcf" />
+    </informationRequirement>
+    <decisionTable hitPolicy="COLLECT">
+      <input id="InputClause_1acmlkd" label="Category" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_0bqgrlg" typeRef="string">
+          <text>desiredDish</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0bo3uen" label="Color" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_0d6l79o" typeRef="boolean">
+          <text>guestsWithChildren</text>
+        </inputExpression>
+      </input>
+      <output id="OuputClause_99999" label="Type Object" name="beverages" typeRef="string" />
+      <rule id="row-506282952-7">
+        <description></description>
+        <inputEntry id="UnaryTests_03g3ci0">
+          <text>"Rastenia"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jb8hau">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1kr45vj">
+          <text>"DEREVO"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-8">
+        <inputEntry id="UnaryTests_1ckv0bb">
+          <text>"Vodoemi"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1joyits">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_139n7gl">
+          <text>"SEA"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-9">
+        <inputEntry id="UnaryTests_05rspiy">
+          <text>"Zhilie pomechenia"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15yl6ki">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bzfo47">
+          <text>"HOUSE"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="object" name="Object">
+    <extensionElements>
+      <biodi:bounds x="323" y="170" width="180" height="80" />
+      <biodi:edge source="InputData_1g73msn">
+        <biodi:waypoints x="413" y="336" />
+        <biodi:waypoints x="421" y="250" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0hlzqok">
+        <biodi:waypoints x="277" y="320" />
+        <biodi:waypoints x="361" y="250" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_1g73msn" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_0hlzqok" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_040j91i">
+      <input id="InputClause_0bbq1z8" label="Name_object" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_1iwaqcz" typeRef="string">
+          <text>season</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0pcbpc9" label="Size" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_1uu3xe6" typeRef="integer">
+          <text>guestCount</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0lfar1z" label="Category" name="desiredDish" typeRef="string" />
+      <rule id="row-884555325-1">
+        <description></description>
+        <inputEntry id="UnaryTests_0cy7usy">
+          <text>"Three"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ww352f">
+          <text>&gt;= 0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07xyqqp">
+          <text>"Rastenia"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-1">
+        <inputEntry id="UnaryTests_06z2ju4">
+          <text>"Kust"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ph5qbt">
+          <text>&lt;= 8</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sntjhd">
+          <text>"Rastenia"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-2">
+        <inputEntry id="UnaryTests_0o5o0mm">
+          <text>"Zhiloi dom"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rtyr8x">
+          <text>&lt;= 8</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15nybba">
+          <text>"Zhilie pomechenia"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-3">
+        <inputEntry id="UnaryTests_1f00omt">
+          <text>"Chastnii sektor"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03yxt5d">
+          <text>&lt;= 4</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ki86jo">
+          <text>"Zhilie pomechenia"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-4">
+        <description></description>
+        <inputEntry id="UnaryTests_18csep1">
+          <text>"Sea"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lt4o3q">
+          <text>[5..8]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1h969t1">
+          <text>"Vodoemi"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-5">
+        <description></description>
+        <inputEntry id="UnaryTests_0cp9scy">
+          <text>"Ocean"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1to1xxg">
+          <text>&gt; 8</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0fjt4uo">
+          <text>"Vodoemi"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-506282952-6">
+        <description></description>
+        <inputEntry id="UnaryTests_0s5azk4">
+          <text>"River"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nuzyri">
+          <text>&gt;8</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0nspzk1">
+          <text>"Vodoemi"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1ligtcf" name="RGB or black and white?">
+    <extensionElements>
+      <biodi:bounds x="621" y="149" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_0hlzqok" name="Name">
+    <extensionElements>
+      <biodi:bounds x="186" y="320" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_1g73msn" name="Size">
+    <extensionElements>
+      <biodi:bounds x="348" y="336" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+</definitions>
