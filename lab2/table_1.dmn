@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="definitions_055x3dt" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision_10fmms3" name="Поиск клиента в базе данных">
+    <extensionElements>
+      <biodi:bounds x="466" y="94" width="180" height="80" />
+      <biodi:edge source="InputData_15k0tvv">
+        <biodi:waypoints x="405" y="146" />
+        <biodi:waypoints x="466" y="136" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_15k0tvv" />
+    </informationRequirement>
+    <decisionTable id="decisionTable">
+      <input id="input1" label="">
+        <inputExpression id="inputExpression1" typeRef="string">
+          <text>Номер телефона</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1utmaka">
+        <inputExpression id="LiteralExpression_16uskin" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="output1" label="" name="Найден в базе" typeRef="boolean" />
+      <output id="OutputClause_0izyz66" name="result" typeRef="string" />
+      <rule id="DecisionRule_0adqfof">
+        <description>Json data of client</description>
+        <inputEntry id="UnaryTests_1h7js1e">
+          <text>номер телефона</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_065yg98">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_120v40x">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1opn783">
+          <text>ok</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1bnvc2x">
+        <description>Json error</description>
+        <inputEntry id="UnaryTests_0fipfye">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0p6rg3c">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ljjqym">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09g8ne3">
+          <text>not found</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ip3msc">
+        <inputEntry id="UnaryTests_0gm9so1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kzokwa">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tafg2n">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dhb94d">
+          <text>need confirmation by phone number</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_15k0tvv" name="Номер телефона клиента">
+    <extensionElements>
+      <biodi:bounds x="280" y="134" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="Decision_1qgih8i" name="Регистрация клиента">
+    <extensionElements>
+      <biodi:bounds x="461" y="228" width="180" height="80" />
+      <biodi:edge source="InputData_15k0tvv">
+        <biodi:waypoints x="377" y="179" />
+        <biodi:waypoints x="461" y="233" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0rz310z">
+        <biodi:waypoints x="396" y="278" />
+        <biodi:waypoints x="461" y="282" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_15k0tvv" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_0rz310z" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0u6ca5d">
+      <input id="InputClause_1n54xrz">
+        <inputExpression id="LiteralExpression_1b7tw8a" typeRef="string">
+          <text>registration_user_data_in_JSON</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_10ak2in">
+        <inputExpression id="LiteralExpression_1vcwxx9" typeRef="string">
+          <text>phone_number_accepted_status</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1s84bxh" name="user_id" typeRef="string" />
+      <output id="OutputClause_1i9x73x" name="registration_status" typeRef="string" />
+      <rule id="DecisionRule_02xi4od">
+        <inputEntry id="UnaryTests_0934750">
+          <text>data</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17ewy8b">
+          <text>phone_number_accepted</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gdnogs">
+          <text>{ id : 1000}</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0z9gxoa">
+          <text>registered</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ubn4nk">
+        <inputEntry id="UnaryTests_15mmknv">
+          <text>no data</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0swr05s">
+          <text>phone_number_accepted</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13l5o77">
+          <text>{ id : 1000}</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0z6txys">
+          <text>registered by need user data</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_120li93">
+        <inputEntry id="UnaryTests_06guxp0">
+          <text>data</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1okdd0r">
+          <text>phone_number_not_accepted</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15aa79q">
+          <text>{ id : 1000}</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0yz3xpw">
+          <text>registered be need accepted</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1d866c2">
+        <inputEntry id="UnaryTests_0a6dbkz">
+          <text>no data</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12r93e4">
+          <text>phone_number_not_accepted</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05ze44e">
+          <text>empty</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ml4kps">
+          <text>not registered</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_13al99m">
+        <inputEntry id="UnaryTests_0k5fb4a">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03xlh1v">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0iz40an">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wz8pfw">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_0rz310z" name="client_info">
+    <extensionElements>
+      <biodi:bounds x="271" y="250" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+</definitions>
