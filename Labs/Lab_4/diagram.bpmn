@@ -2,16 +2,17 @@
 <bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1cxada7" targetNamespace="http://bpmn.io/schema/bpmn">
   <bpmn:collaboration id="Collaboration_1khr5wz">
     <bpmn:participant id="Participant_03rtjdg" name="Секретарь ГАК" processRef="Process_1" />
-    <bpmn:participant id="Participant_0b8fxep" name="NoName" processRef="Process_145yqou" />
+    <bpmn:participant id="Participant_0b8fxep" name="Секретарь" processRef="Process_145yqou" />
     <bpmn:participant id="Participant_0ohgsf5" name="Зав. кафедры" />
     <bpmn:participant id="Participant_1ei5cth" name="Члены ГАК" />
     <bpmn:participant id="Participant_03gq5ty" name="Отдел кадров" />
     <bpmn:participant id="Participant_1y31kg4" name="Деканат" />
-    <bpmn:participant id="Participant_0yr5x5r" name="Черниченко" />
+    <bpmn:participant id="Participant_0yr5x5r" name="Эксперты" />
     <bpmn:participant id="Participant_1i8j352" name="Декан" />
-    <bpmn:participant id="Participant_1ahpeho" name="Лысак" />
-    <bpmn:participant id="Participant_1cvxdn0" name="Альгунаид" />
+    <bpmn:participant id="Participant_1ahpeho" name="Ректор" />
+    <bpmn:participant id="Participant_1cvxdn0" name="Ответственный за антиплагиат" />
     <bpmn:participant id="Participant_0eniacv" name="уму" />
+    <bpmn:participant id="Participant_07xk29m" name="Файловое хранилище" processRef="Process_1bb8p6q" />
     <bpmn:messageFlow id="MessageFlow_0bxbt2g" sourceRef="Task_1ebguam" targetRef="Participant_1ei5cth" />
     <bpmn:messageFlow id="MessageFlow_0n38e0d" sourceRef="Task_0slfjst" targetRef="Participant_03gq5ty" />
     <bpmn:messageFlow id="MessageFlow_1qmgjld" sourceRef="Task_0j14623" targetRef="Participant_1ei5cth" />
@@ -23,9 +24,6 @@
     <bpmn:messageFlow id="MessageFlow_1t36apw" sourceRef="Task_09dtz05" targetRef="Participant_1ahpeho" />
     <bpmn:messageFlow id="MessageFlow_1xw5ly2" sourceRef="Task_0t6obd9" targetRef="Participant_0eniacv" />
     <bpmn:messageFlow id="MessageFlow_17uiurj" sourceRef="Task_0z8xa3k" targetRef="Participant_1cvxdn0" />
-    <bpmn:textAnnotation id="TextAnnotation_121n0d8">
-      <bpmn:text>пояснить, что магистры с Альгунаидом</bpmn:text>
-    </bpmn:textAnnotation>
   </bpmn:collaboration>
   <bpmn:process id="Process_1" isExecutable="false">
     <bpmn:laneSet id="LaneSet_09nra34">
@@ -89,6 +87,9 @@
     <bpmn:task id="Task_14rc4xk" name="Размещение результатов проверки на dump.vstu.ru">
       <bpmn:incoming>SequenceFlow_0r996dd</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_18yyiis</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_1gprw7u">
+        <bpmn:targetRef>DataObjectReference_0eda2sj</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:task id="Task_0phom1i" name="Отнести в деканат: отзывы, рецензии, зачетки">
       <bpmn:incoming>SequenceFlow_18yyiis</bpmn:incoming>
@@ -98,13 +99,16 @@
       <bpmn:incoming>SequenceFlow_07gi60h</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1naprbd</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:task id="Task_09dtz05" name="Сбор подписей у Черниченко, Лысака, декана">
+    <bpmn:task id="Task_09dtz05" name="Сбор подписей у экспертов, ректора, декана">
       <bpmn:incoming>SequenceFlow_1naprbd</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0nn7wuf</bpmn:outgoing>
     </bpmn:task>
     <bpmn:task id="Task_1trdn4f" name="Загрузка дипломов на aump.vstu.ru">
       <bpmn:incoming>SequenceFlow_0nn7wuf</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_11d6p2p</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_0gn14os">
+        <bpmn:targetRef>DataObjectReference_1crwa3p</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:task id="Task_0gt0krf" name="Сложить в коробку дипломы и экспертные заключения">
       <bpmn:incoming>SequenceFlow_11d6p2p</bpmn:incoming>
@@ -133,6 +137,11 @@
     <bpmn:task id="Task_0zqo2p2" name="Взять приказ по темам ВКР">
       <bpmn:incoming>SequenceFlow_1c8dp9y</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1ailse4</bpmn:outgoing>
+      <bpmn:property id="Property_18fk3il" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1do9h9o">
+        <bpmn:sourceRef>DataObjectReference_033us9q</bpmn:sourceRef>
+        <bpmn:targetRef>Property_18fk3il</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
     </bpmn:task>
     <bpmn:task id="Task_1ebguam" name="Провести заседание по утверждению тем">
       <bpmn:incoming>SequenceFlow_1ailse4</bpmn:incoming>
@@ -141,6 +150,9 @@
     <bpmn:task id="Task_0slfjst" name="Переслать приказы в отдел кадров">
       <bpmn:incoming>SequenceFlow_14ptlps</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1h7owxn</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_0vm3msg">
+        <bpmn:targetRef>DataObjectReference_033us9q</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:sequenceFlow id="SequenceFlow_1c8dp9y" sourceRef="StartEvent_1" targetRef="Task_0zqo2p2" />
     <bpmn:sequenceFlow id="SequenceFlow_1ailse4" sourceRef="Task_0zqo2p2" targetRef="Task_1ebguam" />
@@ -153,16 +165,20 @@
     <bpmn:textAnnotation id="TextAnnotation_03nf9l1">
       <bpmn:text>Защита</bpmn:text>
     </bpmn:textAnnotation>
-    <bpmn:association id="Association_0q963q9" sourceRef="Task_0z8xa3k" targetRef="TextAnnotation_121n0d8" />
   </bpmn:process>
   <bpmn:process id="Process_145yqou">
     <bpmn:laneSet id="LaneSet_1hf8mbk">
       <bpmn:lane id="Lane_1oxszhl">
+        <bpmn:flowNodeRef>EndEvent_02czpi8</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_1i6ppyy</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>StartEvent_0u0woav</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>EndEvent_02czpi8</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
+    <bpmn:sequenceFlow id="SequenceFlow_0ckwf5g" sourceRef="Task_1i6ppyy" targetRef="EndEvent_02czpi8" />
+    <bpmn:sequenceFlow id="SequenceFlow_1kjcpa8" sourceRef="StartEvent_0u0woav" targetRef="Task_1i6ppyy" />
+    <bpmn:endEvent id="EndEvent_02czpi8">
+      <bpmn:incoming>SequenceFlow_0ckwf5g</bpmn:incoming>
+    </bpmn:endEvent>
     <bpmn:task id="Task_1i6ppyy" name="Отнести из кафедры в архив">
       <bpmn:incoming>SequenceFlow_1kjcpa8</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0ckwf5g</bpmn:outgoing>
@@ -171,15 +187,18 @@
       <bpmn:outgoing>SequenceFlow_1kjcpa8</bpmn:outgoing>
       <bpmn:messageEventDefinition />
     </bpmn:startEvent>
-    <bpmn:endEvent id="EndEvent_02czpi8">
-      <bpmn:incoming>SequenceFlow_0ckwf5g</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:sequenceFlow id="SequenceFlow_1kjcpa8" sourceRef="StartEvent_0u0woav" targetRef="Task_1i6ppyy" />
-    <bpmn:sequenceFlow id="SequenceFlow_0ckwf5g" sourceRef="Task_1i6ppyy" targetRef="EndEvent_02czpi8" />
-    <bpmn:textAnnotation id="TextAnnotation_15j0270">
-      <bpmn:text>After 100000000000000000 years</bpmn:text>
-    </bpmn:textAnnotation>
     <bpmn:association id="Association_0l4z60i" sourceRef="StartEvent_0u0woav" targetRef="TextAnnotation_15j0270" />
+    <bpmn:textAnnotation id="TextAnnotation_15j0270">
+      <bpmn:text>Через 5 лет</bpmn:text>
+    </bpmn:textAnnotation>
+  </bpmn:process>
+  <bpmn:process id="Process_1bb8p6q">
+    <bpmn:dataObjectReference id="DataObjectReference_033us9q" name="Приказы" dataObjectRef="DataObject_00ysi51" />
+    <bpmn:dataObject id="DataObject_00ysi51" />
+    <bpmn:dataObjectReference id="DataObjectReference_0eda2sj" name="Справки об антиплагиате" dataObjectRef="DataObject_0d338ex" />
+    <bpmn:dataObject id="DataObject_0d338ex" />
+    <bpmn:dataObjectReference id="DataObjectReference_1crwa3p" name="Дипломы" dataObjectRef="DataObject_18xr54t" />
+    <bpmn:dataObject id="DataObject_18xr54t" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1khr5wz">
@@ -247,16 +266,16 @@
         <dc:Bounds x="377" y="534" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Participant_0b8fxep_di" bpmnElement="Participant_0b8fxep">
-        <dc:Bounds x="11" y="991" width="573" height="184" />
+        <dc:Bounds x="0" y="855" width="564" height="115" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1oxszhl_di" bpmnElement="Lane_1oxszhl">
-        <dc:Bounds x="41" y="991" width="543" height="184" />
+        <dc:Bounds x="30" y="855" width="534" height="115" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_01h09v0_di" bpmnElement="StartEvent_0u0woav">
-        <dc:Bounds x="74" y="1028" width="36" height="36" />
+        <dc:Bounds x="174" y="892" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_1i6ppyy_di" bpmnElement="Task_1i6ppyy">
-        <dc:Bounds x="150" y="1006" width="100" height="80" />
+        <dc:Bounds x="248" y="870" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1c8dp9y_di" bpmnElement="SequenceFlow_1c8dp9y">
         <di:waypoint x="115" y="230" />
@@ -326,15 +345,15 @@
         <di:waypoint x="377" y="574" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1kjcpa8_di" bpmnElement="SequenceFlow_1kjcpa8">
-        <di:waypoint x="110" y="1046" />
-        <di:waypoint x="150" y="1046" />
+        <di:waypoint x="210" y="910" />
+        <di:waypoint x="248" y="910" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_15j0270_di" bpmnElement="TextAnnotation_15j0270">
-        <dc:Bounds x="78" y="1102" width="99.98924268502583" height="53.35628227194492" />
+        <dc:Bounds x="46" y="897" width="99.98924268502581" height="25.93857573149742" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_0l4z60i_di" bpmnElement="Association_0l4z60i">
-        <di:waypoint x="99" y="1062" />
-        <di:waypoint x="116" y="1102" />
+        <di:waypoint x="174" y="910" />
+        <di:waypoint x="146" y="910" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_03nf9l1_di" bpmnElement="TextAnnotation_03nf9l1">
         <dc:Bounds x="61" y="308" width="56" height="30" />
@@ -351,11 +370,11 @@
         <di:waypoint x="515" y="574" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_02czpi8_di" bpmnElement="EndEvent_02czpi8">
-        <dc:Bounds x="281" y="1028" width="36" height="36" />
+        <dc:Bounds x="417" y="892" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0ckwf5g_di" bpmnElement="SequenceFlow_0ckwf5g">
-        <di:waypoint x="250" y="1046" />
-        <di:waypoint x="281" y="1046" />
+        <di:waypoint x="348" y="910" />
+        <di:waypoint x="417" y="910" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_1ijyfs8_di" bpmnElement="EndEvent_1ijyfs8">
         <dc:Bounds x="526" y="212" width="36" height="36" />
@@ -365,7 +384,7 @@
         <di:waypoint x="526" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Participant_0esipbv_di" bpmnElement="Participant_0ohgsf5">
-        <dc:Bounds x="661" y="666" width="300" height="60" />
+        <dc:Bounds x="1049" y="667" width="300" height="60" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Participant_1eqp6aw_di" bpmnElement="Participant_1ei5cth">
         <dc:Bounds x="1001" y="281" width="300" height="60" />
@@ -391,8 +410,9 @@
       <bpmndi:BPMNEdge id="MessageFlow_05z1p48_di" bpmnElement="MessageFlow_05z1p48">
         <di:waypoint x="423" y="326" />
         <di:waypoint x="423" y="305" />
-        <di:waypoint x="798" y="305" />
-        <di:waypoint x="798" y="666" />
+        <di:waypoint x="935" y="305" />
+        <di:waypoint x="935" y="697" />
+        <di:waypoint x="1049" y="697" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="MessageFlow_1ncgy31_di" bpmnElement="MessageFlow_1ncgy31">
         <di:waypoint x="404" y="326" />
@@ -400,39 +420,39 @@
         <di:waypoint x="1001" y="295" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Participant_1k8gan5_di" bpmnElement="Participant_1y31kg4">
-        <dc:Bounds x="148" y="680" width="300" height="60" />
+        <dc:Bounds x="1049" y="757" width="300" height="60" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="MessageFlow_1ggkcvk_di" bpmnElement="MessageFlow_1ggkcvk">
         <di:waypoint x="304" y="505" />
-        <di:waypoint x="304" y="524" />
-        <di:waypoint x="82" y="524" />
-        <di:waypoint x="82" y="708" />
-        <di:waypoint x="148" y="708" />
+        <di:waypoint x="304" y="530" />
+        <di:waypoint x="1008" y="530" />
+        <di:waypoint x="1008" y="785" />
+        <di:waypoint x="1049" y="785" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Participant_1cv3gag_di" bpmnElement="Participant_0yr5x5r">
-        <dc:Bounds x="50" y="857" width="300" height="73" />
+        <dc:Bounds x="50" y="757" width="300" height="73" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Participant_1i8j352_di" bpmnElement="Participant_1i8j352">
-        <dc:Bounds x="380" y="857" width="300" height="73" />
+        <dc:Bounds x="372" y="757" width="300" height="73" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Participant_1ahpeho_di" bpmnElement="Participant_1ahpeho">
-        <dc:Bounds x="710" y="857" width="300" height="73" />
+        <dc:Bounds x="692" y="757" width="300" height="73" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="MessageFlow_0ie7yho_di" bpmnElement="MessageFlow_0ie7yho">
         <di:waypoint x="185" y="614" />
-        <di:waypoint x="185" y="857" />
+        <di:waypoint x="185" y="757" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="MessageFlow_0tmuhqz_di" bpmnElement="MessageFlow_0tmuhqz">
         <di:waypoint x="185" y="614" />
-        <di:waypoint x="185" y="774" />
-        <di:waypoint x="434" y="774" />
-        <di:waypoint x="434" y="857" />
+        <di:waypoint x="185" y="669" />
+        <di:waypoint x="426" y="669" />
+        <di:waypoint x="426" y="757" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="MessageFlow_1t36apw_di" bpmnElement="MessageFlow_1t36apw">
         <di:waypoint x="185" y="614" />
-        <di:waypoint x="185" y="774" />
-        <di:waypoint x="772" y="774" />
-        <di:waypoint x="772" y="857" />
+        <di:waypoint x="185" y="669" />
+        <di:waypoint x="754" y="669" />
+        <di:waypoint x="754" y="757" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="MessageFlow_1xw5ly2_di" bpmnElement="MessageFlow_1xw5ly2">
         <di:waypoint x="711" y="465" />
@@ -440,22 +460,52 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="MessageFlow_17uiurj_di" bpmnElement="MessageFlow_17uiurj">
         <di:waypoint x="544" y="505" />
-        <di:waypoint x="544" y="524" />
-        <di:waypoint x="1049" y="524" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="TextAnnotation_121n0d8_di" bpmnElement="TextAnnotation_121n0d8">
-        <dc:Bounds x="596" y="539" width="146.99477351916377" height="39.48896631823461" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Association_0q963q9_di" bpmnElement="Association_0q963q9">
-        <di:waypoint x="592" y="501" />
-        <di:waypoint x="643" y="539" />
+        <di:waypoint x="544" y="516" />
+        <di:waypoint x="1049" y="516" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Participant_1j7dqep_di" bpmnElement="Participant_1cvxdn0">
-        <dc:Bounds x="1049" y="514" width="300" height="60" />
+        <dc:Bounds x="1049" y="494" width="300" height="60" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Participant_1mxv503_di" bpmnElement="Participant_0eniacv">
-        <dc:Bounds x="1049" y="435" width="300" height="60" />
+        <dc:Bounds x="1049" y="421" width="300" height="60" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_07xk29m_di" bpmnElement="Participant_07xk29m">
+        <dc:Bounds x="0" y="-161" width="594" height="161" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataObjectReference_033us9q_di" bpmnElement="DataObjectReference_033us9q">
+        <dc:Bounds x="220" y="-85" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="215" y="-110" width="45" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1do9h9o_di" bpmnElement="DataInputAssociation_1do9h9o">
+        <di:waypoint x="233" y="-35" />
+        <di:waypoint x="191" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_0vm3msg_di" bpmnElement="DataOutputAssociation_0vm3msg">
+        <di:waypoint x="408" y="190" />
+        <di:waypoint x="255" y="-35" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="DataObjectReference_0eda2sj_di" bpmnElement="DataObjectReference_0eda2sj">
+        <dc:Bounds x="409" y="-85" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="392" y="-125" width="69" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_1gprw7u_di" bpmnElement="DataOutputAssociation_1gprw7u">
+        <di:waypoint x="427" y="425" />
+        <di:waypoint x="427" y="-35" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="DataObjectReference_1crwa3p_di" bpmnElement="DataObjectReference_1crwa3p">
+        <dc:Bounds x="78" y="-85" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="72" y="-112" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_0gn14os_di" bpmnElement="DataOutputAssociation_0gn14os">
+        <di:waypoint x="291" y="534" />
+        <di:waypoint x="104" y="-35" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
